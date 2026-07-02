@@ -554,37 +554,56 @@ height:260px;
 font-size:28px;
 }
 }
-   .logo-container{
+  header{
+    background:linear-gradient(90deg,#1e88e5,#ff8f00);
+    color:white;
+    padding:10px 15px;
+    position:sticky;
+    top:0;
+    z-index:1000;
+}
+
+/* HEADER FLEX */
+.header-content{
     display:flex;
-    justify-content:center;
     align-items:center;
-    margin:5px 0;
+    gap:12px;
+}
+
+/* LOGO */
+.logo-container{
+    display:flex;
+    align-items:center;
 }
 
 .logo-img{
-    width:85px;
-    height:85px;
+    width:45px;
+    height:45px;
     object-fit:cover;
     border-radius:50%;
-    border:3px solid #d4af37;
-    box-shadow:0 0 12px rgba(212,175,55,.5);
-    transition:.3s;
+    border:2px solid #ffd700; /* gold */
+    box-shadow:0 0 10px rgba(255,140,0,0.6); /* orange glow */
+    background:white;
 }
 
-.logo-img:hover{
-    transform:scale(1.05);
-}
-
-.logo-img:hover{
-    transform:scale(1.08);
-    box-shadow:0 0 40px #ff9800;
-}
-    header h1{
-    font-size:28px;
-    margin-top:4px;
-    margin-bottom:0;
-    color:white;
+/* TITLE */
+header h1{
+    font-size:20px;
+    margin:0;
     letter-spacing:1px;
+    color:white;
+}
+
+/* MOBILE */
+@media(max-width:600px){
+    .logo-img{
+        width:38px;
+        height:38px;
+    }
+
+    header h1{
+        font-size:16px;
+    }
 }
 </style>
 </head>
@@ -593,7 +612,17 @@ font-size:28px;
 
 <!-- HEADER -->
 <header>
-<h1>TUJJE SAFARIS</h1>
+  <div class="header-content">
+
+    <!-- LOGO (LEFT) -->
+    <div class="logo-container">
+      <img src="logo.png" alt="Tujje Safaris Logo" class="logo-img">
+    </div>
+
+    <!-- TITLE -->
+    <h1>TUJJE SAFARIS</h1>
+
+  </div>
 </header>
     <!-- HERO -->
 <section class="hero-slider">
