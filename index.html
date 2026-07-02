@@ -469,6 +469,89 @@ footer{
 }
 
 }
+    :root{
+    --blue:#1565c0;
+    --orange:#ff9800;
+    --gold:#d4af37;
+}
+
+.home-gallery{
+    padding:70px 5%;
+    background:linear-gradient(180deg,#0b1728,#112240);
+}
+
+.home-gallery h2{
+    text-align:center;
+    color:var(--gold);
+    font-size:38px;
+    margin-bottom:10px;
+    font-weight:900;
+}
+
+.home-gallery p{
+    text-align:center;
+    color:#ddd;
+    margin-bottom:40px;
+}
+
+.gallerySwiper{
+    width:100%;
+    padding-bottom:60px;
+}
+
+.gallerySwiper .swiper-slide{
+    border-radius:20px;
+    overflow:hidden;
+    border:4px solid var(--gold);
+    box-shadow:0 15px 35px rgba(0,0,0,.4);
+    transition:.4s;
+}
+
+.gallerySwiper .swiper-slide:hover{
+    transform:translateY(-10px);
+}
+
+.gallerySwiper img{
+    width:100%;
+    height:500px;
+    object-fit:cover;
+    display:block;
+}
+
+.swiper-button-next,
+.swiper-button-prev{
+    color:var(--gold);
+    background:rgba(21,101,192,.75);
+    width:50px;
+    height:50px;
+    border-radius:50%;
+}
+
+.swiper-button-next::after,
+.swiper-button-prev::after{
+    font-size:22px;
+    font-weight:bold;
+}
+
+.swiper-pagination-bullet{
+    background:white;
+    opacity:.6;
+}
+
+.swiper-pagination-bullet-active{
+    background:var(--orange);
+    width:25px;
+    border-radius:10px;
+}
+
+@media(max-width:768px){
+.gallerySwiper img{
+height:260px;
+}
+.home-gallery h2{
+font-size:28px;
+}
+}
 </style>
 </head>
 
@@ -522,13 +605,68 @@ footer{
 
 <!-- PACKAGES -->
 <section>
-<h2 class="title">Safari Packages</h2>
+<!-- ================== TUJJE SAFARIS PHOTO SLIDER ================== -->
 
-<div class="grid">
-<div class="card">Gorilla Trekking 🦍</div>
-<div class="card">Masai Mara Safari 🐘</div>
-<div class="card">Serengeti Migration 🦓</div>
-<div class="card">Rwenzori Hiking 🏔️</div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+
+
+<section class="home-gallery">
+
+<h2>Discover Uganda</h2>
+<p>Experience unforgettable wildlife adventures with Tujje Safaris.</p>
+
+<div class="swiper gallerySwiper">
+
+<div class="swiper-wrapper">
+
+<div class="swiper-slide">
+<img src="9b69ebc7-af25-40ee-94a3-fd9748767167.jpeg" alt="Tujje Safari">
+</div>
+
+<div class="swiper-slide">
+<img src="abcfe92e-cb7e-424f-93ee-a0f732624804.jpeg" alt="Tujje Safari">
+</div>
+
+<div class="swiper-slide">
+<img src="b664b488-d50a-4da7-8eb6-96434490fe67.jpeg" alt="Tujje Safari">
+</div>
+
+<div class="swiper-slide">
+<img src="afd02c02-fa1a-4121-9e83-3887e6172031.jpeg" alt="Tujje Safari">
+</div>
+
+<div class="swiper-slide">
+<img src="ad551d6f-f4bc-4c14-bb11-064425aa5ab1.jpeg" alt="Tujje Safari">
+</div>
+
+<div class="swiper-slide">
+<img src="c2d2d428-27bc-4558-81bc-820b344a6147.jpeg" alt="Tujje Safari">
+</div>
+
+<div class="swiper-slide">
+<img src="ceba3ada-09d9-465c-9b64-28b9efeadf27.jpeg" alt="Tujje Safari">
+</div>
+
+<div class="swiper-slide">
+<img src="c5e6fc14-ea98-4071-9a09-74855ff074d0.jpeg" alt="Tujje Safari">
+</div>
+
+<div class="swiper-slide">
+<img src="f6fd3538-7725-4085-a2bd-2fcc2423b63e.jpeg" alt="Tujje Safari">
+</div>
+
+<div class="swiper-slide">
+<img src="f3db6386-a5b5-4574-bc0f-4f6573fbd995.jpeg" alt="Tujje Safari">
+</div>
+
+<div class="swiper-slide">
+<img src="e3008b06-b75c-4535-9637-91eec2a0e4f4.jpeg" alt="Tujje Safari">
+</div>
+
+<div class="swiper-slide">
+<img src="e00dbb13-62aa-4b85-b864-601ea4e98ee2.jpeg" alt="Tujje Safari">
+</div>
+
 </div>
 </section>
 
@@ -928,6 +1066,44 @@ function toggleMenu() {
   sidebar.classList.toggle("open");
   overlay.classList.toggle("show");
 }
+</script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+<script>
+const swiper = new Swiper(".gallerySwiper", {
+    loop: true,
+    centeredSlides: true,
+    spaceBetween: 30,
+
+    autoplay: {
+        delay: 3000,
+        disableOnInteraction: false,
+    },
+
+    speed: 1200,
+
+    pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+    },
+
+    navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+    },
+
+    breakpoints: {
+        0: {
+            slidesPerView: 1
+        },
+        768: {
+            slidesPerView: 2
+        },
+        1024: {
+            slidesPerView: 3
+        }
+    }
+});
 </script>
 </body>
 </html>
