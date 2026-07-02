@@ -34,7 +34,76 @@ header{
 }
 
 /* ===== HERO SLIDER ===== */
+/* Hero Section */
+.hero-slider{
+    width:100%;
+    height:70vh;
+    min-height:500px;
+    background-image:url("0aff6cce-daf8-4817-87db-92309cc022ba.jpeg");
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    position:relative;
+}
 
+.hero-slider::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:rgba(0,0,0,.45);
+}
+
+.hero-content{
+    position:relative;
+    z-index:2;
+    text-align:center;
+    color:#fff;
+    padding:20px;
+}
+
+.hero-content h1{
+    font-size:3rem;
+    margin-bottom:15px;
+}
+
+.hero-content p{
+    font-size:1.2rem;
+    margin-bottom:25px;
+}
+
+.hero-btn{
+    display:inline-block;
+    padding:14px 30px;
+    background:#f5a623;
+    color:#fff;
+    text-decoration:none;
+    border-radius:30px;
+    font-weight:bold;
+    transition:.3s;
+}
+
+.hero-btn:hover{
+    background:#0077cc;
+}
+
+/* Mobile */
+@media (max-width:768px){
+    .hero-slider{
+        height:60vh;
+        min-height:400px;
+    }
+
+    .hero-content h1{
+        font-size:2rem;
+    }
+
+    .hero-content p{
+        font-size:1rem;
+    }
+}
 /* ===== SECTION ===== */
 section{
 padding:60px 20px;
@@ -590,7 +659,15 @@ header h1{
 
   </div>
 </header>
-
+<section class="hero-slider">
+  <div class="slide active">
+    <div class="hero-content">
+      <h1>Discover Africa in Luxury Style</h1>
+      <p>Experience unforgettable safaris across Uganda and East Africa.</p>
+      <a href="#tours" class="hero-btn">Explore Tours</a>
+    </div>
+  </div>
+</section>
     <!-- MENU BUTTON -->
 <div class="menu-btn" onclick="toggleMenu()">
   ☰
