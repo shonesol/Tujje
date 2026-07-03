@@ -1,0 +1,31 @@
+/* Safari Theme Replacement Variables */
+:root{
+    --green:#2E7D32;
+    --orange:#F57C00;
+    --gold:#D4AF37;
+    --beige:#F5F5DC;
+    --white:#FFFFFF;
+    --dark:#3E3A2F;
+}
+
+/* Replace your existing colors with these:
+#1e88e5,#0b5ed7,#1565c0,#0077cc -> var(--green)
+#ff8f00,#ff9800 -> var(--orange)
+#d4af37,#ffd700,#f5a623 -> var(--gold)
+#fff8e6 -> var(--beige)
+#1b1b1b -> var(--dark)
+
+Main overrides:
+*/
+body{background:var(--beige);color:#1b1b1b;}
+header{background:linear-gradient(90deg,var(--green),var(--orange));}
+.hero-btn{background:var(--gold);}
+.hero-btn:hover{background:var(--green);}
+.title{color:var(--green);}
+button{background:linear-gradient(90deg,var(--green),var(--orange));}
+.menu-btn{background:linear-gradient(90deg,var(--green),var(--orange),var(--gold));}
+.sidebar{background:linear-gradient(180deg,var(--green),var(--orange));}
+.home-btn{background:linear-gradient(45deg,var(--green),var(--orange),var(--gold));}
+.home-gallery{background:linear-gradient(180deg,#486b39,#6d8b4f);}
+.card,.review-box{border-color:var(--gold);}
+footer{background:var(--dark);color:var(--white);}
