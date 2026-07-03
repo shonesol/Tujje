@@ -1,1 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>Contact Us | Tujje Safaris</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,Helvetica,sans-serif;
+}
+
+body{
+background:#f7f8fc;
+color:#333;
+}
+
+/* Header */
+header{
+background:linear-gradient(90deg,#ff8c00,#ffd700,#1565c0);
+color:#fff;
+padding:25px;
+text-align:center;
+box-shadow:0 3px 10px rgba(0,0,0,.2);
+}
+
+header h1{
+font-size:38px;
+margin-bottom:8px;
+}
+
+header p{
+font-size:18px;
+}
+
+/* Contact Section */
+.contact{
+max-width:1100px;
+margin:40px auto;
+padding:20px;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+gap:30px;
+}
+
+.contact-info{
+background:#fff;
+padding:30px;
+border-radius:15px;
+box-shadow:0 5px 20px rgba(0,0,0,.1);
+border-top:6px solid orange;
+}
+
+.contact-info h2{
+color:#1565c0;
+margin-bottom:20px;
+}
+
+.contact-info h3{
+margin-top:20px;
+color:#ff9800;
+}
+
+.contact-info p{
+margin:12px 0;
+font-size:17px;
+}
+
+.contact-info i{
+color:#1565c0;
+margin-right:10px;
+}
+
+.contact-info a{
+color:#1565c0;
+text-decoration:none;
+font-weight:bold;
+}
+
+.contact-info a:hover{
+color:#ff9800;
+}
+
+/* Form */
+.contact-form{
+background:white;
+padding:30px;
+border-radius:15px;
+box-shadow:0 5px 20px rgba(0,0,0,.1);
+border-top:6px solid #1565c0;
+}
+
+.contact-form h2{
+color:#1565c0;
+margin-bottom:20px;
+}
+
+.contact-form input,
+.contact-form textarea{
+width:100%;
+padding:14px;
+margin-bottom:15px;
+border:2px solid #ddd;
+border-radius:10px;
+font-size:16px;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus{
+outline:none;
+border-color:#ff9800;
+}
+
+.contact-form button{
+background:linear-gradient(90deg,#ff9800,#ffd700,#1565c0);
+color:white;
+border:none;
+padding:14px 30px;
+font-size:18px;
+border-radius:30px;
+cursor:pointer;
+transition:.3s;
+}
+
+.contact-form button:hover{
+transform:scale(1.05);
+}
+
+/* Social */
+.social-section{
+background:white;
+padding:50px 20px;
+text-align:center;
+margin-top:20px;
+}
+
+.social-section h2{
+color:#1565c0;
+margin-bottom:25px;
+}
+
+.social-icons{
+display:flex;
+justify-content:center;
+flex-wrap:wrap;
+gap:18px;
+}
+
+.social-icons a{
+width:60px;
+height:60px;
+background:linear-gradient(45deg,#ff9800,#ffd700,#1565c0);
+color:white;
+display:flex;
+align-items:center;
+justify-content:center;
+border-radius:50%;
+font-size:25px;
+text-decoration:none;
+transition:.3s;
+}
+
+.social-icons a:hover{
+transform:translateY(-8px) rotate(360deg);
+}
+
+/* Footer */
+footer{
+margin-top:40px;
+background:#0d47a1;
+color:white;
+padding:30px 20px;
+text-align:center;
+}
+
+footer h2{
+margin-bottom:15px;
+color:#ffd700;
+}
+
+footer p{
+margin:10px 0;
+font-size:17px;
+}
+
+footer a{
+color:#ffd700;
+text-decoration:none;
+font-weight:bold;
+}
+
+footer a:hover{
+color:white;
+}
+
+@media(max-width:768px){
+header h1{
+font-size:30px;
+}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>Tujje Safaris</h1>
+<p>We'd Love To Hear From You</p>
+</header>
+
+<section class="contact">
+
+<div class="contact-info">
+
+<h2>Contact Information</h2>
+
+<p>
+We are here to help you plan your dream safari adventure in Uganda and East Africa.
+</p>
+
+<h3>Kampala & Jinja, Uganda</h3>
+
+<p><i class="fas fa-phone"></i> +256 702 094 292</p>
+
+<p><i class="fas fa-phone"></i> +256 701 939 235</p>
+
+<p><i class="fas fa-phone"></i> +256 774 674 861</p>
+
+<p>
+<i class="fas fa-envelope"></i>
+<a href="mailto:info@tujjesafaris.com">
+info@tujjesafaris.com
+</a>
+</p>
+
+</div>
+
+<div class="contact-form">
+
+<h2>Send Us A Message</h2>
+
+<form>
+
+<input type="text" placeholder="Your Name" required>
+
+<input type="email" placeholder="Email Address" required>
+
+<input type="tel" placeholder="Phone Number">
+
+<textarea rows="6" placeholder="Write your message here..." required></textarea>
+
+<button type="submit">
+<i class="fas fa-paper-plane"></i> Send Message
+</button>
+
+</form>
+
+</div>
+
+</section>
+
+<section class="social-section">
+
+<h2>Connect With Us</h2>
+
+<div class="social-icons">
+
+<a href="https://www.facebook.com/profile.php?id=61554350095901&mibextid=eQY6cl" target="_blank">
+<i class="fa-brands fa-facebook-f"></i>
+</a>
+
+<a href="https://www.instagram.com/tujje_safaris_?igsh=MXJoczN4eXZrM3UzNg%3D%3D&utm_source=qr" target="_blank">
+<i class="fa-brands fa-instagram"></i>
+</a>
+
+<a href="https://x.com" target="_blank">
+<i class="fa-brands fa-x-twitter"></i>
+</a>
+
+<a href="https://youtube.com" target="_blank">
+<i class="fa-brands fa-youtube"></i>
+</a>
+
+<a href="https://wa.me/256702094292" target="_blank">
+<i class="fa-brands fa-whatsapp"></i>
+</a>
+
+<a href="https://www.tiktok.com/@tujje.safaris?_t=8kRsJIGa1RO&_r=1" target="_blank">
+<i class="fa-brands fa-tiktok"></i>
+</a>
+
+<a href="https://linkedin.com" target="_blank">
+<i class="fa-brands fa-linkedin-in"></i>
+</a>
+
+</div>
+
+</section>
+
+<footer>
+
+<h2>Tujje Safaris</h2>
+
+<p>Your trusted safari partner for unforgettable adventures across Uganda and East Africa.</p>
+
+<p>
+<i class="fas fa-phone"></i> +256 702 094 292
+</p>
+
+<p>
+<i class="fas fa-envelope"></i>
+<a href="mailto:info@tujjesafaris.com">
+info@tujjesafaris.com
+</a>
+</p>
+
+<p style="margin-top:20px;">
+© 2026 Tujje Safaris. All Rights Reserved.
+</p>
+
+</footer>
+
+</body>
+</html>
