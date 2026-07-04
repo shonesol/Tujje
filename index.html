@@ -1438,13 +1438,13 @@ function askQuick(text){
 async function sendMessage(){
 
     const input = document.getElementById("question");
-    const msg = input.value.trim();
+    const msg = input.value.trim().toLowerCase();
 
     if(msg === "") return;
 
     const messages = document.getElementById("messages");
 
-    /* User message */
+    // Show user message
     messages.innerHTML += `
         <div class="userMessage">${msg}</div>
     `;
@@ -1452,45 +1452,60 @@ async function sendMessage(){
     input.value = "";
     messages.scrollTop = messages.scrollHeight;
 
-    try{
+    let reply = "";
 
-        const response = await fetch("YOUR_BACKEND_URL", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({ message: msg })
-        });
+    // ===========================
+    // TUJJE SAFARI SMART RESPONSES
+    // ===========================
 
-        const data = await response.json();
-
-        messages.innerHTML += `
-            <div class="botMessage">${data.reply}</div>
-        `;
-
-        messages.scrollTop = messages.scrollHeight;
-
-    }catch(error){
-
-        messages.innerHTML += `
-            <div class="botMessage">
-                ⚠️ Sorry, AI server is not connected.
-            </div>
-        `;
-
-        messages.scrollTop = messages.scrollHeight;
+    if(msg.includes("uganda")){
+        reply = "🇺🇬 Uganda has amazing safaris like gorilla trekking in Bwindi, game drives in Queen Elizabeth National Park, and boat cruises on the Nile.";
     }
+
+    else if(msg.includes("kenya")){
+        reply = "🇰🇪 Kenya offers the Maasai Mara safari, Big Five game drives, and wildebeest migration experiences.";
+    }
+
+    else if(msg.includes("tanzania")){
+        reply = "🇹🇿 Tanzania is famous for Serengeti National Park, Mount Kilimanjaro, and Ngorongoro Crater safaris.";
+    }
+
+    else if(msg.includes("rwanda")){
+        reply = "🇷🇼 Rwanda is best known for gorilla trekking in Volcanoes National Park and clean, safe tourism experiences.";
+    }
+
+    else if(msg.includes("price") || msg.includes("cost")){
+        reply = "💰 Safari prices depend on destination and days. Contact us on WhatsApp +256770462422 for exact pricing.";
+    }
+
+    else if(msg.includes("book") || msg.includes("booking")){
+        reply = "📅 To book your safari, contact us directly on WhatsApp +256770462422. We will arrange everything for you.";
+    }
+
+    else if(msg.includes("hello") || msg.includes("hi")){
+        reply = "👋 Welcome to TUJJE SAFARIS! I can help you plan safaris in Uganda, Kenya, Tanzania, and Rwanda.";
+    }
+
+    else if(msg.includes("gorilla")){
+        reply = "🦍 Gorilla trekking is available in Uganda (Bwindi) and Rwanda (Volcanoes National Park). It is a once-in-a-lifetime experience!";
+    }
+
+    else if(msg.includes("contact")){
+        reply = "📞 Contact TUJJE SAFARIS on WhatsApp +256770462422 or email tujjesafaris@gmail.com.";
+    }
+
+    else {
+        reply = "🤖 I can help you with safaris in Uganda, Kenya, Tanzania, and Rwanda. Ask me about destinations, prices, or booking.";
+    }
+
+    // Bot reply
+    setTimeout(() => {
+        messages.innerHTML += `
+            <div class="botMessage">${reply}</div>
+        `;
+        messages.scrollTop = messages.scrollHeight;
+    }, 500);
 }
-
-/* Press Enter to Send */
-document.addEventListener("DOMContentLoaded", function(){
-
-    document.getElementById("question").addEventListener("keypress", function(e){
-        if(e.key === "Enter"){
-            sendMessage();
-        }
-    });
-});
 </script>
 </body>
 </body>
