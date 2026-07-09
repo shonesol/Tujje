@@ -27,24 +27,22 @@ from
 
 
 
-const firebaseConfig={
+const firebaseConfig = {
 
+  apiKey: "AIzaSyAUxwj4JVPWAz3oDjPTSaEUot49pHxmWQg",
 
-apiKey:"YOUR_API_KEY",
+  authDomain: "tujjesafari-dbda9.firebaseapp.com",
 
-authDomain:"YOUR_AUTH_DOMAIN",
+  projectId: "tujjesafari-dbda9",
 
-projectId:"YOUR_PROJECT_ID",
+  storageBucket: "tujjesafari-dbda9.firebasestorage.app",
 
-storageBucket:"YOUR_STORAGE_BUCKET",
+  messagingSenderId: "39777982092",
 
-messagingSenderId:"YOUR_MESSAGING_ID",
+  appId: "1:39777982092:web:bc488a73cf7bb637204da9",
 
-appId:"YOUR_APP_ID"
-
-
+  measurementId: "G-2PP6P43TER"
 };
-
 
 
 
