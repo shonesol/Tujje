@@ -990,16 +990,32 @@ Our Guest Reviews
 Loading reviews...
 </div>
 </section>
+<section class="qr-section">
+
+<h2 class="title">Share Your Safari Experience</h2>
+
+<p>Scan the QR code and leave us a review.</p>
+
+<div id="qr-code"></div>
+
+<button onclick="shareReviewQR()">
+📲 Share Review QR
+</button>
+
+</section>
+    <script src="https://cdn.jsdelivr.net/npm/qr-code-styling@1.6.0/lib/qr-code-styling.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/qr-code-styling@1.6.0/lib/qr-code-styling.js"></script>
+
+<div id="qr-code"></div>
+
 <script>
 
-
-new QRCodeStyling({
+const qrCode = new QRCodeStyling({
 
 width:250,
-
 height:250,
 
-data:"https://tujjesafari.com/review.html",
+data:"https://www.tujjesafaris.com/review.html",
 
 image:"647b8421-b7ad-4101-aae5-1307c8b8d5fd.jpeg",
 
@@ -1016,13 +1032,17 @@ cornersSquareOptions:{
 color:"#D4AF37"
 }
 
+});
 
-}).append(
+
+qrCode.append(
 document.getElementById("qr-code")
 );
 
 
 </script>
+
+
 <!-- SOCIAL -->
 <section class="social-section">
 <h2>Connect With Us</h2>
@@ -1614,6 +1634,7 @@ async function sendMessage(){
     }, 500);
 }
 </script>
-</body>
+    
+<script type="module" src="review.js"></script>
 </body>
 </html>
