@@ -977,6 +977,15 @@ display:flex !important;
     </select>
 
     <button type="button" onclick="submitReview()">Submit Review</button>
+    <div class="reviews-section">
+    <h2 class="title">Guest Reviews</h2>
+
+    <div class="review-slider">
+        <div id="reviewBox" class="review-box">
+            Loading reviews...
+        </div>
+    </div>
+</div>
 </form>
 </section>
 
@@ -1243,7 +1252,12 @@ let index = 0;
 
 async function loadReviews() {
     try {
-        const snap = await getDocs(collection(db, "reviews"));
+        const q = query(
+    collection(db, "reviews"),
+    orderBy("createdAt", "desc")
+);
+
+const snap = await getDocs(q);
 
         console.log("Documents found:", snap.size);
 
