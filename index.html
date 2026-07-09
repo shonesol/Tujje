@@ -1386,17 +1386,26 @@ const snap = await getDocs(q);
    SHOW REVIEW
 ========================= */
 
-function showReview() {
+function showReview(){
 
-    const review = reviews[index];
+if(reviews.length === 0){
+document.getElementById("reviewBox").innerHTML =
+"<p>No reviews yet</p>";
+return;
+}
 
-    document.getElementById("reviewBox").innerHTML = `
-        <h3>${review.name}</h3>
-        <p>${"⭐".repeat(Number(review.rating))}</p>
-        <p>${review.text}</p>
-    `;
+const review = reviews[index];
 
-    index = (index + 1) % reviews.length;
+document.getElementById("reviewBox").innerHTML = `
+<div class="review-card">
+<h3>${review.name}</h3>
+<p>${"⭐".repeat(Number(review.rating))}</p>
+<p>${review.text}</p>
+</div>
+`;
+
+index = (index + 1) % reviews.length;
+
 }
 
 setInterval(() => {
@@ -1667,7 +1676,5 @@ async function sendMessage(){
     }, 500);
 }
 </script>
-    
-<script type="module" src="review.js"></script>
 </body>
 </html>
