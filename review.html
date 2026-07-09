@@ -2,138 +2,73 @@
 <html>
 <head>
 
-<title>Tujje Safari - Customer Reviews</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tujje Safaris Guest Reviews</title>
 
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
 
 <style>
 
 body{
-margin:0;
-font-family:Arial;
-background:#F5E6CC;
+font-family:Poppins;
+background:#fff8e6;
+padding:20px;
 }
-
-
-header{
-
-background:#0B1F3B;
-color:white;
-text-align:center;
-padding:30px;
-
-}
-
-header h1{
-
-color:#D4AF37;
-
-}
-
 
 .container{
-
-max-width:500px;
-background:#FFF8EE;
-margin:40px auto;
-padding:30px;
-border-radius:20px;
-
-box-shadow:0 10px 25px #999;
-
+max-width:600px;
+margin:auto;
+background:white;
+padding:25px;
+border-radius:15px;
+box-shadow:0 10px 20px #ccc;
 }
 
-
-input,textarea{
-
-width:100%;
-padding:15px;
-margin:10px 0;
-
-border:2px solid #D4AF37;
-
-border-radius:10px;
-
-font-size:16px;
-
-}
-
-
-textarea{
-
-height:120px;
-
-}
-
-
-.stars{
-
+h1{
 text-align:center;
-
+color:#ff8f00;
 }
 
-
-.stars span{
-
-font-size:40px;
-
-color:#ccc;
-
-cursor:pointer;
-
+input,textarea,select{
+width:100%;
+padding:12px;
+margin:10px 0;
+border-radius:8px;
+border:1px solid #ddd;
 }
-
-
-.stars .active{
-
-color:#D4AF37;
-
-}
-
 
 button{
-
 width:100%;
-
-padding:15px;
-
-background:#F28C28;
-
+padding:14px;
+background:linear-gradient(90deg,#1e88e5,#ff8f00,#d4af37);
+border:none;
+border-radius:10px;
 color:white;
-
-border:0;
-
-border-radius:30px;
-
-font-size:18px;
-
+font-weight:bold;
 cursor:pointer;
-
 }
 
 
-button:hover{
-
-background:#D4AF37;
-
-color:#0B1F3B;
-
-}
-
-
-#message{
-
+.share{
+margin-top:20px;
 text-align:center;
-
-color:green;
-
 }
 
+
+.share a{
+display:inline-block;
+padding:10px;
+margin:5px;
+background:#1e88e5;
+color:white;
+border-radius:8px;
+text-decoration:none;
+}
 
 
 </style>
-
 
 </head>
 
@@ -141,20 +76,10 @@ color:green;
 <body>
 
 
-<header>
-
-<h1>Tujje Safari</h1>
-
-<p>Share Your Safari Experience</p>
-
-</header>
-
-
-
 <div class="container">
 
 
-<h2>Leave A Review</h2>
+<h1>⭐ Share Your Safari Experience</h1>
 
 
 <input id="name" placeholder="Your Name">
@@ -163,197 +88,54 @@ color:green;
 <input id="country" placeholder="Your Country">
 
 
-<div class="stars">
+<select id="rating">
 
-<span onclick="star(1)">★</span>
+<option value="5">⭐⭐⭐⭐⭐</option>
+<option value="4">⭐⭐⭐⭐</option>
+<option value="3">⭐⭐⭐</option>
+<option value="2">⭐⭐</option>
+<option value="1">⭐</option>
 
-<span onclick="star(2)">★</span>
-
-<span onclick="star(3)">★</span>
-
-<span onclick="star(4)">★</span>
-
-<span onclick="star(5)">★</span>
-
-</div>
+</select>
 
 
 <textarea id="review" placeholder="Write your review"></textarea>
 
 
-<button onclick="sendReview()">
-
+<button onclick="submitReview()">
 Submit Review
-
 </button>
 
 
-<p id="message"></p>
+
+<div class="share">
+
+<h3>Share Review Page</h3>
+
+
+<a onclick="shareWhatsApp()">
+WhatsApp
+</a>
+
+
+<a onclick="shareFacebook()">
+Facebook
+</a>
+
+
+<a onclick="copyLink()">
+Copy Link
+</a>
 
 
 </div>
 
 
+</div>
 
 
-<script type="module">
+<script type="module" src="review.js"></script>
 
-
-import {initializeApp}
-
-from
-
-"https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-
-
-import {
-
-getFirestore,
-
-collection,
-
-addDoc,
-
-serverTimestamp
-
-}
-
-from
-
-"https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
-
-
-
-
-
-// PASTE YOUR FIREBASE CONFIG HERE
-
-
-const firebaseConfig={
-
-
-apiKey:"YOUR_API_KEY",
-
-authDomain:"YOUR_AUTH_DOMAIN",
-
-projectId:"YOUR_PROJECT_ID",
-
-storageBucket:"YOUR_STORAGE_BUCKET",
-
-messagingSenderId:"YOUR_MESSAGING_ID",
-
-appId:"YOUR_APP_ID"
-
-
-};
-
-
-
-
-
-const app=initializeApp(firebaseConfig);
-
-
-const db=getFirestore(app);
-
-
-
-let rating=0;
-
-
-
-window.star=function(num){
-
-
-rating=num;
-
-
-document.querySelectorAll(".stars span")
-.forEach((s,i)=>{
-
-
-s.classList.toggle(
-"active",
-i<num
-);
-
-
-});
-
-
-}
-
-
-
-window.sendReview=async function(){
-
-
-let name=document.getElementById("name").value;
-
-let country=document.getElementById("country").value;
-
-let review=document.getElementById("review").value;
-
-
-
-if(!name || !review || rating==0){
-
-alert("Complete all fields");
-
-return;
-
-}
-
-
-
-await addDoc(
-collection(db,"reviews"),
-{
-
-
-name:name,
-
-country:country,
-
-review:review,
-
-rating:rating,
-
-date:serverTimestamp()
-
-
-});
-
-
-
-document.getElementById("message").innerHTML=
-"Thank you for your review ⭐";
-
-
-}
-
-
-</script>
-...
-
-<button onclick="shareReview()">Share Review Page</button>
-
-<script>
-async function shareReview() {
-    if (navigator.share) {
-        await navigator.share({
-            title: "Tujje Safari Reviews",
-            text: "Share your Tujje Safari experience!",
-            url: "https://tujjesafari.com/review.html"
-        });
-    } else {
-        alert("Sharing is not supported on this device.");
-    }
-}
-</script>
-
-</body>
-</html>
 
 </body>
 </html>
