@@ -334,7 +334,26 @@ document.getElementById("message").innerHTML=
 
 
 </script>
+...
 
+<button onclick="shareReview()">Share Review Page</button>
+
+<script>
+async function shareReview() {
+    if (navigator.share) {
+        await navigator.share({
+            title: "Tujje Safari Reviews",
+            text: "Share your Tujje Safari experience!",
+            url: "https://tujjesafari.com/review.html"
+        });
+    } else {
+        alert("Sharing is not supported on this device.");
+    }
+}
+</script>
+
+</body>
+</html>
 
 </body>
 </html>
