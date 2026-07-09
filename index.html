@@ -990,15 +990,11 @@ display:flex !important;
 
 <div id="qr-code"></div>
 
-<button onclick="shareReviewQR()">
-📲 Share Review QR
+<button onclick="shareQRCode()">
+📲 Share QR Code
 </button>
 
-</section>
-    <script src="https://cdn.jsdelivr.net/npm/qr-code-styling@1.6.0/lib/qr-code-styling.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/qr-code-styling@1.6.0/lib/qr-code-styling.js"></script>
-
-<div id="qr-code"></div>
 
 <script>
 
@@ -1027,10 +1023,55 @@ color:"#D4AF37"
 });
 
 
-qrCode.append(
-document.getElementById("qr-code")
+qrCode.append(document.getElementById("qr-code"));
+
+
+
+async function shareQRCode(){
+
+try{
+
+// Convert QR to image blob
+const blob = await qrCode.getRawData("png");
+
+const file = new File(
+[blob],
+"Tujje-Safaris-Review-QR.png",
+{
+type:"image/png"
+}
 );
 
+
+if(navigator.canShare && navigator.canShare({files:[file]})){
+
+
+await navigator.share({
+
+title:"Tujje Safaris Review QR Code",
+
+text:"Scan this QR code to leave your Tujje Safaris review.",
+
+files:[file]
+
+});
+
+
+}else{
+
+
+alert("Your device does not support image sharing. Please take a screenshot of the QR code and share it.");
+
+}
+
+
+}catch(error){
+
+console.log(error);
+
+}
+
+}
 
 </script>
 
