@@ -809,51 +809,6 @@ display:flex !important;
     scroll-behavior:smooth;
 }
 
-.qr-section{
-
-    background:linear-gradient(135deg,#FFF8EE,#FFE7BE,#D68C2C);
-
-    padding:60px 20px;
-
-    text-align:center;
-
-    border-radius:20px;
-
-    margin:50px auto;
-
-    max-width:500px;
-
-    box-shadow:0 15px 35px rgba(0,0,0,.15);
-
-}
-
-.qr-section h2{
-
-    color:#B8860B;
-
-    font-size:34px;
-
-    margin-bottom:10px;
-
-}
-
-.qr-section p{
-
-    color:#555;
-
-    font-size:18px;
-
-    margin-bottom:30px;
-
-}
-
-#qr-code{
-
-    display:flex;
-
-    justify-content:center;
-
-}
 </style>
 </head>
 <link rel="stylesheet" href="Brenda.css">
@@ -1029,59 +984,58 @@ display:flex !important;
     <div id="reviewBox" class="review-box"></div>
 </div>
 </section>
-    <section class="qr-section">
+    <section class="reviews">
 
-    <h2>Share Your Experience</h2>
+<h2>Our Guests Reviews</h2>
 
-    <p>
-        Scan the QR code to visit our website and leave a review.
-    </p>
+<div id="reviews">
 
-    <div id="qr-code"></div>
+Loading reviews...
+
+</div>
+
 
 </section>
 
-<script src="https://cdn.jsdelivr.net/npm/qr-code-styling/lib/qr-code-styling.js"></script>
+
+<script type="module" src="reviews.js"></script>
+ <script src="https://cdn.jsdelivr.net/npm/qr-code-styling/lib/qr-code-styling.js"></script>
+
+
+<div id="qr-code"></div>
+
 
 <script>
 
-const qrCode = new QRCodeStyling({
 
-    width:250,
-    height:250,
+new QRCodeStyling({
 
-    data:"https://www.tujjesafari.com/#reviews",
+width:250,
 
-    image:"647b8421-b7ad-4101-aae5-1307c8b8d5fd.jpeg",
+height:250,
 
-    dotsOptions:{
-        color:"#d68c2c",
-        type:"rounded"
-    },
+data:"https://tujjesafari.com/review.html",
 
-    backgroundOptions:{
-        color:"#FFF8EE"
-    },
+image:"647b8421-b7ad-4101-aae5-1307c8b8d5fd.jpeg",
 
-    cornersSquareOptions:{
-        color:"#B8860B",
-        type:"extra-rounded"
-    },
+dotsOptions:{
+color:"#F28C28",
+type:"rounded"
+},
 
-    cornersDotOptions:{
-        color:"#F7D488",
-        type:"dot"
-    },
+backgroundOptions:{
+color:"#FFF8EE"
+},
 
-    imageOptions:{
-        crossOrigin:"anonymous",
-        margin:8,
-        imageSize:0.35
-    }
+cornersSquareOptions:{
+color:"#D4AF37"
+}
 
-});
 
-qrCode.append(document.getElementById("qr-code"));
+}).append(
+document.getElementById("qr-code")
+);
+
 
 </script>
 <!-- SOCIAL -->
