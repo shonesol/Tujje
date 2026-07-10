@@ -1,102 +1,719 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tujje Safaris</title>
+
+<title>Tujje Safaris | Share Your Experience</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700;900&display=swap" rel="stylesheet">
+
+<style>
+
+/* =========================
+   TUJJE SAFARIS COLORS
+========================= */
+
+:root{
+--blue:#1565c0;
+--orange:#ff9800;
+--gold:#d4af37;
+--beige:#fff8ee;
+--dark:#1b1b1b;
+--white:#ffffff;
+}
+
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Poppins,sans-serif;
+}
+
+
+body{
+
+background:
+linear-gradient(
+135deg,
+#fff8ee,
+#e3f2fd
+);
+
+color:#333;
+
+}
+
+
+/* =========================
+ HEADER
+========================= */
+
+
+header{
+
+background:
+linear-gradient(
+90deg,
+var(--blue),
+var(--orange),
+var(--gold)
+);
+
+padding:25px;
+
+text-align:center;
+
+color:white;
+
+box-shadow:
+0 5px 20px rgba(0,0,0,.2);
+
+}
+
+
+header h1{
+
+font-size:35px;
+
+font-weight:900;
+
+letter-spacing:2px;
+
+}
+
+
+header p{
+
+margin-top:10px;
+
+font-size:16px;
+
+}
+
+
+/* =========================
+ QR SECTION
+========================= */
+
+
+.qr-section{
+
+max-width:900px;
+
+margin:50px auto;
+
+padding:40px 25px;
+
+text-align:center;
+
+background:white;
+
+border-radius:25px;
+
+box-shadow:
+0 15px 40px rgba(0,0,0,.15);
+
+border-top:8px solid var(--gold);
+
+}
+
+
+
+.title{
+
+font-size:35px;
+
+font-weight:900;
+
+color:var(--blue);
+
+margin-bottom:15px;
+
+}
+
+
+
+.subtitle{
+
+font-size:18px;
+
+line-height:1.8;
+
+color:#555;
+
+margin-bottom:30px;
+
+}
+
+
+
+/* =========================
+ MESSAGE BOX
+========================= */
+
+
+.message-box{
+
+background:
+linear-gradient(
+135deg,
+#fff8ee,
+#e3f2fd
+);
+
+padding:25px;
+
+border-radius:18px;
+
+margin:30px 0;
+
+border-left:6px solid var(--orange);
+
+}
+
+
+
+.message-box h3{
+
+color:var(--orange);
+
+font-size:24px;
+
+margin-bottom:10px;
+
+}
+
+
+
+.message-box p{
+
+line-height:1.8;
+
+}
+
+
+
+/* =========================
+ REASONS
+========================= */
+
+
+.reasons{
+
+display:grid;
+
+grid-template-columns:
+repeat(auto-fit,minmax(220px,1fr));
+
+gap:20px;
+
+margin:35px 0;
+
+}
+
+
+
+.reason-card{
+
+background:white;
+
+padding:25px;
+
+border-radius:15px;
+
+box-shadow:
+0 8px 20px rgba(0,0,0,.1);
+
+border-bottom:5px solid var(--gold);
+
+transition:.3s;
+
+}
+
+
+
+.reason-card:hover{
+
+transform:translateY(-8px);
+
+}
+
+
+
+.reason-card h4{
+
+color:var(--blue);
+
+font-size:20px;
+
+margin-bottom:10px;
+
+}
+
+
+
+.reason-card p{
+
+font-size:14px;
+
+line-height:1.6;
+
+}
+
+
+
+/* =========================
+ QR CARD
+========================= */
+
+
+.qr-card{
+
+background:
+linear-gradient(
+135deg,
+#1565c0,
+#ff9800
+);
+
+padding:35px;
+
+border-radius:25px;
+
+color:white;
+
+margin-top:35px;
+
+}
+
+
+
+.qr-card h2{
+
+font-size:28px;
+
+margin-bottom:15px;
+
+}
+
+
+#qr-code{
+
+background:white;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+padding:20px;
+
+width:max-content;
+
+margin:25px auto;
+
+border-radius:20px;
+
+box-shadow:
+0 10px 30px rgba(0,0,0,.3);
+
+}
+
+
+
+/* =========================
+ BUTTON
+========================= */
+
+
+button{
+
+background:
+linear-gradient(
+45deg,
+var(--orange),
+var(--gold)
+);
+
+color:white;
+
+border:none;
+
+padding:15px 35px;
+
+border-radius:40px;
+
+font-size:17px;
+
+font-weight:700;
+
+cursor:pointer;
+
+transition:.3s;
+
+box-shadow:
+0 8px 20px rgba(0,0,0,.25);
+
+}
+
+
+button:hover{
+
+transform:scale(1.08);
+
+background:
+linear-gradient(
+45deg,
+var(--blue),
+var(--gold)
+);
+
+}
+
+
+
+/* =========================
+ FOOTER
+========================= */
+
+
+footer{
+
+background:#0d1b2a;
+
+color:white;
+
+padding:30px;
+
+text-align:center;
+
+margin-top:50px;
+
+}
+
+
+
+footer span{
+
+color:var(--gold);
+
+font-weight:bold;
+
+}
+
+
+
+/* MOBILE */
+
+@media(max-width:600px){
+
+header h1{
+
+font-size:25px;
+
+}
+
+
+.title{
+
+font-size:27px;
+
+}
+
+
+.qr-section{
+
+margin:20px;
+
+padding:25px 15px;
+
+}
+
+}
+
+
+</style>
+
 </head>
-  <body>
+
+
+<body>
+
+
+<header>
+
+<h1>🌍 TUJJE SAFARIS</h1>
+
+<p>Creating unforgettable African safari memories</p>
+
+</header>
+
+
+
 <section class="qr-section">
 
-<h2 class="title">Share Your Safari Experience</h2>
 
-<p>Scan the QR code and leave us a review.</p>
+<h2 class="title">
+Share Your Safari Experience
+</h2>
+
+
+<p class="subtitle">
+
+Your journey with Tujje Safaris means a lot to us.
+Share your adventure, your favourite moments, and your experience
+to help future travelers discover the beauty of Uganda and East Africa.
+
+</p>
+
+
+
+<div class="message-box">
+
+<h3>🙏 Thank You For Travelling With Us</h3>
+
+<p>
+
+Thank you for choosing Tujje Safaris for your African adventure.
+Your trust, smiles, and memories inspire us to continue providing
+exceptional safari experiences.
+
+Your review helps our team grow and helps other travelers confidently
+choose their dream safari.
+
+</p>
+
+</div>
+
+
+
+
+<div class="reasons">
+
+
+<div class="reason-card">
+
+<h4>⭐ Help Other Travelers</h4>
+
+<p>
+Your experience guides future guests when planning their Uganda safari.
+</p>
+
+</div>
+
+
+
+<div class="reason-card">
+
+<h4>🌍 Support Local Tourism</h4>
+
+<p>
+Your feedback helps promote Uganda and East Africa as amazing destinations.
+</p>
+
+</div>
+
+
+
+<div class="reason-card">
+
+<h4>🦍 Improve Our Services</h4>
+
+<p>
+Your suggestions help us improve guides, tours, and customer service.
+</p>
+
+</div>
+
+
+</div>
+
+
+
+
+<div class="qr-card">
+
+
+<h2>
+📱 Scan & Leave Your Review
+</h2>
+
+
+<p>
+
+Use your phone camera to scan this QR code and tell us about your
+Tujje Safaris experience.
+
+</p>
+
 
 <div id="qr-code"></div>
 
+
+
 <button onclick="shareQRCode()">
-📲 Share QR Code
+
+📲 Share Review QR Code
+
 </button>
+
+
+</div>
+
+
+</section>
+
+
+
+
+<footer>
+
+<p>
+
+© <span> Tujje Safaris </span> | Thank you for making memories with us
+
+</p>
+
+</footer>
+
+
+
+
 
 <script src="https://cdn.jsdelivr.net/npm/qr-code-styling@1.6.0/lib/qr-code-styling.js"></script>
 
+
 <script>
+
 
 const qrCode = new QRCodeStyling({
 
 width:250,
+
 height:250,
+
 
 data:"https://www.tujjesafaris.com/review.html",
 
+
 image:"647b8421-b7ad-4101-aae5-1307c8b8d5fd.jpeg",
 
+
 dotsOptions:{
-color:"#F28C28",
+
+color:"#ff9800",
+
 type:"rounded"
+
 },
+
 
 backgroundOptions:{
-color:"#FFF8EE"
+
+color:"#ffffff"
+
 },
 
+
 cornersSquareOptions:{
-color:"#D4AF37"
+
+color:"#d4af37"
+
 }
+
 
 });
 
 
-qrCode.append(document.getElementById("qr-code"));
+
+qrCode.append(
+document.getElementById("qr-code")
+);
+
 
 
 
 async function shareQRCode(){
 
+
 try{
 
-// Convert QR to image blob
-const blob = await qrCode.getRawData("png");
 
-const file = new File(
+const blob =
+await qrCode.getRawData("png");
+
+
+
+const file =
+new File(
+
 [blob],
+
 "Tujje-Safaris-Review-QR.png",
+
 {
+
 type:"image/png"
+
 }
+
 );
 
 
-if(navigator.canShare && navigator.canShare({files:[file]})){
+
+if(
+navigator.canShare &&
+navigator.canShare({files:[file]})
+
+){
 
 
 await navigator.share({
 
-title:"Tujje Safaris Review QR Code",
+title:"Tujje Safaris Review",
 
-text:"Scan this QR code to leave your Tujje Safaris review.",
+text:
+"Share your Tujje Safaris experience with us.",
 
 files:[file]
 
 });
 
 
-}else{
+}
+
+else{
 
 
-alert("Your device does not support image sharing. Please take a screenshot of the QR code and share it.");
+alert(
+"Please take a screenshot and share the QR code."
+);
+
 
 }
 
 
-}catch(error){
+
+}
+
+catch(error){
 
 console.log(error);
 
 }
 
+
+
 }
 
+
 </script>
+
+
 </body>
+
 </html>
