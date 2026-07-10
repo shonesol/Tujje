@@ -1,0 +1,95 @@
+
+<section class="qr-section">
+
+<h2 class="title">Share Your Safari Experience</h2>
+
+<p>Scan the QR code and leave us a review.</p>
+
+<div id="qr-code"></div>
+
+<button onclick="shareQRCode()">
+📲 Share QR Code
+</button>
+
+<script src="https://cdn.jsdelivr.net/npm/qr-code-styling@1.6.0/lib/qr-code-styling.js"></script>
+
+<script>
+
+const qrCode = new QRCodeStyling({
+
+width:250,
+height:250,
+
+data:"https://www.tujjesafaris.com/review.html",
+
+image:"647b8421-b7ad-4101-aae5-1307c8b8d5fd.jpeg",
+
+dotsOptions:{
+color:"#F28C28",
+type:"rounded"
+},
+
+backgroundOptions:{
+color:"#FFF8EE"
+},
+
+cornersSquareOptions:{
+color:"#D4AF37"
+}
+
+});
+
+
+qrCode.append(document.getElementById("qr-code"));
+
+
+
+async function shareQRCode(){
+
+try{
+
+// Convert QR to image blob
+const blob = await qrCode.getRawData("png");
+
+const file = new File(
+[blob],
+"Tujje-Safaris-Review-QR.png",
+{
+type:"image/png"
+}
+);
+
+
+if(navigator.canShare && navigator.canShare({files:[file]})){
+
+
+await navigator.share({
+
+title:"Tujje Safaris Review QR Code",
+
+text:"Scan this QR code to leave your Tujje Safaris review.",
+
+files:[file]
+
+});
+
+
+}else{
+
+
+alert("Your device does not support image sharing. Please take a screenshot of the QR code and share it.");
+
+}
+
+
+}catch(error){
+
+console.log(error);
+
+}
+
+}
+
+</script>
+</body>
+</html>
