@@ -332,6 +332,7 @@ text-align:center;
     color:#1e88e5;
     margin-bottom:10px;
 }
+ 
 
 .review-box p{
     margin:6px 0;
@@ -445,13 +446,26 @@ text-align:center;
     font-family:Arial, Helvetica, sans-serif;
 }
 
+/* Remove default spacing */
+html, body{
+    margin:0;
+    padding:0;
+    width:100%;
+    overflow-x:hidden;
+}
+
 footer{
+    width:100%;
     background:var(--dark);
     color:var(--white);
     padding:60px 8% 30px;
+    box-sizing:border-box;
 }
 
 .footer-container{
+    width:100%;
+    max-width:1400px;
+    margin:0 auto;
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
     gap:50px;
@@ -476,7 +490,7 @@ footer{
 .footer-about a{
     color:var(--white);
     text-decoration:none;
-    transition:0.3s;
+    transition:.3s;
 }
 
 .footer-about a:hover{
@@ -491,6 +505,8 @@ footer{
 
 .footer-menu ul{
     list-style:none;
+    padding:0;
+    margin:0;
 }
 
 .footer-menu li{
@@ -500,7 +516,7 @@ footer{
 .footer-menu a{
     color:var(--white);
     text-decoration:none;
-    transition:0.3s;
+    transition:.3s;
 }
 
 .footer-menu a:hover{
