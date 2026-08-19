@@ -102,6 +102,8 @@ header h1 {
   cursor: pointer;
   z-index: 1001;
   box-shadow: 0 4px 15px rgba(0,0,0,.3);
+  border: none;
+  line-height: 1;
 }
 
 .sidebar {
@@ -226,6 +228,118 @@ section {
   margin: 0 auto 45px;
   font-size: 1.1rem;
   line-height: 1.6;
+}
+
+/* ===== FEATURED TRIPS ===== */
+.featured-trips {
+  background: #fff;
+}
+
+.trips-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 28px;
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+.trip-card {
+  background: white;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.1);
+  border: 1px solid #eee;
+  transition: 0.35s;
+  display: flex;
+  flex-direction: column;
+}
+
+.trip-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+}
+
+.trip-card img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  display: block;
+}
+
+.trip-body {
+  padding: 22px 20px 26px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.trip-body h3 {
+  color: #1e88e5;
+  font-size: 1.35rem;
+  margin-bottom: 8px;
+}
+
+.trip-days {
+  display: inline-block;
+  background: linear-gradient(90deg, #ff9800, #d4af37);
+  color: white;
+  font-size: 0.85rem;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 20px;
+  margin-bottom: 12px;
+}
+
+.trip-body p {
+  color: #555;
+  font-size: 0.95rem;
+  line-height: 1.55;
+  margin-bottom: 16px;
+  flex: 1;
+}
+
+.price-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 16px;
+  font-size: 0.92rem;
+}
+
+.price-table th,
+.price-table td {
+  padding: 8px 6px;
+  text-align: left;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.price-table th {
+  color: #777;
+  font-weight: 600;
+  font-size: 0.82rem;
+  text-transform: uppercase;
+}
+
+.price-table td:last-child {
+  font-weight: 700;
+  color: #1565c0;
+  text-align: right;
+}
+
+.trip-btn {
+  display: block;
+  text-align: center;
+  padding: 12px;
+  background: linear-gradient(90deg, #1e88e5, #ff8f00);
+  color: white;
+  text-decoration: none;
+  border-radius: 10px;
+  font-weight: 700;
+  transition: 0.3s;
+}
+
+.trip-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(30,136,229,0.3);
 }
 
 /* ===== GUIDES SECTION ===== */
@@ -472,7 +586,7 @@ button[type="submit"]:hover,
   transform: translateY(-6px);
 }
 
-/* ===== FOOTER – FULL WIDTH ===== */
+/* ===== FOOTER ===== */
 footer {
   width: 100%;
   background: var(--dark);
@@ -724,6 +838,7 @@ footer {
   .title { font-size: 1.9rem; }
   header h1 { font-size: 1.1rem; }
   .logo-img { width: 40px; height: 40px; }
+  .trips-grid { grid-template-columns: 1fr; }
 }
 </style>
 </head>
@@ -740,11 +855,11 @@ footer {
 </header>
 
 <!-- MENU -->
-<div class="menu-btn" onclick="toggleMenu()">☰</div>
+<button class="menu-btn" onclick="toggleMenu()" aria-label="Open menu">☰</button>
 <div id="sidebar" class="sidebar">
   <h2>TUJJE SAFARIS</h2>
   <a href="index.html">🏠 Home</a>
-  <a href="trips.html">⭐ Featured Trips</a>
+  <a href="#featured-trips">⭐ Featured Trips</a>
   <a href="Itinerary.html">🗺️ Itineraries</a>
   <a href="gallery.html">🖼️ Gallery</a>
   <a href="destinations.html">📍 Destinations</a>
@@ -768,28 +883,123 @@ footer {
   </div>
 </section>
 
-<!-- PHOTO SLIDER – 15 IMAGES -->
+<!-- FEATURED TRIPS -->
+<section id="featured-trips" class="featured-trips">
+  <h2 class="title">Featured Safari Trips</h2>
+  <p class="subtitle">Hand-crafted itineraries with clear pricing for every budget. All packages can be fully customized.</p>
+
+  <div class="trips-grid">
+
+    <!-- 5 DAYS -->
+    <div class="trip-card">
+      <img src="IMG_0817.jpg" alt="Mountain gorilla in Bwindi">
+      <div class="trip-body">
+        <span class="trip-days">5 Days</span>
+        <h3>Gorilla Express</h3>
+        <p>Bwindi gorilla trekking + Lake Bunyonyi relaxation. Perfect short escape focused on the iconic mountain gorillas.</p>
+        <table class="price-table">
+          <tr><th>Style</th><th>Per person</th></tr>
+          <tr><td>Budget</td><td>from $1,850</td></tr>
+          <tr><td>Mid-range</td><td>from $2,450</td></tr>
+          <tr><td>Luxury</td><td>from $3,650</td></tr>
+        </table>
+        <a href="#booking" class="trip-btn">Enquire Now</a>
+      </div>
+    </div>
+
+    <!-- 7 DAYS -->
+    <div class="trip-card">
+      <img src="IMG_0818.jpg" alt="Gorilla eating vegetation">
+      <div class="trip-body">
+        <span class="trip-days">7 Days</span>
+        <h3>Gorillas & Chimps</h3>
+        <p>Bwindi gorillas + Kibale chimpanzee tracking + Queen Elizabeth game drives and boat cruise on the Kazinga Channel.</p>
+        <table class="price-table">
+          <tr><th>Style</th><th>Per person</th></tr>
+          <tr><td>Budget</td><td>from $2,650</td></tr>
+          <tr><td>Mid-range</td><td>from $3,450</td></tr>
+          <tr><td>Luxury</td><td>from $5,200</td></tr>
+        </table>
+        <a href="#booking" class="trip-btn">Enquire Now</a>
+      </div>
+    </div>
+
+    <!-- 8 DAYS -->
+    <div class="trip-card">
+      <img src="IMG_0813.jpg" alt="Hippos in the water">
+      <div class="trip-body">
+        <span class="trip-days">8 Days</span>
+        <h3>Classic Uganda</h3>
+        <p>Murchison Falls (hippos, Nile boat safari) + Kibale chimps + Queen Elizabeth + optional gorilla add-on.</p>
+        <table class="price-table">
+          <tr><th>Style</th><th>Per person</th></tr>
+          <tr><td>Budget</td><td>from $2,950</td></tr>
+          <tr><td>Mid-range</td><td>from $3,850</td></tr>
+          <tr><td>Luxury</td><td>from $5,900</td></tr>
+        </table>
+        <a href="#booking" class="trip-btn">Enquire Now</a>
+      </div>
+    </div>
+
+    <!-- 10 DAYS -->
+    <div class="trip-card">
+      <img src="IMG_0836.jpg" alt="Baby rhino in the grass">
+      <div class="trip-body">
+        <span class="trip-days">10 Days</span>
+        <h3>Ultimate Highlights</h3>
+        <p>Murchison Falls, Kibale, Queen Elizabeth, Bwindi gorillas + Ziwa Rhino Sanctuary. The perfect balance of wildlife and primates.</p>
+        <table class="price-table">
+          <tr><th>Style</th><th>Per person</th></tr>
+          <tr><td>Budget</td><td>from $3,650</td></tr>
+          <tr><td>Mid-range</td><td>from $4,750</td></tr>
+          <tr><td>Luxury</td><td>from $7,200</td></tr>
+        </table>
+        <a href="#booking" class="trip-btn">Enquire Now</a>
+      </div>
+    </div>
+
+    <!-- 14 DAYS -->
+    <div class="trip-card">
+      <img src="IMG_2681.jpg" alt="Lion cub in a tree">
+      <div class="trip-body">
+        <span class="trip-days">14 Days</span>
+        <h3>Grand Uganda Safari</h3>
+        <p>Full circuit: Kidepo Valley, Murchison, Kibale, Queen Elizabeth, Bwindi + cultural experiences. The complete Uganda adventure.</p>
+        <table class="price-table">
+          <tr><th>Style</th><th>Per person</th></tr>
+          <tr><td>Budget</td><td>from $4,950</td></tr>
+          <tr><td>Mid-range</td><td>from $6,450</td></tr>
+          <tr><td>Luxury</td><td>from $9,800</td></tr>
+        </table>
+        <a href="#booking" class="trip-btn">Enquire Now</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- PHOTO SLIDER -->
 <section class="home-gallery">
   <h2>Moments from the Wild</h2>
   <p>Real adventures. Real smiles. Real Africa with Tujje Safaris.</p>
 
   <div class="swiper gallerySwiper">
     <div class="swiper-wrapper">
+      <div class="swiper-slide"><img src="IMG_0813.jpg" alt="Hippos in the water"></div>
+      <div class="swiper-slide"><img src="IMG_0817.jpg" alt="Mountain gorilla resting"></div>
+      <div class="swiper-slide"><img src="IMG_0818.jpg" alt="Gorilla eating leaves"></div>
+      <div class="swiper-slide"><img src="IMG_0820.jpg" alt="Close-up of gorilla face"></div>
+      <div class="swiper-slide"><img src="IMG_0845.jpg" alt="Hornbills pair"></div>
+      <div class="swiper-slide"><img src="IMG_0823.jpg" alt="Chimpanzee in the forest"></div>
+      <div class="swiper-slide"><img src="IMG_0816.jpg" alt="Gorilla looking at camera"></div>
+      <div class="swiper-slide"><img src="IMG_0836.jpg" alt="Baby rhino"></div>
+      <div class="swiper-slide"><img src="IMG_2681.jpg" alt="Young lion in tree"></div>
+      <div class="swiper-slide"><img src="IMG_5709.jpg" alt="Group by the lake"></div>
+      <div class="swiper-slide"><img src="IMG_1858.jpg" alt="Murchison Falls National Park entrance"></div>
       <div class="swiper-slide"><img src="IMG_5349.jpeg" alt="Banana farm adventure"></div>
-      <div class="swiper-slide"><img src="IMG_5709.jpeg" alt="Lakeside fitness with friends"></div>
-      <div class="swiper-slide"><img src="IMG_6153.jpeg" alt="Evening poolside laughter"></div>
-      <div class="swiper-slide"><img src="IMG_2687.jpeg" alt="Rhino statue team photo"></div>
+      <div class="swiper-slide"><img src="IMG_6153.jpeg" alt="Evening poolside"></div>
+      <div class="swiper-slide"><img src="IMG_2687.jpeg" alt="Team photo"></div>
       <div class="swiper-slide"><img src="IMG_4395.jpeg" alt="Yoga overlooking the valley"></div>
-      <div class="swiper-slide"><img src="IMG_4841.jpeg" alt="Mountain biking safari"></div>
-      <div class="swiper-slide"><img src="IMG_0001.jpeg" alt="White water rafting team"></div>
-      <div class="swiper-slide"><img src="IMG_1922.jpeg" alt="Crater lake group"></div>
-      <div class="swiper-slide"><img src="IMG_0860.jpeg" alt="Kupenda Experience team"></div>
-      <div class="swiper-slide"><img src="IMG_2235.jpeg" alt="Beautiful crater lake viewpoint"></div>
-      <div class="swiper-slide"><img src="IMG_1867.jpeg" alt="Happy group at the lake"></div>
-      <div class="swiper-slide"><img src="5dfe4bce-0082-4ba8-a697-215cb2c59758.jpeg" alt="Safari vehicle fun"></div>
-      <div class="swiper-slide"><img src="7e49b6ec-0396-4e74-acce-b9b2e1d7ab12.jpeg" alt="Friends by the landcruiser"></div>
-      <div class="swiper-slide"><img src="IMG_2340.jpeg" alt="Tourist van group photo"></div>
-      <div class="swiper-slide"><img src="f93540c0-1b3e-4640-8de3-4c128f0fbdd4.jpeg" alt="Gorilla trekking certificates"></div>
     </div>
     <div class="swiper-button-next"></div>
     <div class="swiper-button-prev"></div>
@@ -811,7 +1021,7 @@ footer {
     </div>
 
     <div class="guide-card">
-      <img src="IMG_5709.jpeg" alt="Guide Kirunda" class="guide-avatar">
+      <img src="IMG_5709.jpg" alt="Guide Kirunda" class="guide-avatar">
       <h3>Kirunda</h3>
       <div class="guide-role">Wildlife & Birding Expert</div>
       <p>Kirunda is a true son of Queen Elizabeth and Murchison Falls National Parks. A certified bird guide with over 400 species under his belt, he brings the savannah to life with infectious enthusiasm and deep ecological knowledge.</p>
@@ -898,7 +1108,7 @@ footer {
   </div>
 </section>
 
-<!-- FOOTER – FULL WIDTH -->
+<!-- FOOTER -->
 <footer>
   <div class="footer-inner">
     <div class="footer-about">
@@ -915,6 +1125,7 @@ footer {
       <h3>Quick Links</h3>
       <ul>
         <li><a href="#booking">Book a Safari</a></li>
+        <li><a href="#featured-trips">Featured Trips</a></li>
         <li><a href="Itinerary.html">Popular Itineraries</a></li>
         <li><a href="gallery.html">Photo Gallery</a></li>
         <li><a href="destinations.html">Destinations</a></li>
@@ -989,27 +1200,38 @@ footer {
 // Year
 document.getElementById("year").textContent = new Date().getFullYear();
 
-// Menu
+// Menu – fixed and reliable
 function toggleMenu() {
   document.getElementById("sidebar").classList.toggle("open");
   document.getElementById("overlay").classList.toggle("show");
 }
 
-// Swiper Gallery
-new Swiper(".gallerySwiper", {
-  loop: true,
-  centeredSlides: true,
-  spaceBetween: 25,
-  autoplay: { delay: 3200, disableOnInteraction: false },
-  speed: 900,
-  pagination: { el: ".swiper-pagination", clickable: true },
-  navigation: { nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev" },
-  breakpoints: {
-    0:   { slidesPerView: 1 },
-    640: { slidesPerView: 1.3 },
-    900: { slidesPerView: 2.2 },
-    1200:{ slidesPerView: 2.8 }
-  }
+// Swiper Gallery – now correctly initialized
+document.addEventListener("DOMContentLoaded", function () {
+  new Swiper(".gallerySwiper", {
+    loop: true,
+    centeredSlides: true,
+    spaceBetween: 25,
+    autoplay: {
+      delay: 3200,
+      disableOnInteraction: false
+    },
+    speed: 900,
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true
+    },
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev"
+    },
+    breakpoints: {
+      0:   { slidesPerView: 1 },
+      640: { slidesPerView: 1.3 },
+      900: { slidesPerView: 2.2 },
+      1200:{ slidesPerView: 2.8 }
+    }
+  });
 });
 
 // EmailJS Booking
@@ -1045,12 +1267,9 @@ document.getElementById("bookingForm").addEventListener("submit", async function
   btn.innerHTML = "Send Booking Request";
 });
 
-// Chatbot
-<script>
 /* ===========================
-   TUJJE SAFARI AI – PROFESSIONAL VERSION
+   TUJJE SAFARI AI – CHATBOT
 =========================== */
-
 function toggleChat() {
   document.getElementById("chatbot").classList.toggle("showChat");
 }
@@ -1069,12 +1288,10 @@ function sendMessage() {
 
   const messages = document.getElementById("messages");
 
-  // Show user message
   messages.innerHTML += `<div class="userMessage">${rawMsg}</div>`;
   input.value = "";
   messages.scrollTop = messages.scrollHeight;
 
-  // Show typing indicator
   const typingId = "typing-" + Date.now();
   messages.innerHTML += `<div class="botMessage" id="${typingId}"><em>Tujje AI is typing...</em></div>`;
   messages.scrollTop = messages.scrollHeight;
@@ -1084,15 +1301,12 @@ function sendMessage() {
 
     let reply = "";
 
-    // ========== GREETINGS ==========
     if (msg.match(/^(hi|hello|hey|good morning|good afternoon|good evening|karibu|habari)/)) {
       reply = `Karibu sana! 👋<br><br>
       Welcome to <strong>Tujje Safaris</strong>. I’m your personal safari consultant.<br><br>
       I can help you with gorilla trekking, wildlife safaris, chimpanzee tracking, itineraries, best time to visit, packing advice, and more.<br><br>
       How may I assist you today?`;
     }
-
-    // ========== GORILLA TREKKING ==========
     else if (msg.includes("gorilla") || msg.includes("bwindi") || msg.includes("mgahinga")) {
       reply = `🦍 <strong>Gorilla Trekking in Uganda</strong><br><br>
       Uganda is home to more than half of the world’s remaining mountain gorillas. The main locations are:<br><br>
@@ -1100,134 +1314,96 @@ function sendMessage() {
       • <strong>Mgahinga Gorilla National Park</strong><br><br>
       <strong>Key details:</strong><br>
       • Permit cost: USD 800 per person (2025/2026)<br>
-      • Trek duration: 2–8 hours (depending on the family’s location)<br>
+      • Trek duration: 2–8 hours<br>
       • You spend 1 full hour with the gorillas<br>
       • Minimum age: 15 years<br><br>
-      We highly recommend booking permits at least 3–6 months in advance, especially for peak season (June–September & December–February).<br><br>
-      Would you like me to recommend a 3-day or 4-day gorilla trek itinerary?`;
+      We highly recommend booking permits 3–6 months in advance.<br><br>
+      Would you like a 3-day or 4-day gorilla trek itinerary?`;
     }
-
-    // ========== CHIMPANZEE ==========
     else if (msg.includes("chimp") || msg.includes("chimpanzee") || msg.includes("kibale")) {
       reply = `🐒 <strong>Chimpanzee Tracking</strong><br><br>
-      The best place for chimpanzee tracking in Uganda is <strong>Kibale National Park</strong> — often called the “Primate Capital of the World”.<br><br>
+      The best place is <strong>Kibale National Park</strong> — the “Primate Capital of the World”.<br><br>
       • Permit: USD 250 per person<br>
       • Success rate: over 90%<br>
-      • You can also do the Chimpanzee Habituation Experience (full day) for a deeper encounter<br><br>
-      Kibale combines perfectly with Queen Elizabeth National Park or a gorilla trek. Would you like a sample itinerary that includes chimps?`;
+      • Chimpanzee Habituation Experience also available<br><br>
+      Kibale pairs perfectly with Queen Elizabeth or a gorilla trek.`;
     }
-
-    // ========== BEST TIME ==========
     else if (msg.includes("best time") || msg.includes("when to visit") || msg.includes("best season") || msg.includes("weather")) {
       reply = `📅 <strong>Best Time to Visit Uganda</strong><br><br>
-      <strong>Peak Season (Dry):</strong><br>
-      • June – September<br>
-      • December – February<br>
-      Ideal for gorilla trekking and game drives. Trails are less muddy and wildlife viewing is excellent.<br><br>
-      <strong>Green Season (Shoulder):</strong><br>
-      • March – May<br>
-      • October – November<br>
-      Fewer tourists, lush landscapes, lower lodge rates, and still very good for trekking (with proper gear).<br><br>
-      Gorilla trekking is possible year-round. Which month are you considering?`;
+      <strong>Peak (Dry):</strong> June–September & December–February<br>
+      Ideal for gorilla trekking and game drives.<br><br>
+      <strong>Green Season:</strong> March–May & October–November<br>
+      Fewer tourists, lush landscapes, lower rates.<br><br>
+      Gorilla trekking is possible year-round.`;
     }
-
-    // ========== PACKAGES / ITINERARIES ==========
     else if (msg.includes("package") || msg.includes("itinerary") || msg.includes("safari package") || msg.includes("tour")) {
       reply = `🌍 <strong>Popular Safari Packages</strong><br><br>
-      We design both classic and fully custom itineraries. Some of our most loved options include:<br><br>
-      • 3–4 Days: Gorilla Trekking Express<br>
-      • 5–7 Days: Gorillas + Chimps + Queen Elizabeth<br>
-      • 8–10 Days: Classic Uganda Highlights<br>
-      • 12–14 Days: Ultimate Uganda (Gorillas, Chimps, Murchison, Kidepo)<br><br>
-      All packages can be tailored to your preferred comfort level (mid-range, luxury, or ultra-luxury).<br><br>
-      How many days are you thinking of, and how many people will be travelling?`;
+      • 5 Days – Gorilla Express<br>
+      • 7 Days – Gorillas & Chimps<br>
+      • 8 Days – Classic Uganda<br>
+      • 10 Days – Ultimate Highlights<br>
+      • 14 Days – Grand Uganda Safari<br><br>
+      All available in Budget, Mid-range and Luxury. How many days are you thinking of?`;
     }
-
-    // ========== PRICE / COST ==========
     else if (msg.includes("price") || msg.includes("cost") || msg.includes("how much") || msg.includes("budget") || msg.includes("rate")) {
       reply = `💰 <strong>Safari Costs</strong><br><br>
-      Prices vary depending on season, group size, lodge category, and itinerary length.<br><br>
-      As a general guide (per person sharing):<br>
+      Approximate per person sharing:<br>
       • Budget / Mid-range: from USD 350–550 per day<br>
       • Luxury: from USD 650–1,200+ per day<br><br>
-      Gorilla permits (USD 800) and chimpanzee permits (USD 250) are additional government fees.<br><br>
-      The best way is for us to prepare a personalized quote. Would you like to share your travel dates and preferred style (mid-range or luxury)?`;
+      Gorilla permit (USD 800) and chimpanzee permit (USD 250) are extra government fees.<br><br>
+      Share your dates and preferred style for a precise quote.`;
     }
-
-    // ========== WHAT TO PACK ==========
     else if (msg.includes("pack") || msg.includes("what to bring") || msg.includes("clothing") || msg.includes("gear")) {
-      reply = `🎒 <strong>What to Pack for Your Safari</strong><br><br>
-      <strong>Essential items:</strong><br>
-      • Neutral-coloured clothing (beige, olive, brown)<br>
-      • Long trousers & long-sleeved shirts for trekking<br>
+      reply = `🎒 <strong>What to Pack</strong><br><br>
+      • Neutral clothing (beige, olive, brown)<br>
+      • Long trousers & long-sleeved shirts<br>
       • Sturdy waterproof hiking boots<br>
-      • Light rain jacket<br>
-      • Warm fleece (mornings can be cool)<br>
+      • Light rain jacket + warm fleece<br>
       • Insect repellent, sunscreen, hat<br>
-      • Binoculars & camera with zoom lens<br>
-      • Reusable water bottle<br><br>
-      We provide a detailed packing list once you confirm your booking. Would you like the full list now?`;
+      • Binoculars & camera<br>
+      • Reusable water bottle`;
     }
-
-    // ========== HEALTH / VACCINES ==========
     else if (msg.includes("vaccine") || msg.includes("vaccination") || msg.includes("yellow fever") || msg.includes("malaria") || msg.includes("health")) {
       reply = `🩺 <strong>Health & Vaccinations</strong><br><br>
-      • <strong>Yellow Fever</strong> vaccination is required to enter Uganda (certificate needed).<br>
-      • Malaria prophylaxis is strongly recommended.<br>
-      • Routine vaccines (Hepatitis A, Typhoid, Tetanus) are advised.<br><br>
-      Always consult your doctor or a travel clinic 6–8 weeks before departure.<br><br>
-      We also recommend comprehensive travel insurance that covers medical evacuation.`;
+      • Yellow Fever vaccination is required<br>
+      • Malaria prophylaxis strongly recommended<br>
+      • Routine vaccines (Hep A, Typhoid, Tetanus) advised<br><br>
+      Consult a travel clinic 6–8 weeks before departure.`;
     }
-
-    // ========== LODGES ==========
     else if (msg.includes("lodge") || msg.includes("hotel") || msg.includes("accommodation") || msg.includes("where to stay")) {
       reply = `🏕️ <strong>Accommodation</strong><br><br>
-      We work with carefully selected properties across all categories:<br><br>
-      • Luxury: Sanctuary Gorilla Forest Camp, Buhoma Lodge, Kyambura Gorge Lodge, Clouds Mountain Gorilla Lodge<br>
-      • Mid-range: Ichumbi Gorilla Lodge, Engagi Lodge, Parkview Safari Lodge<br>
-      • Comfortable budget options also available<br><br>
-      Tell me your preferred style and the parks you want to visit, and I’ll recommend the best lodges.`;
+      We work with carefully selected properties:<br>
+      • Luxury: Sanctuary Gorilla Forest Camp, Clouds Mountain Gorilla Lodge, etc.<br>
+      • Mid-range: Ichumbi, Engagi, Parkview<br>
+      • Comfortable budget options also available`;
     }
-
-    // ========== BOOKING ==========
     else if (msg.includes("book") || msg.includes("reserve") || msg.includes("availability") || msg.includes("confirm")) {
       reply = `📅 <strong>Ready to Book?</strong><br><br>
-      Excellent! To check availability and prepare your custom itinerary, please share:<br><br>
+      Please share:<br>
       1. Travel dates<br>
       2. Number of people<br>
-      3. Preferred comfort level (mid-range / luxury)<br>
-      4. Interests (gorillas, wildlife, culture, adventure…)<br><br>
-      You can reply here or contact us directly on WhatsApp:<br>
-      📱 +256 702 094 292<br>
-      📱 +256 701 939 235<br><br>
-      We usually respond within a few hours.`;
+      3. Preferred comfort level<br>
+      4. Interests<br><br>
+      WhatsApp us: +256 702 094 292 or +256 701 939 235`;
     }
-
-    // ========== CONTACT ==========
     else if (msg.includes("contact") || msg.includes("whatsapp") || msg.includes("phone") || msg.includes("email") || msg.includes("reach")) {
       reply = `📞 <strong>Contact Tujje Safaris</strong><br><br>
       • WhatsApp / Call: +256 702 094 292<br>
       • WhatsApp / Call: +256 701 939 235<br>
-      • Email: info@tujjesafaris.com<br><br>
-      We’re available every day and happy to help you plan every detail of your journey.`;
+      • Email: info@tujjesafaris.com`;
     }
-
-    // ========== FALLBACK ==========
     else {
       reply = `Thank you for your question.<br><br>
-      I specialise in Uganda and East Africa safaris — including gorilla trekking, chimpanzee tracking, wildlife, itineraries, best time to visit, packing, and bookings.<br><br>
-      Could you please rephrase your question or let me know what you’d like to know more about? I’m here to help you plan an unforgettable journey.`;
+      I specialise in Uganda and East Africa safaris. Could you rephrase or tell me what you’d like to know more about?`;
     }
 
-    // Display reply
     messages.innerHTML += `<div class="botMessage">${reply}</div>`;
     messages.scrollTop = messages.scrollHeight;
-  }, 700 + Math.random() * 600); // natural typing delay
+  }, 700 + Math.random() * 600);
 }
 </script>
-</script>
 
-<!-- Firebase (kept for reviews) -->
+<!-- Firebase (reviews) -->
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 import { getFirestore, collection, addDoc, getDocs, query, orderBy, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
