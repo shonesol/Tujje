@@ -1046,6 +1046,11 @@ document.getElementById("bookingForm").addEventListener("submit", async function
 });
 
 // Chatbot
+<script>
+/* ===========================
+   TUJJE SAFARI AI – PROFESSIONAL VERSION
+=========================== */
+
 function toggleChat() {
   document.getElementById("chatbot").classList.toggle("showChat");
 }
@@ -1055,29 +1060,171 @@ function askQuick(text) {
   sendMessage();
 }
 
-async function sendMessage() {
+function sendMessage() {
   const input = document.getElementById("question");
-  const msg = input.value.trim().toLowerCase();
-  if (!msg) return;
+  const rawMsg = input.value.trim();
+  const msg = rawMsg.toLowerCase();
+
+  if (!rawMsg) return;
 
   const messages = document.getElementById("messages");
-  messages.innerHTML += `<div class="userMessage">${msg}</div>`;
+
+  // Show user message
+  messages.innerHTML += `<div class="userMessage">${rawMsg}</div>`;
   input.value = "";
   messages.scrollTop = messages.scrollHeight;
 
-  let reply = "🤖 I can help with gorilla trekking, safari packages, best time to visit, lodges and bookings. Ask me anything about Uganda & East Africa!";
-
-  if (msg.includes("gorilla")) reply = "🦍 Gorilla trekking in Bwindi or Mgahinga is pure magic! Permits are limited — book early. We handle everything from permits to private guides.";
-  else if (msg.includes("package") || msg.includes("safari")) reply = "🌍 We offer 3–14 day packages covering gorillas, chimps, Big Five, Nile rafting and cultural tours. Tell me your dates and group size for a custom quote!";
-  else if (msg.includes("best time") || msg.includes("when")) reply = "📅 Dry seasons (June–Sept & Dec–Feb) are ideal for trekking and game drives. Green season (March–May, Oct–Nov) offers fewer crowds and lush landscapes.";
-  else if (msg.includes("book") || msg.includes("price") || msg.includes("cost")) reply = "📅 Ready to book? Message us on WhatsApp +256 702 094 292 or fill the form above. We’ll send a personalized itinerary within 24 hours.";
-  else if (msg.includes("hello") || msg.includes("hi") || msg.includes("karibu")) reply = "👋 Karibu sana! Welcome to Tujje Safaris. How can I make your African dream come true today?";
+  // Show typing indicator
+  const typingId = "typing-" + Date.now();
+  messages.innerHTML += `<div class="botMessage" id="${typingId}"><em>Tujje AI is typing...</em></div>`;
+  messages.scrollTop = messages.scrollHeight;
 
   setTimeout(() => {
+    document.getElementById(typingId)?.remove();
+
+    let reply = "";
+
+    // ========== GREETINGS ==========
+    if (msg.match(/^(hi|hello|hey|good morning|good afternoon|good evening|karibu|habari)/)) {
+      reply = `Karibu sana! 👋<br><br>
+      Welcome to <strong>Tujje Safaris</strong>. I’m your personal safari consultant.<br><br>
+      I can help you with gorilla trekking, wildlife safaris, chimpanzee tracking, itineraries, best time to visit, packing advice, and more.<br><br>
+      How may I assist you today?`;
+    }
+
+    // ========== GORILLA TREKKING ==========
+    else if (msg.includes("gorilla") || msg.includes("bwindi") || msg.includes("mgahinga")) {
+      reply = `🦍 <strong>Gorilla Trekking in Uganda</strong><br><br>
+      Uganda is home to more than half of the world’s remaining mountain gorillas. The main locations are:<br><br>
+      • <strong>Bwindi Impenetrable National Park</strong> (most popular)<br>
+      • <strong>Mgahinga Gorilla National Park</strong><br><br>
+      <strong>Key details:</strong><br>
+      • Permit cost: USD 800 per person (2025/2026)<br>
+      • Trek duration: 2–8 hours (depending on the family’s location)<br>
+      • You spend 1 full hour with the gorillas<br>
+      • Minimum age: 15 years<br><br>
+      We highly recommend booking permits at least 3–6 months in advance, especially for peak season (June–September & December–February).<br><br>
+      Would you like me to recommend a 3-day or 4-day gorilla trek itinerary?`;
+    }
+
+    // ========== CHIMPANZEE ==========
+    else if (msg.includes("chimp") || msg.includes("chimpanzee") || msg.includes("kibale")) {
+      reply = `🐒 <strong>Chimpanzee Tracking</strong><br><br>
+      The best place for chimpanzee tracking in Uganda is <strong>Kibale National Park</strong> — often called the “Primate Capital of the World”.<br><br>
+      • Permit: USD 250 per person<br>
+      • Success rate: over 90%<br>
+      • You can also do the Chimpanzee Habituation Experience (full day) for a deeper encounter<br><br>
+      Kibale combines perfectly with Queen Elizabeth National Park or a gorilla trek. Would you like a sample itinerary that includes chimps?`;
+    }
+
+    // ========== BEST TIME ==========
+    else if (msg.includes("best time") || msg.includes("when to visit") || msg.includes("best season") || msg.includes("weather")) {
+      reply = `📅 <strong>Best Time to Visit Uganda</strong><br><br>
+      <strong>Peak Season (Dry):</strong><br>
+      • June – September<br>
+      • December – February<br>
+      Ideal for gorilla trekking and game drives. Trails are less muddy and wildlife viewing is excellent.<br><br>
+      <strong>Green Season (Shoulder):</strong><br>
+      • March – May<br>
+      • October – November<br>
+      Fewer tourists, lush landscapes, lower lodge rates, and still very good for trekking (with proper gear).<br><br>
+      Gorilla trekking is possible year-round. Which month are you considering?`;
+    }
+
+    // ========== PACKAGES / ITINERARIES ==========
+    else if (msg.includes("package") || msg.includes("itinerary") || msg.includes("safari package") || msg.includes("tour")) {
+      reply = `🌍 <strong>Popular Safari Packages</strong><br><br>
+      We design both classic and fully custom itineraries. Some of our most loved options include:<br><br>
+      • 3–4 Days: Gorilla Trekking Express<br>
+      • 5–7 Days: Gorillas + Chimps + Queen Elizabeth<br>
+      • 8–10 Days: Classic Uganda Highlights<br>
+      • 12–14 Days: Ultimate Uganda (Gorillas, Chimps, Murchison, Kidepo)<br><br>
+      All packages can be tailored to your preferred comfort level (mid-range, luxury, or ultra-luxury).<br><br>
+      How many days are you thinking of, and how many people will be travelling?`;
+    }
+
+    // ========== PRICE / COST ==========
+    else if (msg.includes("price") || msg.includes("cost") || msg.includes("how much") || msg.includes("budget") || msg.includes("rate")) {
+      reply = `💰 <strong>Safari Costs</strong><br><br>
+      Prices vary depending on season, group size, lodge category, and itinerary length.<br><br>
+      As a general guide (per person sharing):<br>
+      • Budget / Mid-range: from USD 350–550 per day<br>
+      • Luxury: from USD 650–1,200+ per day<br><br>
+      Gorilla permits (USD 800) and chimpanzee permits (USD 250) are additional government fees.<br><br>
+      The best way is for us to prepare a personalized quote. Would you like to share your travel dates and preferred style (mid-range or luxury)?`;
+    }
+
+    // ========== WHAT TO PACK ==========
+    else if (msg.includes("pack") || msg.includes("what to bring") || msg.includes("clothing") || msg.includes("gear")) {
+      reply = `🎒 <strong>What to Pack for Your Safari</strong><br><br>
+      <strong>Essential items:</strong><br>
+      • Neutral-coloured clothing (beige, olive, brown)<br>
+      • Long trousers & long-sleeved shirts for trekking<br>
+      • Sturdy waterproof hiking boots<br>
+      • Light rain jacket<br>
+      • Warm fleece (mornings can be cool)<br>
+      • Insect repellent, sunscreen, hat<br>
+      • Binoculars & camera with zoom lens<br>
+      • Reusable water bottle<br><br>
+      We provide a detailed packing list once you confirm your booking. Would you like the full list now?`;
+    }
+
+    // ========== HEALTH / VACCINES ==========
+    else if (msg.includes("vaccine") || msg.includes("vaccination") || msg.includes("yellow fever") || msg.includes("malaria") || msg.includes("health")) {
+      reply = `🩺 <strong>Health & Vaccinations</strong><br><br>
+      • <strong>Yellow Fever</strong> vaccination is required to enter Uganda (certificate needed).<br>
+      • Malaria prophylaxis is strongly recommended.<br>
+      • Routine vaccines (Hepatitis A, Typhoid, Tetanus) are advised.<br><br>
+      Always consult your doctor or a travel clinic 6–8 weeks before departure.<br><br>
+      We also recommend comprehensive travel insurance that covers medical evacuation.`;
+    }
+
+    // ========== LODGES ==========
+    else if (msg.includes("lodge") || msg.includes("hotel") || msg.includes("accommodation") || msg.includes("where to stay")) {
+      reply = `🏕️ <strong>Accommodation</strong><br><br>
+      We work with carefully selected properties across all categories:<br><br>
+      • Luxury: Sanctuary Gorilla Forest Camp, Buhoma Lodge, Kyambura Gorge Lodge, Clouds Mountain Gorilla Lodge<br>
+      • Mid-range: Ichumbi Gorilla Lodge, Engagi Lodge, Parkview Safari Lodge<br>
+      • Comfortable budget options also available<br><br>
+      Tell me your preferred style and the parks you want to visit, and I’ll recommend the best lodges.`;
+    }
+
+    // ========== BOOKING ==========
+    else if (msg.includes("book") || msg.includes("reserve") || msg.includes("availability") || msg.includes("confirm")) {
+      reply = `📅 <strong>Ready to Book?</strong><br><br>
+      Excellent! To check availability and prepare your custom itinerary, please share:<br><br>
+      1. Travel dates<br>
+      2. Number of people<br>
+      3. Preferred comfort level (mid-range / luxury)<br>
+      4. Interests (gorillas, wildlife, culture, adventure…)<br><br>
+      You can reply here or contact us directly on WhatsApp:<br>
+      📱 +256 702 094 292<br>
+      📱 +256 701 939 235<br><br>
+      We usually respond within a few hours.`;
+    }
+
+    // ========== CONTACT ==========
+    else if (msg.includes("contact") || msg.includes("whatsapp") || msg.includes("phone") || msg.includes("email") || msg.includes("reach")) {
+      reply = `📞 <strong>Contact Tujje Safaris</strong><br><br>
+      • WhatsApp / Call: +256 702 094 292<br>
+      • WhatsApp / Call: +256 701 939 235<br>
+      • Email: info@tujjesafaris.com<br><br>
+      We’re available every day and happy to help you plan every detail of your journey.`;
+    }
+
+    // ========== FALLBACK ==========
+    else {
+      reply = `Thank you for your question.<br><br>
+      I specialise in Uganda and East Africa safaris — including gorilla trekking, chimpanzee tracking, wildlife, itineraries, best time to visit, packing, and bookings.<br><br>
+      Could you please rephrase your question or let me know what you’d like to know more about? I’m here to help you plan an unforgettable journey.`;
+    }
+
+    // Display reply
     messages.innerHTML += `<div class="botMessage">${reply}</div>`;
     messages.scrollTop = messages.scrollHeight;
-  }, 500);
+  }, 700 + Math.random() * 600); // natural typing delay
 }
+</script>
 </script>
 
 <!-- Firebase (kept for reviews) -->
