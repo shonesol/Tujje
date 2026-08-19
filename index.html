@@ -3,1701 +3,1145 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Tujje Safaris | Uganda Safaris, Gorilla Trekking & East Africa Adventures</title>
-
 <meta name="description" content="Tujje Safaris offers premium Uganda safari experiences including gorilla trekking, chimpanzee tracking, wildlife safaris, cultural tours, bird watching, luxury adventures, and tailor-made East Africa journeys across Uganda, Kenya, Tanzania, and Rwanda.">
-
 <meta name="keywords" content="Tujje Safaris, Uganda safari tours, Gorilla trekking Uganda, Bwindi Impenetrable Forest, Murchison Falls safari, Queen Elizabeth National Park, Kibale chimpanzee trekking, Kidepo Valley safari, Uganda wildlife tours, luxury Uganda safaris, Kenya safari, Maasai Mara safari, Tanzania Serengeti safari, Ngorongoro Crater tours, Rwanda gorilla trekking, East Africa travel packages">
-
 <meta name="author" content="Tujje Safaris">
-
 <meta name="robots" content="index, follow">
-
-<meta name="language" content="English">
-
 <meta name="theme-color" content="#123A73">
-
-<meta name="geo.region" content="UG">
-<meta name="geo.placename" content="Kampala, Uganda">
-<meta name="geo.position" content="0.3476;32.5825">
-<meta name="ICBM" content="0.3476,32.5825">
-
-<meta name="rating" content="General">
-<meta name="revisit-after" content="7 days">
-<meta name="distribution" content="global">
-
-
-<!-- Canonical URL -->
-
 <link rel="canonical" href="https://www.tujjesafaris.com/">
 
-
-<!-- Open Graph SEO -->
-
+<!-- Open Graph -->
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="Tujje Safaris">
-
 <meta property="og:title" content="Tujje Safaris | Discover Uganda & East Africa">
-
 <meta property="og:description" content="Experience unforgettable gorilla trekking, wildlife safaris, cultural adventures and tailor-made East Africa journeys with Tujje Safaris.">
-
 <meta property="og:type" content="website">
-
 <meta property="og:url" content="https://www.tujjesafaris.com/">
-
 <meta property="og:image" content="https://www.tujjesafaris.com/images/logo.jpg">
 
-
-<!-- Twitter SEO -->
-
+<!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image">
-
 <meta name="twitter:title" content="Tujje Safaris | Uganda Safari Experts">
-
 <meta name="twitter:description" content="Gorilla Trekking • Wildlife Safaris • Cultural Tours • Luxury East Africa Adventures">
 
-<meta name="twitter:image" content="https://www.tujjesafaris.com/images/logo.jpg">
-
-
-<!-- Google Structured Data -->
-
-<script type="application/ld+json">
-
-{
- "@context":"https://schema.org",
- "@type":"TravelAgency",
-
- "name":"Tujje Safaris",
-
- "url":"https://www.tujjesafaris.com",
-
- "logo":"https://www.tujjesafaris.com/images/logo.jpg",
-
- "telephone":[
- "+256702094292",
- "+256701939235",
- "+256774674861"
- ],
-
- "email":"tujjesafari759@gmail.com",
-
- "description":"Tujje Safaris provides professional Uganda safari experiences including gorilla trekking, wildlife adventures, cultural tours, chimpanzee tracking and customized East Africa safari packages.",
-
- "address":{
-   "@type":"PostalAddress",
-   "addressLocality":"Kampala",
-   "addressCountry":"UG"
- },
-
- "areaServed":[
- "Uganda",
- "Kenya",
- "Tanzania",
- "Rwanda",
- "East Africa"
-     "Europe"
-     "Asia"
-     "america"
- ],
-
- "sameAs":[
- "https://www.facebook.com/",
- "https://www.instagram.com/",
- "https://www.youtube.com/"
- ]
-
-}
-
-</script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 
 <style>
-
-/* ===== BASE ===== */
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Poppins;
+:root {
+  --blue: #1565c0;
+  --orange: #ff9800;
+  --gold: #d4af37;
+  --dark: #0f172a;
+  --cream: #fff8e6;
 }
 
-body{
-background:#fff8e6;
-color:#1b1b1b;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', system-ui, -apple-system, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--cream);
+  color: #1b1b1b;
+  overflow-x: hidden;
 }
 
 /* ===== HEADER ===== */
-header{
-    background:linear-gradient(90deg,#1e88e5,#ff8f00);
-    color:white;
-    padding:8px 15px;
-    text-align:center;
-    position:sticky;
-    top:0;
-    z-index:1000;
+header {
+  background: linear-gradient(90deg, #1e88e5, #ff8f00);
+  color: white;
+  padding: 12px 20px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
 }
 
-/* ===== HERO SLIDER ===== */
-/* Hero Section */
-.hero-slider{
-    width:100%;
-    height:70vh;
-    min-height:500px;
-    background-image:url("0aff6cce-daf8-4817-87db-92309cc022ba.jpeg");
-    background-size:cover;
-    background-position:center;
-    background-repeat:no-repeat;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    position:relative;
+.header-content {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  max-width: 1400px;
+  margin: 0 auto;
 }
 
-.hero-slider::before{
-    content:"";
-    position:absolute;
-    inset:0;
-    background:rgba(0,0,0,.45);
+.logo-img {
+  width: 48px;
+  height: 48px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid #ffd700;
+  box-shadow: 0 0 12px rgba(255,140,0,0.6);
+  background: white;
 }
 
-.hero-content{
-    position:relative;
-    z-index:2;
-    text-align:center;
-    color:#fff;
-    padding:20px;
+header h1 {
+  font-size: 1.4rem;
+  letter-spacing: 1px;
+  font-weight: 700;
 }
 
-.hero-content h1{
-    font-size:3rem;
-    margin-bottom:15px;
+/* ===== MENU ===== */
+.menu-btn {
+  position: fixed;
+  top: 14px;
+  right: 16px;
+  background: linear-gradient(90deg, #1e88e5, #ff8f00, #d4af37);
+  color: white;
+  font-size: 22px;
+  padding: 8px 14px;
+  border-radius: 10px;
+  cursor: pointer;
+  z-index: 1001;
+  box-shadow: 0 4px 15px rgba(0,0,0,.3);
 }
 
-.hero-content p{
-    font-size:1.2rem;
-    margin-bottom:25px;
-}
-
-.hero-btn{
-    display:inline-block;
-    padding:14px 30px;
-    background:#f5a623;
-    color:#fff;
-    text-decoration:none;
-    border-radius:30px;
-    font-weight:bold;
-    transition:.3s;
-}
-
-.hero-btn:hover{
-    background:#0077cc;
-}
-
-/* Mobile */
-@media (max-width:768px){
-    .hero-slider{
-        height:60vh;
-        min-height:400px;
-    }
-
-    .hero-content h1{
-        font-size:2rem;
-    }
-
-    .hero-content p{
-        font-size:1rem;
-    }
-}
-/* ===== SECTION ===== */
-section{
-padding:60px 20px;
-}
-
-.title{
-text-align:center;
-color:#ff8f00;
-font-size:32px;
-margin-bottom:20px;
-}
-
-/* ===== GRID ===== */
-.grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-gap:20px;
-max-width:1100px;
-margin:auto;
-}
-
-.card{
-background:white;
-padding:20px;
-border-radius:10px;
-border-left:5px solid #d4af37;
-box-shadow:0 10px 20px rgba(0,0,0,.1);
-}
-
-/* ===== FORM ===== */
-form{
-max-width:600px;
-margin:auto;
-background:white;
-padding:20px;
-border-radius:12px;
-box-shadow:0 10px 20px rgba(0,0,0,.1);
-}
-
-input,select,textarea{
-width:100%;
-padding:10px;
-margin-top:10px;
-border:1px solid #ddd;
-border-radius:6px;
-}
-
-button{
-width:100%;
-padding:12px;
-margin-top:10px;
-border:none;
-border-radius:6px;
-font-weight:800;
-color:white;
-background:linear-gradient(90deg,#1e88e5,#ff8f00);
-cursor:pointer;
-}
-
-/* ===== SOCIAL ===== *//* Social */
-
-.social-icons{
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    flex-wrap:wrap;
-    gap:18px;
-    margin-top:35px;
-}
-
-.social-icons a{
-    width:50px;
-    height:50px;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    text-decoration:none;
-    border-radius:50%;
-    background:var(--blue);
-    color:var(--white);
-    font-size:22px;
-    transition:.3s ease;
-}
-
-.social-icons a:hover{
-    background:var(--orange);
-    color:var(--gold);
-    transform:translateY(-5px);
-}
-
-/* ===== FOOTER ===== */
-footer{
-background:#1b1b1b;
-color:white;
-padding:40px;
-text-align:center;
-}
-.reviews-section{
-    padding:60px 20px;
-    background:#fff8e6;
-    text-align:center;
-}
-
-.review-slider{
-    max-width:600px;
-    margin:30px auto;
-    overflow:hidden;
-    position:relative;
-}
-
-.review-box{
-    background:white;
-    padding:25px;
-    border-radius:12px;
-    box-shadow:0 10px 20px rgba(0,0,0,0.1);
-    border-top:5px solid #d4af37;
-    transition:opacity 0.5s ease;
-    min-height:140px;
-}
-
-.review-box h3{
-    color:#1e88e5;
-    margin-bottom:10px;
-}
- 
-
-.review-box p{
-    margin:6px 0;
-}
-    body {
-  margin: 0;
-  font-family: Poppins, sans-serif;
-}
-
-/* MENU BUTTON */
-.menu-btn{
-    position:fixed;
-    top:10px;
-    Right:10px;
-    background:linear-gradient(90deg,#1e88e5,#ff8f00,#d4af37);
-    color:white;
-    font-size:20px;
-    padding:8px 12px;
-    border-radius:8px;
-    cursor:pointer;
-    z-index:1001;
-    box-shadow:0 4px 10px rgba(0,0,0,.3);
-}
-
-/* SIDEBAR */
 .sidebar {
   position: fixed;
   top: 0;
-  left: -280px;
-  width: 280px;
+  left: -300px;
+  width: 300px;
   height: 100%;
   background: linear-gradient(180deg, #1e88e5, #ff8f00);
-  padding: 20px;
+  padding: 30px 22px;
   transition: 0.4s ease;
   z-index: 1002;
   color: white;
+  overflow-y: auto;
 }
+
+.sidebar.open { left: 0; }
 
 .sidebar h2 {
   text-align: center;
   color: #d4af37;
-  margin-bottom: 20px;
+  margin-bottom: 25px;
+  font-size: 1.5rem;
 }
 
-/* LINKS */
 .sidebar a {
   display: block;
   color: white;
   text-decoration: none;
-  padding: 12px;
+  padding: 13px 16px;
   margin: 8px 0;
-  border-radius: 8px;
-  background: rgba(255,255,255,0.1);
+  border-radius: 10px;
+  background: rgba(255,255,255,0.12);
   transition: 0.3s;
+  font-weight: 500;
 }
 
 .sidebar a:hover {
   background: #d4af37;
-  color: black;
+  color: #111;
+  transform: translateX(6px);
 }
 
-/* OPEN STATE */
-.sidebar.open {
-  left: 0;
-}
-
-/* OVERLAY */
 #overlay {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.4);
+  inset: 0;
+  background: rgba(0,0,0,0.5);
   display: none;
   z-index: 1000;
 }
 
-#overlay.show {
-  display: block;
+#overlay.show { display: block; }
+
+/* ===== HERO ===== */
+.hero-slider {
+  width: 100%;
+  height: 72vh;
+  min-height: 520px;
+  background: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)),
+              url("IMG_5349.jpg") center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
 }
-   .home-btn {
+
+.hero-content {
+  text-align: center;
+  color: #fff;
+  padding: 20px;
+  max-width: 900px;
+}
+
+.hero-content h1 {
+  font-size: 3.2rem;
+  margin-bottom: 18px;
+  font-weight: 800;
+  text-shadow: 0 4px 20px rgba(0,0,0,0.4);
+}
+
+.hero-content p {
+  font-size: 1.3rem;
+  margin-bottom: 30px;
+  opacity: 0.95;
+}
+
+.hero-btn {
   display: inline-block;
-  background: linear-gradient(45deg, #1e90ff, #ff8c00, #d4af37);
-  color: white;
+  padding: 16px 36px;
+  background: linear-gradient(90deg, #ff9800, #d4af37);
+  color: #fff;
   text-decoration: none;
-  padding: 10px 18px;
-  font-size: 16px;
+  border-radius: 50px;
+  font-weight: 700;
+  font-size: 1.1rem;
+  transition: 0.3s;
+  box-shadow: 0 8px 25px rgba(255,152,0,0.4);
+}
+
+.hero-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(255,152,0,0.5);
+}
+
+/* ===== SECTIONS ===== */
+section {
+  padding: 70px 5%;
+}
+
+.title {
+  text-align: center;
+  color: #ff8f00;
+  font-size: 2.4rem;
+  margin-bottom: 12px;
+  font-weight: 800;
+}
+
+.subtitle {
+  text-align: center;
+  color: #555;
+  max-width: 700px;
+  margin: 0 auto 45px;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+/* ===== GUIDES SECTION ===== */
+.guides-section {
+  background: linear-gradient(180deg, #0b1728, #112240);
+  color: white;
+}
+
+.guides-section .title {
+  color: var(--gold);
+}
+
+.guides-section .subtitle {
+  color: #cbd5e1;
+}
+
+.guides-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.guide-card {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(212,175,55,0.3);
+  border-radius: 18px;
+  padding: 30px 25px;
+  text-align: center;
+  transition: 0.35s;
+  backdrop-filter: blur(8px);
+}
+
+.guide-card:hover {
+  transform: translateY(-10px);
+  border-color: var(--gold);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+}
+
+.guide-avatar {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid var(--gold);
+  margin-bottom: 18px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+
+.guide-card h3 {
+  color: var(--gold);
+  font-size: 1.5rem;
+  margin-bottom: 6px;
+}
+
+.guide-role {
+  color: var(--orange);
   font-weight: 600;
-  border-radius: 8px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-  transition: transform 0.2s ease, opacity 0.2s ease;
+  font-size: 0.95rem;
+  margin-bottom: 14px;
 }
 
-.home-btn:hover {
-  transform: scale(1.05);
-  opacity: 0.9;
-}
-    :root{
-    --orange:#ff7a00;
-    --blue:#0b5ed7;
-    --gold:#ffd700;
-    --white:#ffffff;
-    --dark:#111111;
+.guide-card p {
+  color: #e2e8f0;
+  line-height: 1.65;
+  font-size: 0.98rem;
 }
 
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Arial, Helvetica, sans-serif;
+/* ===== PHOTO GALLERY SLIDER ===== */
+.home-gallery {
+  background: linear-gradient(180deg, #0b1728, #112240);
+  padding: 80px 4%;
 }
 
-/* Remove default spacing */
-html, body{
-    margin:0;
-    padding:0;
-    width:100%;
-    overflow-x:hidden;
+.home-gallery h2 {
+  text-align: center;
+  color: var(--gold);
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  font-weight: 800;
 }
 
-footer{
-    width:100%;
-    background:var(--dark);
-    color:var(--white);
-    padding:60px 8% 30px;
-    box-sizing:border-box;
+.home-gallery > p {
+  text-align: center;
+  color: #cbd5e1;
+  margin-bottom: 45px;
+  font-size: 1.15rem;
 }
 
-.footer-container{
-    width:100%;
-    max-width:1400px;
-    margin:0 auto;
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-    gap:50px;
+.gallerySwiper {
+  width: 100%;
+  padding-bottom: 55px;
 }
 
-.footer-about p{
-    line-height:1.8;
-    margin-bottom:15px;
+.gallerySwiper .swiper-slide {
+  border-radius: 18px;
+  overflow: hidden;
+  border: 3px solid var(--gold);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+  transition: 0.4s;
 }
 
-.footer-about h3{
-    color:var(--gold);
-    margin:20px 0;
-    font-size:24px;
+.gallerySwiper .swiper-slide:hover {
+  transform: translateY(-8px);
 }
 
-.footer-about i{
-    color:var(--orange);
-    width:25px;
-}
-
-.footer-about a{
-    color:var(--white);
-    text-decoration:none;
-    transition:.3s;
-}
-
-.footer-about a:hover{
-    color:var(--gold);
-}
-
-.footer-menu h2{
-    color:var(--gold);
-    font-size:34px;
-    margin-bottom:20px;
-}
-
-.footer-menu ul{
-    list-style:none;
-    padding:0;
-    margin:0;
-}
-
-.footer-menu li{
-    margin:15px 0;
-}
-
-.footer-menu a{
-    color:var(--white);
-    text-decoration:none;
-    transition:.3s;
-}
-
-.footer-menu a:hover{
-    color:var(--orange);
-    padding-left:8px;
-}
-
-/* Payment Section */
-
-.payment{
-    margin-top:50px;
-    padding:35px 0;
-    text-align:center;
-    border-top:2px solid var(--blue);
-    border-bottom:2px solid var(--blue);
-}
-
-.payment h2{
-    color:var(--gold);
-    margin-bottom:20px;
-    font-size:30px;
-}
-
-.payment-icons{
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    flex-wrap:wrap;
-    gap:25px;
-}
-
-.payment-icons i{
-    font-size:48px;
-    color:var(--white);
-    transition:0.3s;
-}
-
-.payment-icons i:hover{
-    color:var(--orange);
-    transform:scale(1.15);
-}
-
-.payment p{
-    margin-top:20px;
-    line-height:1.7;
-    color:#ddd;
-    max-width:700px;
-    margin-left:auto;
-    margin-right:auto;
-}
-
-/* Copyright */
-
-.copy{
-    text-align:center;
-    margin-top:30px;
-    padding-top:20px;
-    border-top:1px solid #333;
-    color:#bbb;
-    font-size:15px;
-}
-
-.copy span{
-    color:var(--gold);
-    font-weight:bold;
-}
-
-/* Responsive */
-
-@media (max-width:768px){
-
-footer{
-    padding:40px 20px;
-}
-
-.footer-container{
-    grid-template-columns:1fr;
-    gap:35px;
-}
-
-.footer-menu h2{
-    font-size:28px;
-}
-
-.footer-about h3{
-    font-size:22px;
-}
-
-.payment h2{
-    font-size:24px;
-}
-
-.payment-icons{
-    gap:18px;
-}
-
-.payment-icons i{
-    font-size:38px;
-}
-
-.payment p{
-    font-size:15px;
-}
-
-.copy{
-    font-size:14px;
-}
-
-}
-    :root{
-    --blue:#1565c0;
-    --orange:#ff9800;
-    --gold:#d4af37;
-}
-
-.home-gallery{
-    padding:70px 5%;
-    background:linear-gradient(180deg,#0b1728,#112240);
-}
-
-.home-gallery h2{
-    text-align:center;
-    color:var(--gold);
-    font-size:38px;
-    margin-bottom:10px;
-    font-weight:900;
-}
-
-.home-gallery p{
-    text-align:center;
-    color:#ddd;
-    margin-bottom:40px;
-}
-
-.gallerySwiper{
-    width:100%;
-    padding-bottom:60px;
-}
-
-.gallerySwiper .swiper-slide{
-    border-radius:20px;
-    overflow:hidden;
-    border:4px solid var(--gold);
-    box-shadow:0 15px 35px rgba(0,0,0,.4);
-    transition:.4s;
-}
-
-.gallerySwiper .swiper-slide:hover{
-    transform:translateY(-10px);
-}
-
-.gallerySwiper img{
-    width:100%;
-    height:500px;
-    object-fit:cover;
-    display:block;
+.gallerySwiper img {
+  width: 100%;
+  height: 420px;
+  object-fit: cover;
+  display: block;
 }
 
 .swiper-button-next,
-.swiper-button-prev{
-    color:var(--gold);
-    background:rgba(21,101,192,.75);
-    width:50px;
-    height:50px;
-    border-radius:50%;
+.swiper-button-prev {
+  color: var(--gold) !important;
+  background: rgba(21,101,192,0.8);
+  width: 48px !important;
+  height: 48px !important;
+  border-radius: 50%;
 }
 
 .swiper-button-next::after,
-.swiper-button-prev::after{
-    font-size:22px;
-    font-weight:bold;
+.swiper-button-prev::after {
+  font-size: 20px !important;
+  font-weight: bold;
 }
 
-.swiper-pagination-bullet{
-    background:white;
-    opacity:.6;
+.swiper-pagination-bullet {
+  background: white !important;
+  opacity: 0.5;
 }
 
-.swiper-pagination-bullet-active{
-    background:var(--orange);
-    width:25px;
-    border-radius:10px;
+.swiper-pagination-bullet-active {
+  background: var(--orange) !important;
+  width: 28px !important;
+  border-radius: 10px;
 }
 
-@media(max-width:768px){
-.gallerySwiper img{
-height:260px;
-}
-.home-gallery h2{
-font-size:28px;
-}
-}
-  header{
-    background:linear-gradient(90deg,#1e88e5,#ff8f00);
-    color:white;
-    padding:10px 15px;
-    position:sticky;
-    top:0;
-    z-index:1000;
+/* ===== BOOKING ===== */
+#bookingForm {
+  max-width: 620px;
+  margin: 0 auto;
+  background: white;
+  padding: 35px 30px;
+  border-radius: 18px;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+  border-top: 5px solid var(--gold);
 }
 
-/* HEADER FLEX */
-.header-content{
-    display:flex;
-    align-items:center;
-    gap:12px;
+input, select, textarea {
+  width: 100%;
+  padding: 13px 15px;
+  margin-top: 12px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  font-size: 1rem;
+  transition: 0.25s;
 }
 
-/* LOGO */
-.logo-container{
-    display:flex;
-    align-items:center;
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  border-color: var(--orange);
+  box-shadow: 0 0 0 3px rgba(255,152,0,0.15);
 }
 
-.logo-img{
-    width:45px;
-    height:45px;
-    object-fit:cover;
-    border-radius:50%;
-    border:2px solid #ffd700; /* gold */
-    box-shadow:0 0 10px rgba(255,140,0,0.6); /* orange glow */
-    background:white;
+button[type="submit"],
+#reviewForm button {
+  width: 100%;
+  padding: 15px;
+  margin-top: 18px;
+  border: none;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: white;
+  background: linear-gradient(90deg, #1e88e5, #ff8f00);
+  cursor: pointer;
+  transition: 0.3s;
 }
 
-/* TITLE */
-header h1{
-    font-size:20px;
-    margin:0;
-    letter-spacing:1px;
-    color:white;
+button[type="submit"]:hover,
+#reviewForm button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(30,136,229,0.3);
 }
 
-/* MOBILE */
-@media(max-width:600px){
-    .logo-img{
-        width:38px;
-        height:38px;
-    }
-
-    header h1{
-        font-size:16px;
-    }
-}
-    /* ===========================
-   TUJJE SAFARI AI CHATBOT
-   BLUE • ORANGE • GOLD THEME
-=========================== */
-
-/* Floating Chat Icon */
-#chatIcon{
-position:fixed;
-bottom:20px;
-right:20px;
-width:55px;
-height:55px;
-background:linear-gradient(135deg,#1565c0,#ff9800,#d4af37);
-color:white;
-border-radius:50%;
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:24px;
-cursor:pointer;
-box-shadow:0 5px 15px rgba(0,0,0,.3);
-z-index:9999;
-transition:0.3s;
+/* ===== REVIEWS ===== */
+.reviews {
+  background: #fff8e6;
 }
 
-#chatIcon:hover{
-transform:scale(1.1);
+.review-slider {
+  max-width: 650px;
+  margin: 30px auto 40px;
 }
 
-/* Chatbox */
-#chatbot{
-position:fixed;
-bottom:85px;
-right:20px;
-width:300px;
-height:420px;
-background:white;
-border-radius:16px;
-box-shadow:0 8px 25px rgba(0,0,0,.25);
-overflow:hidden;
-display:none;
-flex-direction:column;
-z-index:9999;
-font-family:Arial, sans-serif;
+.review-card {
+  background: white;
+  padding: 28px;
+  border-radius: 16px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+  border-top: 5px solid #d4af37;
+  text-align: center;
 }
 
-/* Header */
-#chatHeader{
-background:linear-gradient(90deg,#1565c0,#ff9800,#d4af37);
-color:white;
-padding:10px;
-display:flex;
-justify-content:space-between;
-align-items:center;
-font-weight:bold;
+.review-card h3 {
+  color: #1e88e5;
+  margin-bottom: 8px;
 }
 
-#chatHeader .logo{
-font-size:14px;
+/* ===== SOCIAL ===== */
+.social-section {
+  text-align: center;
+  padding-bottom: 40px;
 }
 
-#chatHeader .headerBtns button{
-background:white;
-border:none;
-border-radius:5px;
-margin-left:5px;
-padding:5px 8px;
-cursor:pointer;
-font-size:12px;
-color:#1565c0;
+.social-icons {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 18px;
+  margin-top: 25px;
 }
 
-/* Messages */
-#messages{
-flex:1;
-padding:10px;
-overflow-y:auto;
-background:#f7f9fc;
-font-size:13px;
+.social-icons a {
+  width: 52px;
+  height: 52px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  border-radius: 50%;
+  background: var(--blue);
+  color: white;
+  font-size: 22px;
+  transition: 0.3s;
 }
 
-.botMessage{
-background:#e3f2fd;
-padding:10px;
-border-radius:10px;
-margin-bottom:10px;
+.social-icons a:hover {
+  background: var(--orange);
+  color: var(--gold);
+  transform: translateY(-6px);
 }
 
-.userMessage{
-background:#ffe0b2;
-padding:10px;
-border-radius:10px;
-margin-bottom:10px;
-text-align:right;
+/* ===== FOOTER – FULL WIDTH ===== */
+footer {
+  width: 100%;
+  background: var(--dark);
+  color: white;
+  padding: 70px 0 30px;
+  margin: 0;
 }
 
-/* Quick Buttons */
-#quickQuestions{
-display:flex;
-flex-wrap:wrap;
-gap:5px;
-padding:8px;
-background:#fff;
-border-top:1px solid #eee;
+.footer-inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 5%;
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr;
+  gap: 50px;
 }
 
-#quickQuestions button{
-font-size:11px;
-padding:5px 8px;
-border:none;
-border-radius:20px;
-background:#ff9800;
-color:white;
-cursor:pointer;
+.footer-about h3 {
+  color: var(--gold);
+  font-size: 1.5rem;
+  margin-bottom: 18px;
 }
 
-#quickQuestions button:hover{
-background:#1565c0;
+.footer-about p {
+  line-height: 1.8;
+  margin-bottom: 12px;
+  color: #cbd5e1;
 }
 
-/* Input */
-#chatInput{
-display:flex;
-padding:8px;
-border-top:1px solid #eee;
-background:white;
+.footer-about i {
+  color: var(--orange);
+  width: 22px;
+  margin-right: 8px;
 }
 
-#chatInput input{
-flex:1;
-padding:8px;
-border:1px solid #ccc;
-border-radius:20px;
-outline:none;
-font-size:13px;
+.footer-about a {
+  color: #e2e8f0;
+  text-decoration: none;
+  transition: 0.3s;
 }
 
-#chatInput button{
-margin-left:5px;
-width:40px;
-border:none;
-border-radius:50%;
-background:#1565c0;
-color:white;
-cursor:pointer;
+.footer-about a:hover {
+  color: var(--gold);
 }
 
-/* Show chat */
-.showChat{
-display:flex !important;
-}
-    html{
-    scroll-behavior:smooth;
+.footer-links h3,
+.footer-contact h3 {
+  color: var(--gold);
+  font-size: 1.4rem;
+  margin-bottom: 20px;
 }
 
+.footer-links ul {
+  list-style: none;
+}
+
+.footer-links li {
+  margin: 12px 0;
+}
+
+.footer-links a {
+  color: #cbd5e1;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.footer-links a:hover {
+  color: var(--orange);
+  padding-left: 6px;
+}
+
+.payment {
+  margin-top: 50px;
+  padding: 35px 5%;
+  text-align: center;
+  border-top: 1px solid #334155;
+  border-bottom: 1px solid #334155;
+}
+
+.payment h2 {
+  color: var(--gold);
+  margin-bottom: 22px;
+  font-size: 1.6rem;
+}
+
+.payment-icons {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 28px;
+  margin-bottom: 18px;
+}
+
+.payment-icons i {
+  font-size: 42px;
+  color: #e2e8f0;
+  transition: 0.3s;
+}
+
+.payment-icons i:hover {
+  color: var(--orange);
+  transform: scale(1.15);
+}
+
+.payment p {
+  color: #94a3b8;
+  max-width: 700px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+.copy {
+  text-align: center;
+  padding: 25px 5% 10px;
+  color: #94a3b8;
+  font-size: 0.95rem;
+}
+
+.copy span {
+  color: var(--gold);
+  font-weight: 700;
+}
+
+/* ===== CHATBOT ===== */
+#chatIcon {
+  position: fixed;
+  bottom: 22px;
+  right: 22px;
+  width: 58px;
+  height: 58px;
+  background: linear-gradient(135deg, #1565c0, #ff9800, #d4af37);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+  cursor: pointer;
+  box-shadow: 0 6px 20px rgba(0,0,0,.35);
+  z-index: 9999;
+  transition: 0.3s;
+}
+
+#chatIcon:hover { transform: scale(1.1); }
+
+#chatbot {
+  position: fixed;
+  bottom: 90px;
+  right: 22px;
+  width: 320px;
+  height: 450px;
+  background: white;
+  border-radius: 18px;
+  box-shadow: 0 12px 40px rgba(0,0,0,.3);
+  overflow: hidden;
+  display: none;
+  flex-direction: column;
+  z-index: 9999;
+}
+
+#chatHeader {
+  background: linear-gradient(90deg, #1565c0, #ff9800, #d4af37);
+  color: white;
+  padding: 14px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 700;
+}
+
+#messages {
+  flex: 1;
+  padding: 14px;
+  overflow-y: auto;
+  background: #f8fafc;
+  font-size: 0.9rem;
+}
+
+.botMessage, .userMessage {
+  padding: 12px;
+  border-radius: 12px;
+  margin-bottom: 12px;
+  line-height: 1.5;
+}
+
+.botMessage { background: #e3f2fd; }
+.userMessage { background: #ffe0b2; text-align: right; }
+
+#quickQuestions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 10px;
+  background: #fff;
+  border-top: 1px solid #eee;
+}
+
+#quickQuestions button {
+  font-size: 0.78rem;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 20px;
+  background: #ff9800;
+  color: white;
+  cursor: pointer;
+}
+
+#chatInput {
+  display: flex;
+  padding: 10px;
+  border-top: 1px solid #eee;
+  background: white;
+}
+
+#chatInput input {
+  flex: 1;
+  padding: 10px 14px;
+  border: 1px solid #ddd;
+  border-radius: 25px;
+  outline: none;
+  font-size: 0.9rem;
+}
+
+#chatInput button {
+  margin-left: 8px;
+  width: 42px;
+  border: none;
+  border-radius: 50%;
+  background: #1565c0;
+  color: white;
+  cursor: pointer;
+}
+
+.showChat { display: flex !important; }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 900px) {
+  .footer-inner {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .hero-content h1 { font-size: 2.3rem; }
+  .gallerySwiper img { height: 280px; }
+}
+
+@media (max-width: 600px) {
+  .hero-slider { height: 60vh; min-height: 420px; }
+  .hero-content h1 { font-size: 1.9rem; }
+  .title { font-size: 1.9rem; }
+  header h1 { font-size: 1.1rem; }
+  .logo-img { width: 40px; height: 40px; }
+}
 </style>
 </head>
-<link rel="stylesheet" href="Brenda.css">
 <body>
 
 <!-- HEADER -->
 <header>
   <div class="header-content">
-
-    <!-- LOGO (LEFT) -->
     <div class="logo-container">
-      <img src="647b8421-b7ad-4101-aae5-1307c8b8d5fd.jpeg" alt="Tujje Safaris Logo" class="logo-img">
+      <img src="IMG_2687.jpg" alt="Tujje Safaris Logo" class="logo-img">
     </div>
-
-    <!-- TITLE -->
     <h1>TUJJE SAFARIS</h1>
-
   </div>
 </header>
-<section class="hero-slider">
-  <div class="slide active">
-    <div class="hero-content">
-      <h1>Discover Africa in Luxury Style</h1>
-      <p>Experience unforgettable safaris across Uganda and East Africa.</p>
-      <a href="#tours" class="hero-btn">Explore Tours</a>
-    </div>
-  </div>
-</section>
-    <!-- MENU BUTTON -->
-<div class="menu-btn" onclick="toggleMenu()">
-  ☰
-</div>
 
-<!-- SIDEBAR MENU -->
+<!-- MENU -->
+<div class="menu-btn" onclick="toggleMenu()">☰</div>
 <div id="sidebar" class="sidebar">
   <h2>TUJJE SAFARIS</h2>
-  <a href="index.html" class="home-btn">
-  ⬅ Back to Home
-</a>
-    <a href="Qrcode.html">✍️ submit reviews</a>
-     <a href="trips.html">⭐ Featured Trips</a>
-    <a href="testimonial.html">⭐ testimonial</a>
-     <a href="services.html">💼Services</a>
-      <a href="Itinerary.html">⭐ Itinerary</a>
+  <a href="index.html">🏠 Home</a>
+  <a href="trips.html">⭐ Featured Trips</a>
+  <a href="Itinerary.html">🗺️ Itineraries</a>
   <a href="gallery.html">🖼️ Gallery</a>
-  <a href="destinations.html">📍 Destination</a>
-  <a href="lodges.html">🏕️ Lodge & Parks</a>
-  <a href="Contact.html">📞 Contact Us</a>
-     <a href="about.html">📱 About</a>
-      <a href="privacy.html">🔒 Privacy & Policy</a>
+  <a href="destinations.html">📍 Destinations</a>
+  <a href="lodges.html">🏕️ Lodges & Parks</a>
+  <a href="services.html">💼 Services</a>
+  <a href="about.html">ℹ️ About Us</a>
+  <a href="Contact.html">📞 Contact</a>
+  <a href="testimonial.html">💬 Testimonials</a>
+  <a href="Qrcode.html">✍️ Submit Review</a>
+  <a href="privacy.html">🔒 Privacy Policy</a>
   <a href="terms.html">📜 Terms & Conditions</a>
 </div>
+<div id="overlay" onclick="toggleMenu()"></div>
 
-<!-- PACKAGES -->
-<section>
-<!-- ================== TUJJE SAFARIS PHOTO SLIDER ================== -->
+<!-- HERO -->
+<section class="hero-slider">
+  <div class="hero-content">
+    <h1>Discover Africa in Luxury Style</h1>
+    <p>Unforgettable gorilla trekking, wildlife safaris & cultural adventures across Uganda and East Africa.</p>
+    <a href="#booking" class="hero-btn">Plan Your Adventure</a>
+  </div>
+</section>
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
-
-
+<!-- PHOTO SLIDER – 15 IMAGES -->
 <section class="home-gallery">
+  <h2>Moments from the Wild</h2>
+  <p>Real adventures. Real smiles. Real Africa with Tujje Safaris.</p>
 
-<h2>Discover Uganda</h2>
-<p>Experience unforgettable wildlife adventures with Tujje Safaris.</p>
+  <div class="swiper gallerySwiper">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide"><img src="IMG_5349.jpg" alt="Banana farm adventure"></div>
+      <div class="swiper-slide"><img src="IMG_5709.jpg" alt="Lakeside fitness with friends"></div>
+      <div class="swiper-slide"><img src="IMG_6153.jpg" alt="Evening poolside laughter"></div>
+      <div class="swiper-slide"><img src="IMG_2687.jpg" alt="Rhino statue team photo"></div>
+      <div class="swiper-slide"><img src="IMG_4395.jpg" alt="Yoga overlooking the valley"></div>
+      <div class="swiper-slide"><img src="IMG_4841.jpg" alt="Mountain biking safari"></div>
+      <div class="swiper-slide"><img src="IMG_0001.jpg" alt="White water rafting team"></div>
+      <div class="swiper-slide"><img src="IMG_1922.jpg" alt="Crater lake group"></div>
+      <div class="swiper-slide"><img src="IMG_0860.jpg" alt="Kupenda Experience team"></div>
+      <div class="swiper-slide"><img src="IMG_2235.jpg" alt="Beautiful crater lake viewpoint"></div>
+      <div class="swiper-slide"><img src="IMG_1867.jpg" alt="Happy group at the lake"></div>
+      <div class="swiper-slide"><img src="5dfe4bce-0082-4ba8-a697-215cb2c59758.jpg" alt="Safari vehicle fun"></div>
+      <div class="swiper-slide"><img src="7e49b6ec-0396-4e74-acce-b9b2e1d7ab12.jpg" alt="Friends by the landcruiser"></div>
+      <div class="swiper-slide"><img src="IMG_2340.jpg" alt="Tourist van group photo"></div>
+      <div class="swiper-slide"><img src="f93540c0-1b3e-4640-8de3-4c128f0fbdd4.jpg" alt="Gorilla trekking certificates"></div>
+    </div>
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-pagination"></div>
+  </div>
+</section>
 
-<div class="swiper gallerySwiper">
+<!-- MEET OUR GUIDES -->
+<section class="guides-section">
+  <h2 class="title">Meet Our Expert Guides</h2>
+  <p class="subtitle">Passionate local experts who turn every safari into a lifetime memory. Their knowledge, energy and love for Uganda will make your journey unforgettable.</p>
 
-<div class="swiper-wrapper">
+  <div class="guides-grid">
+    <div class="guide-card">
+      <img src="IMG_2687.jpg" alt="Guide Huzo" class="guide-avatar">
+      <h3>Huzo</h3>
+      <div class="guide-role">Lead Safari Guide & Gorilla Specialist</div>
+      <p>With over 12 years of experience in Bwindi and Mgahinga, Huzo has led more than 800 successful gorilla treks. Known for his calm energy, sharp wildlife spotting skills and incredible storytelling around the campfire.</p>
+    </div>
 
-<div class="swiper-slide">
-<img src="9b69ebc7-af25-40ee-94a3-fd9748767167.jpeg" alt="Tujje Safari">
-</div>
+    <div class="guide-card">
+      <img src="IMG_5709.jpg" alt="Guide Kirunda" class="guide-avatar">
+      <h3>Kirunda</h3>
+      <div class="guide-role">Wildlife & Birding Expert</div>
+      <p>Kirunda is a true son of Queen Elizabeth and Murchison Falls National Parks. A certified bird guide with over 400 species under his belt, he brings the savannah to life with infectious enthusiasm and deep ecological knowledge.</p>
+    </div>
 
-<div class="swiper-slide">
-<img src="abcfe92e-cb7e-424f-93ee-a0f732624804.jpeg" alt="Tujje Safari">
-</div>
-
-<div class="swiper-slide">
-<img src="b664b488-d50a-4da7-8eb6-96434490fe67.jpeg" alt="Tujje Safari">
-</div>
-
-<div class="swiper-slide">
-<img src="afd02c02-fa1a-4121-9e83-3887e6172031.jpeg" alt="Tujje Safari">
-</div>
-
-<div class="swiper-slide">
-<img src="ad551d6f-f4bc-4c14-bb11-064425aa5ab1.jpeg" alt="Tujje Safari">
-</div>
-
-<div class="swiper-slide">
-<img src="c2d2d428-27bc-4558-81bc-820b344a6147.jpeg" alt="Tujje Safari">
-</div>
-
-<div class="swiper-slide">
-<img src="ceba3ada-09d9-465c-9b64-28b9efeadf27.jpeg" alt="Tujje Safari">
-</div>
-
-<div class="swiper-slide">
-<img src="c5e6fc14-ea98-4071-9a09-74855ff074d0.jpeg" alt="Tujje Safari">
-</div>
-
-<div class="swiper-slide">
-<img src="f6fd3538-7725-4085-a2bd-2fcc2423b63e.jpeg" alt="Tujje Safari">
-</div>
-
-<div class="swiper-slide">
-<img src="f3db6386-a5b5-4574-bc0f-4f6573fbd995.jpeg" alt="Tujje Safari">
-</div>
-
-<div class="swiper-slide">
-<img src="e3008b06-b75c-4535-9637-91eec2a0e4f4.jpeg" alt="Tujje Safari">
-</div>
-
-<div class="swiper-slide">
-<img src="e00dbb13-62aa-4b85-b864-601ea4e98ee2.jpeg" alt="Tujje Safari">
-</div>
-
-</div>
+    <div class="guide-card">
+      <img src="IMG_6153.jpg" alt="Guide Andrew" class="guide-avatar">
+      <h3>Andrew</h3>
+      <div class="guide-role">Adventure & Cultural Guide</div>
+      <p>From white-water rafting on the Nile to cultural immersions with the Batwa and Banyankole, Andrew crafts high-energy, heartfelt experiences. Guests love his big smile, safety-first approach and talent for creating magical group moments.</p>
+    </div>
+  </div>
 </section>
 
 <!-- BOOKING -->
-<section>
-<h2 class="title">Book Your Safari</h2>
+<section id="booking">
+  <h2 class="title">Book Your Dream Safari</h2>
+  <p class="subtitle">Tell us your travel dates and preferences — we’ll craft the perfect itinerary just for you.</p>
 
-<form id="bookingForm">
+  <form id="bookingForm">
+    <input id="name" placeholder="Full Name" required>
+    <input id="email" type="email" placeholder="Email Address" required>
+    <input id="phone" placeholder="Phone / WhatsApp" required>
+    <input id="country" placeholder="Country of Residence" required>
 
-<input id="name" placeholder="Full Name" required>
-<input id="email" placeholder="Email" required>
-<input id="phone" placeholder="Phone" required>
-<input id="country" placeholder="Country" required>
-
-<select id="destination" required>
-<option>Uganda</option>
-<option>Kenya</option>
-<option>Tanzania</option>
-</select>
-
-<select id="package" required>
-<option>Gorilla Trekking</option>
-<option>Wildlife Safari</option>
-<option>Luxury Safari</option>
-<option>Honeymoon Safari</option>
-</select>
-
-<input id="date" type="date" required>
-
-<textarea id="message" placeholder="Message"></textarea>
-
-<button type="submit">Book Now</button>
-
-</form>
-</section>
-<section id="reviews" class="reviews">
-<h2 class="title">What Our Guests Say</h2>
-<!-- Review display from Firebase -->
-<div id="reviewBox" class="review-slider">
-<p>Loading reviews...</p>
-</div>
-
-<!-- Review Form -->
-<form id="reviewForm">
-    <input id="rname" placeholder="Your Name" required>
-    <textarea id="rtext" placeholder="Write your review..." required></textarea>
-
-    <select id="rrating">
-        <option value="5">⭐⭐⭐⭐⭐</option>
-        <option value="4">⭐⭐⭐⭐</option>
-        <option value="3">⭐⭐⭐</option>
-        <option value="2">⭐⭐</option>
-        <option value="1">⭐</option>
+    <select id="destination" required>
+      <option value="">Select Destination</option>
+      <option>Uganda</option>
+      <option>Kenya</option>
+      <option>Tanzania</option>
+      <option>Rwanda</option>
+      <option>Multi-Country East Africa</option>
     </select>
 
+    <select id="package" required>
+      <option value="">Select Experience</option>
+      <option>Gorilla Trekking</option>
+      <option>Wildlife Safari</option>
+      <option>Luxury Safari</option>
+      <option>Honeymoon Safari</option>
+      <option>Adventure & Rafting</option>
+      <option>Custom Itinerary</option>
+    </select>
+
+    <input id="date" type="date" required>
+    <textarea id="message" rows="4" placeholder="Tell us about your dream trip..."></textarea>
+
+    <button type="submit">Send Booking Request</button>
+  </form>
+</section>
+
+<!-- REVIEWS -->
+<section id="reviews" class="reviews">
+  <h2 class="title">What Our Guests Say</h2>
+  <div id="reviewBox" class="review-slider">
+    <p>Loading reviews...</p>
+  </div>
+
+  <form id="reviewForm" style="max-width:600px;margin:40px auto 0;background:white;padding:30px;border-radius:16px;box-shadow:0 10px 30px rgba(0,0,0,0.08);">
+    <h3 style="text-align:center;margin-bottom:20px;color:#1e88e5;">Share Your Experience</h3>
+    <input id="rname" placeholder="Your Name" required>
+    <textarea id="rtext" rows="4" placeholder="Write your review..." required></textarea>
+    <select id="rrating">
+      <option value="5">⭐⭐⭐⭐⭐ Excellent</option>
+      <option value="4">⭐⭐⭐⭐ Great</option>
+      <option value="3">⭐⭐⭐ Good</option>
+      <option value="2">⭐⭐ Fair</option>
+      <option value="1">⭐ Poor</option>
+    </select>
     <button type="button" onclick="submitReview()">Submit Review</button>
-</form>
+  </form>
+</section>
 
 <!-- SOCIAL -->
 <section class="social-section">
-<h2>Connect With Us</h2>
-
-<div class="social-icons">
-    <!-- Font Awesome (Place this once in your <head>) -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-
-<!-- Social Icons -->
-<div class="social-icons">
-
-    <a href="https://www.facebook.com/profile.php?id=61554350095901&mibextid=eQY6cl" target="_blank" title="Facebook">
-        <i class="fab fa-facebook-f"></i>
-    </a>
-
-    <a href="https://www.instagram.com/tujje_safaris_?igsh=MXJoczN4eXZrM3UzNg%3D%3D&utm_source=qr" target="_blank" title="Instagram">
-        <i class="fab fa-instagram"></i>
-    </a>
-
-    <a href="https://x.com" target="_blank" title="X">
-        <i class="fab fa-x-twitter"></i>
-    </a>
-
-    <a href="https://youtube.com" target="_blank" title="YouTube">
-        <i class="fab fa-youtube"></i>
-    </a>
-
-    <a href="https://wa.me/256702094292" target="_blank" title="WhatsApp">
-        <i class="fab fa-whatsapp"></i>
-    </a>
-
-    <a href="https://wa.me/256701939235" target="_blank" title="WhatsApp">
-        <i class="fab fa-whatsapp"></i>
-    </a>
-
-    <a href="https://www.tiktok.com/@tujje.safaris?_t=8kRsJIGa1RO&_r=1" target="_blank" title="TikTok">
-        <i class="fab fa-tiktok"></i>
-    </a>
-
-    <a href="https://linkedin.com" target="_blank" title="LinkedIn">
-        <i class="fab fa-linkedin-in"></i>
-    </a>
-
-</div>
-</div>
+  <h2 class="title">Connect With Us</h2>
+  <div class="social-icons">
+    <a href="https://www.facebook.com/profile.php?id=61554350095901" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+    <a href="https://www.instagram.com/tujje_safaris_" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+    <a href="https://wa.me/256702094292" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+    <a href="https://wa.me/256701939235" target="_blank" title="WhatsApp 2"><i class="fab fa-whatsapp"></i></a>
+    <a href="https://www.tiktok.com/@tujje.safaris" target="_blank" title="TikTok"><i class="fab fa-tiktok"></i></a>
+    <a href="https://youtube.com" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
+  </div>
 </section>
 
+<!-- FOOTER – FULL WIDTH -->
 <footer>
-    <div class="footer-container">
-<h2>Connect With Us</h2>
-<div class="footer-about">
+  <div class="footer-inner">
+    <div class="footer-about">
+      <h3>Tujje Safaris</h3>
+      <p>We craft unforgettable safari experiences across Uganda and East Africa. From gorilla encounters in Bwindi to thrilling game drives and cultural immersions — your adventure starts here.</p>
+      <p><i class="fas fa-map-marker-alt"></i> Jinja & Kampala, Uganda</p>
+      <p><i class="fas fa-phone"></i> +256 702 094 292</p>
+      <p><i class="fas fa-phone"></i> +256 701 939 235</p>
+      <p><i class="fas fa-phone"></i> +256 774 674 861</p>
+      <p><i class="fas fa-envelope"></i> <a href="mailto:info@tujjesafaris.com">info@tujjesafaris.com</a></p>
+    </div>
 
-<p>
+    <div class="footer-links">
+      <h3>Quick Links</h3>
+      <ul>
+        <li><a href="#booking">Book a Safari</a></li>
+        <li><a href="Itinerary.html">Popular Itineraries</a></li>
+        <li><a href="gallery.html">Photo Gallery</a></li>
+        <li><a href="destinations.html">Destinations</a></li>
+        <li><a href="about.html">About Tujje</a></li>
+        <li><a href="Contact.html">Contact Us</a></li>
+      </ul>
+    </div>
 
-We are here to help you plan your dream safari adventure in Uganda and East Africa. Our friendly team is just a call or message away.
+    <div class="footer-contact">
+      <h3>Why Travel With Us</h3>
+      <p style="color:#cbd5e1;line-height:1.8;">
+        ✓ Expert local guides<br>
+        ✓ Hand-picked lodges<br>
+        ✓ 24/7 support on safari<br>
+        ✓ Sustainable & community-focused<br>
+        ✓ Fully customizable trips
+      </p>
+    </div>
+  </div>
 
-</p>
+  <div class="payment">
+    <h2>Secure Payment Methods</h2>
+    <div class="payment-icons">
+      <i class="fab fa-cc-visa"></i>
+      <i class="fab fa-cc-mastercard"></i>
+      <i class="fab fa-cc-paypal"></i>
+      <i class="fab fa-cc-stripe"></i>
+      <i class="fab fa-google-pay"></i>
+      <i class="fab fa-apple-pay"></i>
+      <i class="fas fa-credit-card"></i>
+    </div>
+    <p>We accept Visa, Mastercard, PayPal, Stripe, Apple Pay, Google Pay and all major debit & credit cards.</p>
+  </div>
 
-<h3> Jinja Uganda</h3>
-
-<p><i class="fas fa-phone"></i> +256 702 094 292</p>
-
-<p><i class="fas fa-phone"></i> +256 701 939 235</p>
-
-<p><i class="fas fa-phone"></i> +256 774 674 861</p>
-
-<p>
-
-<i class="fas fa-envelope"></i>
-
-<a href="mailto:info@tujjesafaris.com">
-
-info@tujjesafaris.com
-
-</a>
-
-</p>
-
-</div>
-
-
-
-<div class="payment">
-
-<h2>Secure Payment Methods</h2>
-
-<div class="payment-icons">
-
-<i class="fab fa-cc-visa"></i>
-
-<i class="fab fa-cc-mastercard"></i>
-
-<i class="fab fa-cc-paypal"></i>
-
-<i class="fab fa-cc-stripe"></i>
-
-<i class="fab fa-google-pay"></i>
-
-<i class="fab fa-apple-pay"></i>
-
-<i class="fas fa-credit-card"></i>
-
-</div>
-
-<p>
-
-We accept Visa, Mastercard, PayPal, Stripe, Apple Pay, Google Pay and all major Debit & Credit Cards for secure online bookings.
-
-</p>
-
-</div>
-
-<div class="copy">
-
-&copy; <span id="year"></span> Tujje Safaris. All Rights Reserved.
-
-</div>
+  <div class="copy">
+    &copy; <span id="year"></span> Tujje Safaris. All Rights Reserved. | Crafted with ❤️ in Uganda
+  </div>
 </footer>
 
+<!-- CHATBOT -->
+<div id="chatIcon" onclick="toggleChat()">💬</div>
+<div id="chatbot">
+  <div id="chatHeader">
+    <div>🤖 Tujje Safari AI</div>
+    <div>
+      <button onclick="toggleChat()" style="background:white;border:none;border-radius:6px;padding:4px 8px;cursor:pointer;color:#1565c0;">✖</button>
+    </div>
+  </div>
+  <div id="messages">
+    <div class="botMessage">
+      👋 Karibu! Welcome to <b>Tujje Safaris</b>.<br><br>
+      I can help with gorilla trekking, wildlife safaris, lodges, itineraries and more. How can I assist you today?
+    </div>
+  </div>
+  <div id="quickQuestions">
+    <button onclick="askQuick('Tell me about Gorilla Trekking')">Gorilla Trekking</button>
+    <button onclick="askQuick('Safari Packages')">Packages</button>
+    <button onclick="askQuick('Best time to visit')">Best Time</button>
+    <button onclick="askQuick('Book a Tour')">Book Now</button>
+  </div>
+  <div id="chatInput">
+    <input type="text" id="question" placeholder="Ask anything..." onkeypress="if(event.key==='Enter')sendMessage()">
+    <button onclick="sendMessage()">➤</button>
+  </div>
+</div>
+
+<!-- SCRIPTS -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 
 <script>
-emailjs.init("JS9FCzRaz44ibCjcz");
+// Year
+document.getElementById("year").textContent = new Date().getFullYear();
 
-document.getElementById("bookingForm").addEventListener("submit", async function(e){
-e.preventDefault();
-
-const btn = this.querySelector("button");
-btn.disabled = true;
-btn.innerHTML = "Sending...";
-
-const data = {
-to_email: "tujjesafaris759@gmail.com",
-name: document.getElementById("name").value,
-email: document.getElementById("email").value,
-phone: document.getElementById("phone").value,
-country: document.getElementById("country").value,
-destination: document.getElementById("destination").value,
-package: document.getElementById("package").value,
-date: document.getElementById("date").value,
-message: document.getElementById("message").value
-};
-
-try {
-
-/* 1. SEND EMAIL */
-await emailjs.send("service_mun08xi","template_j2s60y8",data);
-
-/* 2. SAVE TO FIREBASE (handled in module script too but ok safe) */
-
-alert("✅ Booking sent successfully!");
-this.reset();
-window.open("https://wa.me/256702094292","_blank");
-
-} catch (err) {
-console.error(err);
-alert("❌ Failed to send booking. Try again.");
+// Menu
+function toggleMenu() {
+  document.getElementById("sidebar").classList.toggle("open");
+  document.getElementById("overlay").classList.toggle("show");
 }
 
-btn.disabled = false;
-btn.innerHTML = "Book Now";
+// Swiper Gallery
+new Swiper(".gallerySwiper", {
+  loop: true,
+  centeredSlides: true,
+  spaceBetween: 25,
+  autoplay: { delay: 3200, disableOnInteraction: false },
+  speed: 900,
+  pagination: { el: ".swiper-pagination", clickable: true },
+  navigation: { nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev" },
+  breakpoints: {
+    0:   { slidesPerView: 1 },
+    640: { slidesPerView: 1.3 },
+    900: { slidesPerView: 2.2 },
+    1200:{ slidesPerView: 2.8 }
+  }
 });
+
+// EmailJS Booking
+emailjs.init("JS9FCzRaz44ibCjcz");
+document.getElementById("bookingForm").addEventListener("submit", async function(e) {
+  e.preventDefault();
+  const btn = this.querySelector("button");
+  btn.disabled = true;
+  btn.innerHTML = "Sending...";
+
+  const data = {
+    to_email: "tujjesafaris759@gmail.com",
+    name: document.getElementById("name").value,
+    email: document.getElementById("email").value,
+    phone: document.getElementById("phone").value,
+    country: document.getElementById("country").value,
+    destination: document.getElementById("destination").value,
+    package: document.getElementById("package").value,
+    date: document.getElementById("date").value,
+    message: document.getElementById("message").value
+  };
+
+  try {
+    await emailjs.send("service_mun08xi", "template_j2s60y8", data);
+    alert("✅ Booking request sent successfully! We will contact you shortly.");
+    this.reset();
+    window.open("https://wa.me/256702094292", "_blank");
+  } catch (err) {
+    console.error(err);
+    alert("❌ Something went wrong. Please try again or WhatsApp us.");
+  }
+  btn.disabled = false;
+  btn.innerHTML = "Send Booking Request";
+});
+
+// Chatbot
+function toggleChat() {
+  document.getElementById("chatbot").classList.toggle("showChat");
+}
+
+function askQuick(text) {
+  document.getElementById("question").value = text;
+  sendMessage();
+}
+
+async function sendMessage() {
+  const input = document.getElementById("question");
+  const msg = input.value.trim().toLowerCase();
+  if (!msg) return;
+
+  const messages = document.getElementById("messages");
+  messages.innerHTML += `<div class="userMessage">${msg}</div>`;
+  input.value = "";
+  messages.scrollTop = messages.scrollHeight;
+
+  let reply = "🤖 I can help with gorilla trekking, safari packages, best time to visit, lodges and bookings. Ask me anything about Uganda & East Africa!";
+
+  if (msg.includes("gorilla")) reply = "🦍 Gorilla trekking in Bwindi or Mgahinga is pure magic! Permits are limited — book early. We handle everything from permits to private guides.";
+  else if (msg.includes("package") || msg.includes("safari")) reply = "🌍 We offer 3–14 day packages covering gorillas, chimps, Big Five, Nile rafting and cultural tours. Tell me your dates and group size for a custom quote!";
+  else if (msg.includes("best time") || msg.includes("when")) reply = "📅 Dry seasons (June–Sept & Dec–Feb) are ideal for trekking and game drives. Green season (March–May, Oct–Nov) offers fewer crowds and lush landscapes.";
+  else if (msg.includes("book") || msg.includes("price") || msg.includes("cost")) reply = "📅 Ready to book? Message us on WhatsApp +256 702 094 292 or fill the form above. We’ll send a personalized itinerary within 24 hours.";
+  else if (msg.includes("hello") || msg.includes("hi") || msg.includes("karibu")) reply = "👋 Karibu sana! Welcome to Tujje Safaris. How can I make your African dream come true today?";
+
+  setTimeout(() => {
+    messages.innerHTML += `<div class="botMessage">${reply}</div>`;
+    messages.scrollTop = messages.scrollHeight;
+  }, 500);
+}
 </script>
-    <script type="module">
+
+<!-- Firebase (kept for reviews) -->
+<script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-import {
-getFirestore,
-collection,
-addDoc,
-getDocs,
-query,
-orderBy,
-serverTimestamp
-} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+import { getFirestore, collection, addDoc, getDocs, query, orderBy, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
 const firebaseConfig = {
-
   apiKey: "AIzaSyAUxwj4JVPWAz3oDjPTSaEUot49pHxmWQg",
-
   authDomain: "tujjesafari-dbda9.firebaseapp.com",
-
   projectId: "tujjesafari-dbda9",
-
   storageBucket: "tujjesafari-dbda9.firebasestorage.app",
-
   messagingSenderId: "39777982092",
-
   appId: "1:39777982092:web:bc488a73cf7bb637204da9",
-
   measurementId: "G-2PP6P43TER"
 };
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-
-// =========================
-// LOAD GUEST REVIEWS
-// =========================
-
-const q = query(
-    collection(db,"reviews"),
-    orderBy("date","desc")
-);
-
-
-const snap = await getDocs(q);
-
-
-const box = document.getElementById("reviewBox");
-
-
-box.innerHTML = "";
-
-
-snap.forEach(doc => {
-
-    let r = doc.data();
-
-
-    box.innerHTML += `
-
-    <div class="review-card">
-
-        <h3>${r.name}</h3>
-
-        <p>${"⭐".repeat(Number(r.rating))}</p>
-
-        <p>${r.review}</p>
-
-        <small>${r.country || ""}</small>
-
-    </div>
-
-    `;
-
-});
-
-
-
-
-
-/* =========================
-   REVIEWS SAVE
-========================= */
-window.submitReview = async function () {
-
-const name = document.getElementById("rname").value;
-const text = document.getElementById("rtext").value;
-const rating = document.getElementById("rrating").value;
-
-try {
-await addDoc(collection(db,"reviews"),{
-name,
-text,
-rating,
-createdAt: serverTimestamp()
-});
-
-alert("⭐ Review submitted successfully!");
-document.getElementById("reviewForm").reset();
-
-loadReviews();
-
-} catch (err) {
-    console.error("FULL FIREBASE ERROR:", err);
-    alert(err.code + " : " + err.message);
-}
-};
-
-
-
-
-/* =========================
-   LOAD + SLIDER REVIEWS
-========================= */
-
 let reviews = [];
 let index = 0;
 
 async function loadReviews() {
-    try {
-        const q = query(
-    collection(db, "reviews"),
-    orderBy("createdAt", "desc")
-);
-
-const snap = await getDocs(q);
-
-        console.log("Documents found:", snap.size);
-
-        reviews = [];
-
-        snap.forEach(doc => {
-            console.log(doc.data());
-            reviews.push(doc.data());
-        });
-
-        reviews.sort((a, b) => {
-            return (b.createdAt?.seconds || 0) - (a.createdAt?.seconds || 0);
-        });
-
-        index = 0;
-
-        if (reviews.length > 0) {
-            showReview();
-        } else {
-            document.getElementById("reviewBox").innerHTML =
-                "<p>No reviews yet</p>";
-        }
-
-    } catch (err) {
-        console.error("Review loading error:", err);
-    }
-}
-/* =========================
-   SHOW REVIEW
-========================= */
-
-function showReview(){
-
-if(reviews.length === 0){
-document.getElementById("reviewBox").innerHTML =
-"<p>No reviews yet</p>";
-return;
+  try {
+    const q = query(collection(db, "reviews"), orderBy("createdAt", "desc"));
+    const snap = await getDocs(q);
+    reviews = [];
+    snap.forEach(doc => reviews.push(doc.data()));
+    if (reviews.length > 0) showReview();
+    else document.getElementById("reviewBox").innerHTML = "<p>No reviews yet – be the first!</p>";
+  } catch (err) {
+    console.error(err);
+  }
 }
 
-const review = reviews[index];
-
-document.getElementById("reviewBox").innerHTML = `
-<div class="review-card">
-<h3>${review.name}</h3>
-<p>${"⭐".repeat(Number(review.rating))}</p>
-<p>${review.text}</p>
-</div>
-`;
-
-index = (index + 1) % reviews.length;
-
+function showReview() {
+  if (reviews.length === 0) return;
+  const r = reviews[index];
+  document.getElementById("reviewBox").innerHTML = `
+    <div class="review-card">
+      <h3>${r.name || "Guest"}</h3>
+      <p>${"⭐".repeat(Number(r.rating) || 5)}</p>
+      <p>${r.text || r.review || ""}</p>
+    </div>`;
+  index = (index + 1) % reviews.length;
 }
 
-setInterval(() => {
-    if (reviews.length > 0) {
-        showReview();
-    }
-}, 5000);
-
-/* OPTIONAL: SAVE BOOKINGS ALSO IN FIREBASE HERE */
-document.getElementById("bookingForm").addEventListener("submit", async (e) => {
-e.preventDefault();
-
-try{
-await addDoc(collection(db,"bookings"),{
-name:document.getElementById("name").value,
-email:document.getElementById("email").value,
-phone:document.getElementById("phone").value,
-country:document.getElementById("country").value,
-destination:document.getElementById("destination").value,
-package:document.getElementById("package").value,
-date:document.getElementById("date").value,
-message:document.getElementById("message").value,
-status:"Pending",
-createdAt:serverTimestamp()
-});
-}catch(err){
-console.error("Firestore booking error:",err);
-}
-
-});
-        loadReviews();
-</script>
-<script>
-function toggleMenu() {
-  const sidebar = document.getElementById("sidebar");
-  const overlay = document.getElementById("overlay");
-
-  sidebar.classList.toggle("open");
-  overlay.classList.toggle("show");
-}
-</script>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-
-<script>
-const swiper = new Swiper(".gallerySwiper", {
-    loop: true,
-    centeredSlides: true,
-    spaceBetween: 30,
-
-    autoplay: {
-        delay: 3000,
-        disableOnInteraction: false,
-    },
-
-    speed: 1200,
-
-    pagination: {
-        el: ".swiper-pagination",
-        clickable: true,
-    },
-
-    navigation: {
-        nextEl: ".swiper-button-next",
-        prevEl: ".swiper-button-prev",
-    },
-
-    breakpoints: {
-        0: {
-            slidesPerView: 1
-        },
-        768: {
-            slidesPerView: 2
-        },
-        1024: {
-            slidesPerView: 3
-        }
-    }
-});
-</script>
-    <!-- ===========================
-     TUJJE SAFARI AI CHATBOT
-=========================== -->
-
-<!-- Floating Chat Icon -->
-<div id="chatIcon" onclick="toggleChat()">
-    💬
-</div>
-
-<!-- Chat Window -->
-<div id="chatbot">
-
-    <!-- Header -->
-    <div id="chatHeader">
-
-        <div class="logo">
-            🤖 Tujje Safari AI
-        </div>
-
-        <div class="headerBtns">
-
-            <button onclick="goHome()" title="Home">
-                🏠
-            </button>
-
-            <button onclick="toggleChat()" title="Close">
-                ✖
-            </button>
-
-        </div>
-
-    </div>
-
-    <!-- Messages -->
-    <div id="messages">
-
-        <div class="botMessage">
-            👋 Welcome to <b>Tujje Safari</b>.<br><br>
-
-            I can help you with:
-
-            <br><br>
-
-            🦍 Gorilla Trekking<br>
-
-            🐘 Wildlife Safaris<br>
-
-            🏨 Hotels<br>
-
-            ✈ Airport Transfers<br>
-
-            🌍 East African Tours
-
-        </div>
-
-    </div>
-
-    <!-- Suggested Questions -->
-
-    <div id="quickQuestions">
-
-        <button onclick="askQuick('Tell me about Gorilla Trekking')">
-            Gorilla Trekking
-        </button>
-
-        <button onclick="askQuick('Safari Packages')">
-            Safari Packages
-        </button>
-
-        <button onclick="askQuick('Hotels')">
-            Hotels
-        </button>
-
-        <button onclick="askQuick('Book a Tour')">
-            Book a Tour
-        </button>
-
-    </div>
-
-    <!-- Input -->
-
-    <div id="chatInput">
-
-        <input
-            type="text"
-            id="question"
-            placeholder="Ask Tujje Safari AI..."
-            onkeypress="if(event.key==='Enter')sendMessage()">
-
-        <button onclick="sendMessage()">
-            ➤
-        </button>
-
-    </div>
-
-</div>
-<script>
-    /* ===========================
-   TUJJE SAFARI AI CHATBOT JS
-=========================== */
-
-/* Open / Close Chat */
-function toggleChat(){
-    const chat = document.getElementById("chatbot");
-    chat.classList.toggle("showChat");
-}
-
-/* Home Button */
-function goHome(){
-    window.location.href = "index.html"; // change if needed
-}
-
-/* Quick Questions */
-function askQuick(text){
-    document.getElementById("question").value = text;
-    sendMessage();
-}
-
-/* Send Message */
-async function sendMessage(){
-
-    const input = document.getElementById("question");
-    const msg = input.value.trim().toLowerCase();
-
-    if(msg === "") return;
-
-    const messages = document.getElementById("messages");
-
-    // Show user message
-    messages.innerHTML += `
-        <div class="userMessage">${msg}</div>
-    `;
-
-    input.value = "";
-    messages.scrollTop = messages.scrollHeight;
-
-    let reply = "";
-
-    // ===========================
-    // TUJJE SAFARI SMART RESPONSES
-    // ===========================
-
-    if(msg.includes("uganda")){
-        reply = "🇺🇬 Uganda has amazing safaris like gorilla trekking in Bwindi, game drives in Queen Elizabeth National Park, and boat cruises on the Nile.";
-    }
-
-    else if(msg.includes("kenya")){
-        reply = "🇰🇪 Kenya offers the Maasai Mara safari, Big Five game drives, and wildebeest migration experiences.";
-    }
-
-    else if(msg.includes("tanzania")){
-        reply = "🇹🇿 Tanzania is famous for Serengeti National Park, Mount Kilimanjaro, and Ngorongoro Crater safaris.";
-    }
-
-    else if(msg.includes("rwanda")){
-        reply = "🇷🇼 Rwanda is best known for gorilla trekking in Volcanoes National Park and clean, safe tourism experiences.";
-    }
-
-    else if(msg.includes("price") || msg.includes("cost")){
-        reply = "💰 Safari prices depend on destination and days. Contact us on WhatsApp +256770462422 for exact pricing.";
-    }
-
-    else if(msg.includes("book") || msg.includes("booking")){
-        reply = "📅 To book your safari, contact us directly on WhatsApp +256770462422. We will arrange everything for you.";
-    }
-
-    else if(msg.includes("hello") || msg.includes("hi")){
-        reply = "👋 Welcome to TUJJE SAFARIS! I can help you plan safaris in Uganda, Kenya, Tanzania, and Rwanda.";
-    }
-
-    else if(msg.includes("gorilla")){
-        reply = "🦍 Gorilla trekking is available in Uganda (Bwindi) and Rwanda (Volcanoes National Park). It is a once-in-a-lifetime experience!";
-    }
-
-    else if(msg.includes("contact")){
-        reply = "📞 Contact TUJJE SAFARIS on WhatsApp +256770462422 or email tujjesafaris@gmail.com.";
-    }
-
-    else {
-        reply = "🤖 I can help you with safaris in Uganda, Kenya, Tanzania, and Rwanda. Ask me about destinations, prices, or booking.";
-    }
-
-    // Bot reply
-    setTimeout(() => {
-        messages.innerHTML += `
-            <div class="botMessage">${reply}</div>
-        `;
-        messages.scrollTop = messages.scrollHeight;
-    }, 500);
-}
+window.submitReview = async function () {
+  const name = document.getElementById("rname").value;
+  const text = document.getElementById("rtext").value;
+  const rating = document.getElementById("rrating").value;
+  try {
+    await addDoc(collection(db, "reviews"), { name, text, rating, createdAt: serverTimestamp() });
+    alert("⭐ Thank you! Your review has been submitted.");
+    document.getElementById("reviewForm").reset();
+    loadReviews();
+  } catch (err) {
+    alert("Error: " + err.message);
+  }
+};
+
+setInterval(() => { if (reviews.length > 0) showReview(); }, 5000);
+loadReviews();
 </script>
 </body>
 </html>
