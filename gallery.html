@@ -1,462 +1,355 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tujje Safari Gallery</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
-
-<style>
-:root {
-  --blue: #1565c0;
-  --orange: #ff9800;
-  --gold: #d4af37;
-  --dark: #0f172a;
-}
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
-}
-
-body {
-  background: var(--dark);
-  color: white;
-  overflow-x: hidden;
-}
-
-/* NAV */
-nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px 25px;
-  background: rgba(0, 0, 0, 0.75);
-  position: fixed;
-  width: 100%;
-  top: 0;
-  z-index: 1000;
-  backdrop-filter: blur(12px);
-}
-
-.logo {
-  color: var(--gold);
-  font-weight: 800;
-  font-size: 22px;
-  letter-spacing: 1px;
-}
-
-.home-btn {
-  background: linear-gradient(45deg, var(--orange), var(--gold));
-  padding: 9px 18px;
-  border-radius: 25px;
-  color: #000;
-  text-decoration: none;
-  font-weight: 700;
-  font-size: 14px;
-  transition: transform 0.2s;
-}
-.home-btn:hover { transform: scale(1.05); }
-
-/* HERO SLIDER */
-.hero-swiper {
-  width: 100%;
-  height: 100vh;
-}
-.hero-swiper .swiper-slide {
-  background-size: cover;
-  background-position: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  position: relative;
-}
-.hero-swiper .swiper-slide::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.55);
-}
-.hero-content {
-  position: relative;
-  z-index: 2;
-  max-width: 900px;
-  padding: 0 20px;
-}
-.hero-content h1 {
-  font-size: clamp(32px, 6vw, 52px);
-  color: var(--gold);
-  font-weight: 900;
-  margin-bottom: 15px;
-  text-shadow: 0 4px 20px rgba(0,0,0,0.5);
-}
-.hero-content p {
-  font-size: clamp(16px, 2.5vw, 20px);
-  color: #e0e0e0;
-}
-.hero-swiper .swiper-pagination-bullet {
-  background: white;
-  opacity: 0.5;
-}
-.hero-swiper .swiper-pagination-bullet-active {
-  background: var(--gold);
-  opacity: 1;
-}
-.hero-swiper .swiper-button-next,
-.hero-swiper .swiper-button-prev {
-  color: var(--gold);
-}
-
-/* SECTION TITLE */
-.section-title {
-  text-align: center;
-  margin: 70px 0 30px;
-  color: var(--orange);
-  font-size: 28px;
-  font-weight: 700;
-}
-.section-title::after {
-  content: "";
-  display: block;
-  width: 60px;
-  height: 3px;
-  background: var(--gold);
-  margin: 12px auto 0;
-  border-radius: 2px;
-}
-
-/* FEATURED */
-.featured-swiper {
-  width: 92%;
-  margin: 0 auto 40px;
-  padding-bottom: 40px;
-}
-.featured-swiper .swiper-slide img {
-  width: 100%;
-  height: 380px;
-  object-fit: cover;
-  border-radius: 16px;
-  border: 3px solid var(--gold);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
-}
-
-/* GRID */
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: 18px;
-  padding: 0 25px 20px;
-  max-width: 1400px;
-  margin: 0 auto;
-}
-.grid img, .grid video {
-  width: 100%;
-  height: 210px;
-  object-fit: cover;
-  border-radius: 14px;
-  cursor: pointer;
-  border: 2px solid var(--blue);
-  transition: all 0.3s ease;
-  background: #1e293b;
-}
-.grid img:hover, .grid video:hover {
-  transform: scale(1.06);
-  border-color: var(--gold);
-  box-shadow: 0 8px 25px rgba(212, 175, 55, 0.3);
-}
-
-/* MODAL */
-.modal {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.92);
-  justify-content: center;
-  align-items: center;
-  z-index: 2000;
-  backdrop-filter: blur(6px);
-}
-.modal img, .modal video {
-  max-width: 92%;
-  max-height: 82vh;
-  border-radius: 16px;
-}
-.close {
-  position: absolute;
-  top: 22px;
-  right: 30px;
-  font-size: 36px;
-  color: white;
-  cursor: pointer;
-}
-.nav-btn {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 48px;
-  color: white;
-  cursor: pointer;
-  user-select: none;
-  padding: 10px 15px;
-}
-.prev { left: 20px; }
-.next { right: 20px; }
-
-/* FOOTER */
-footer {
-  background: #0a1428;
-  padding: 45px 20px;
-  text-align: center;
-  font-size: 14px;
-  color: #94a3b8;
-  margin-top: 80px;
-  border-top: 1px solid #1e293b;
-}
-footer .small {
-  font-size: 12px;
-  color: #64748b;
-  margin-top: 12px;
-}
-
-@media (max-width: 768px) {
-  .featured-swiper .swiper-slide img { height: 260px; }
-  .grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 12px; }
-  .grid img, .grid video { height: 160px; }
-}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tujje Safari – Admin Panel</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --gold: #d4af37;
+      --orange: #ff9800;
+      --dark: #0f172a;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+    body { background: var(--dark); color: white; padding: 30px 20px; max-width: 1100px; margin: 0 auto; }
+    h1 { color: var(--gold); margin-bottom: 10px; }
+    .subtitle { color: #94a3b8; margin-bottom: 30px; }
+    .card {
+      background: #1e293b;
+      border-radius: 16px;
+      padding: 25px;
+      margin-bottom: 30px;
+      border: 1px solid #334155;
+    }
+    .card h2 { color: var(--orange); margin-bottom: 15px; font-size: 20px; }
+    input[type="file"], button, select {
+      width: 100%;
+      padding: 12px 16px;
+      margin: 8px 0;
+      border-radius: 10px;
+      border: none;
+      font-size: 15px;
+    }
+    button {
+      background: linear-gradient(45deg, var(--orange), var(--gold));
+      color: #000;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+    button:hover { transform: scale(1.02); }
+    button.danger {
+      background: #dc2626;
+      color: white;
+    }
+    .msg {
+      margin-top: 12px;
+      padding: 12px;
+      border-radius: 10px;
+      display: none;
+    }
+    .msg.success { background: #166534; display: block; }
+    .msg.error { background: #7f1d1d; display: block; }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 15px;
+      margin-top: 20px;
+    }
+    .item {
+      position: relative;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 2px solid #334155;
+    }
+    .item img, .item video {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+      display: block;
+    }
+    .item .delete-btn {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      background: #dc2626;
+      color: white;
+      border: none;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      font-size: 16px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .tabs {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+    .tab {
+      padding: 10px 20px;
+      background: #334155;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+    }
+    .tab.active {
+      background: var(--orange);
+      color: #000;
+    }
+  </style>
 </head>
 <body>
 
-<nav>
-  <div class="logo">TUJJE SAFARI</div>
-  <a href="index.html" class="home-btn">🏠 Home</a>
-</nav>
+  <h1>Tujje Safari – Admin Panel</h1>
+  <p class="subtitle">Upload & manage photos and videos (stored separately on Cloudinary)</p>
 
-<!-- HERO SLIDES (using your photos) -->
-<div class="swiper hero-swiper">
-  <div class="swiper-wrapper">
-    <div class="swiper-slide" style="background-image: url('https://res.cloudinary.com/YOUR_CLOUD_NAME/image/upload/f_auto,q_auto/tujje/gallery/4a7fea4f-ee9e-4104-9754-06c36312b0b0');">
-      <div class="hero-content">
-        <h1>Explore Uganda With Tujje Safari</h1>
-        <p>Luxury safaris, wildlife & unforgettable adventures</p>
-      </div>
+  <!-- UPLOAD SECTION -->
+  <div class="card">
+    <h2>Upload New Media</h2>
+
+    <label>Choose type</label>
+    <select id="mediaType">
+      <option value="image">Photo</option>
+      <option value="video">Video</option>
+    </select>
+
+    <input type="file" id="fileInput" accept="image/*,video/*">
+
+    <button onclick="uploadMedia()">Upload to Cloudinary</button>
+    <div id="uploadMsg" class="msg"></div>
+  </div>
+
+  <!-- MANAGE SECTION -->
+  <div class="card">
+    <h2>Manage Existing Media</h2>
+
+    <div class="tabs">
+      <div class="tab active" onclick="showTab('photos')">Photos</div>
+      <div class="tab" onclick="showTab('videos')">Videos</div>
     </div>
-    <div class="swiper-slide" style="background-image: url('https://res.cloudinary.com/YOUR_CLOUD_NAME/image/upload/f_auto,q_auto/tujje/gallery/0aa0d764-4d5d-48e6-bc02-1a92519676c5');">
-      <div class="hero-content">
-        <h1>Gorilla Trekking Adventures</h1>
-        <p>Meet the gentle giants of Bwindi</p>
-      </div>
+
+    <div id="photosTab">
+      <div class="grid" id="adminPhotoGrid"></div>
     </div>
-    <div class="swiper-slide" style="background-image: url('https://res.cloudinary.com/YOUR_CLOUD_NAME/image/upload/f_auto,q_auto/tujje/gallery/225b3299-5787-4bd1-b2d0-0e570380045d');">
-      <div class="hero-content">
-        <h1>Big Five Safari Experience</h1>
-        <p>Lions, elephants, buffalo, leopards & rhinos</p>
-      </div>
-    </div>
-    <div class="swiper-slide" style="background-image: url('https://res.cloudinary.com/YOUR_CLOUD_NAME/image/upload/f_auto,q_auto/tujje/gallery/0aff6cce-daf8-4817-87db-92309cc022ba');">
-      <div class="hero-content">
-        <h1>Wildlife Up Close</h1>
-        <p>Unforgettable encounters in Uganda’s parks</p>
-      </div>
-    </div>
-    <div class="swiper-slide" style="background-image: url('https://res.cloudinary.com/YOUR_CLOUD_NAME/image/upload/f_auto,q_auto/tujje/gallery/0cbcd965-e25e-4eee-9b30-775a58f0a1be');">
-      <div class="hero-content">
-        <h1>Scenic Landscapes</h1>
-        <p>From the Nile to the Mountains of the Moon</p>
-      </div>
-    </div>
-    <div class="swiper-slide" style="background-image: url('https://res.cloudinary.com/YOUR_CLOUD_NAME/image/upload/f_auto,q_auto/tujje/gallery/1e7c2642-d1dc-4262-9026-31f570056fae');">
-      <div class="hero-content">
-        <h1>Luxury Safari Camps</h1>
-        <p>Comfort and adventure in the wild</p>
-      </div>
+
+    <div id="videosTab" style="display:none;">
+      <div class="grid" id="adminVideoGrid"></div>
     </div>
   </div>
-  <div class="swiper-pagination"></div>
-  <div class="swiper-button-next"></div>
-  <div class="swiper-button-prev"></div>
-</div>
 
-<!-- FEATURED PHOTOS -->
-<h2 class="section-title">Featured Safari Photos</h2>
-<div class="swiper featured-swiper">
-  <div class="swiper-wrapper">
-    <div class="swiper-slide"><img src="https://res.cloudinary.com/YOUR_CLOUD_NAME/image/upload/f_auto,q_auto/tujje/gallery/0aa0d764-4d5d-48e6-bc02-1a92519676c5"></div>
-    <div class="swiper-slide"><img src="https://res.cloudinary.com/YOUR_CLOUD_NAME/image/upload/f_auto,q_auto/tujje/gallery/0aff6cce-daf8-4817-87db-92309cc022ba"></div>
-    <div class="swiper-slide"><img src="https://res.cloudinary.com/YOUR_CLOUD_NAME/image/upload/f_auto,q_auto/tujje/gallery/0cbcd965-e25e-4eee-9b30-775a58f0a1be"></div>
-    <div class="swiper-slide"><img src="https://res.cloudinary.com/YOUR_CLOUD_NAME/image/upload/f_auto,q_auto/tujje/gallery/0e867e99-4ba2-484d-a975-8544d7a60f13"></div>
-    <div class="swiper-slide"><img src="https://res.cloudinary.com/YOUR_CLOUD_NAME/image/upload/f_auto,q_auto/tujje/gallery/1e7c2642-d1dc-4262-9026-31f570056fae"></div>
-    <div class="swiper-slide"><img src="https://res.cloudinary.com/YOUR_CLOUD_NAME/image/upload/f_auto,q_auto/tujje/gallery/225b3299-5787-4bd1-b2d0-0e570380045d"></div>
-    <div class="swiper-slide"><img src="https://res.cloudinary.com/YOUR_CLOUD_NAME/image/upload/f_auto,q_auto/tujje/gallery/2ccc753e-f5dd-48b4-b304-a691b64d6b48"></div>
-    <div class="swiper-slide"><img src="https://res.cloudinary.com/YOUR_CLOUD_NAME/image/upload/f_auto,q_auto/tujje/gallery/34262092-ed6e-475b-9739-b0a19b17f576"></div>
-  </div>
-  <div class="swiper-pagination"></div>
-</div>
+  <script src="https://upload-widget.cloudinary.com/global/all.js" type="text/javascript"></script>
+  <script>
+    // ========== YOUR CLOUDINARY SETTINGS ==========
+    const CLOUD_NAME = "ziudh5iv";          // ← CHANGE THIS
+    const UPLOAD_PRESET = "tujje_gallery";         // from your screenshot
+    // =============================================
 
-<!-- PHOTO GALLERY -->
-<h2 class="section-title">Photo Gallery</h2>
-<div class="grid" id="photo-grid"></div>
+    // Simple password protection (change this!)
+    const ADMIN_PASSWORD = "tujje2026";            // ← CHANGE THIS to a strong password
 
-<!-- VIDEO GALLERY -->
-<h2 class="section-title">Safari Videos</h2>
-<div class="grid" id="video-grid"></div>
-
-<!-- MODAL -->
-<div class="modal" id="modal">
-  <span class="close" onclick="closeModal()">×</span>
-  <span class="nav-btn prev" onclick="prev()">❮</span>
-  <span class="nav-btn next" onclick="next()">❯</span>
-  <img id="modalImg">
-  <video id="modalVideo" controls style="display:none;"></video>
-</div>
-
-<footer>
-  <p>&copy; 2026 Tujje Safari. All rights reserved.</p>
-  <p>Made with ❤️ for Uganda safaris</p>
-  <p class="small">Photos & videos stored on Cloudinary (folder: tujje/gallery) • Admin only upload</p>
-</footer>
-
-<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-<script src="https://upload-widget.cloudinary.com/global/all.js" type="text/javascript"></script>
-
-<script>
-  // ========== YOUR CLOUDINARY SETTINGS ==========
-  const CLOUD_NAME = "ziudh5iv";          // ← put your real cloud name here
-  const UPLOAD_PRESET = "tujje_gallery";         // from your screenshot
-  const FOLDER = "tujje/gallery";                // from your screenshot
-
-  let items = [];
-  let index = 0;
-
-  const modal = document.getElementById('modal');
-  const modalImg = document.getElementById('modalImg');
-  const modalVideo = document.getElementById('modalVideo');
-
-  // Hero slider
-  new Swiper('.hero-swiper', {
-    loop: true,
-    effect: 'fade',
-    speed: 1000,
-    autoplay: { delay: 4500, disableOnInteraction: false },
-    pagination: { el: '.hero-swiper .swiper-pagination', clickable: true },
-    navigation: {
-      nextEl: '.hero-swiper .swiper-button-next',
-      prevEl: '.hero-swiper .swiper-button-prev'
+    // Check password on load
+    if (sessionStorage.getItem("tujje_admin") !== "yes") {
+      const pass = prompt("Enter Admin Password:");
+      if (pass !== ADMIN_PASSWORD) {
+        alert("Wrong password. Access denied.");
+        window.location.href = "index.html";
+      } else {
+        sessionStorage.setItem("tujje_admin", "yes");
+      }
     }
-  });
 
-  // Featured slider
-  new Swiper('.featured-swiper', {
-    loop: true,
-    slidesPerView: 1.2,
-    spaceBetween: 18,
-    autoplay: { delay: 2800 },
-    breakpoints: {
-      640: { slidesPerView: 2.2 },
-      1024: { slidesPerView: 3.2 }
-    },
-    pagination: { el: '.featured-swiper .swiper-pagination', clickable: true }
-  });
+    // ========== UPLOAD ==========
+    async function uploadMedia() {
+      const fileInput = document.getElementById("fileInput");
+      const type = document.getElementById("mediaType").value;
+      const msg = document.getElementById("uploadMsg");
 
-  // ========== LOAD MEDIA FROM CLOUDINARY ==========
-  async function loadGallery() {
-    try {
-      // Fetch resources from the folder using Cloudinary Admin API is not possible from frontend
-      // So for now we use the list of known public_ids, or you can hardcode the ones you already uploaded.
-      // Later we can add a small backend or use the Media Library list.
+      if (!fileInput.files[0]) {
+        msg.className = "msg error";
+        msg.textContent = "Please select a file first";
+        return;
+      }
 
-      // Temporary: use the photos you already have (replace with real ones after upload)
-      const knownPhotos = [
-        "4a7fea4f-ee9e-4104-9754-06c36312b0b0",
-        "0aa0d764-4d5d-48e6-bc02-1a92519676c5",
-        "0aff6cce-daf8-4817-87db-92309cc022ba",
-        "0cbcd965-e25e-4eee-9b30-775a58f0a1be",
-        "0e867e99-4ba2-484d-a975-8544d7a60f13",
-        "1e7c2642-d1dc-4262-9026-31f570056fae",
-        "225b3299-5787-4bd1-b2d0-0e570380045d",
-        "2ccc753e-f5dd-48b4-b304-a691b64d6b48",
-        "34262092-ed6e-475b-9739-b0a19b17f576",
-        "3ed1a34c-7dbf-40ea-8b92-374bf3db2cc1",
-        "42290d40-a0ef-4159-980f-46237d93674a",
-        "4ff1b209-8290-4983-85cc-60829b07be97"
-      ];
+      const file = fileInput.files[0];
+      const folder = type === "image" ? "tujje/gallery/photos" : "tujje/gallery/videos";
 
-      const photoGrid = document.getElementById('photo-grid');
-      knownPhotos.forEach(id => {
-        const url = `https://res.cloudinary.com/${CLOUD_NAME}/image/upload/f_auto,q_auto/${FOLDER}/${id}`;
-        const img = document.createElement('img');
-        img.src = url;
-        img.alt = "Safari photo";
-        img.loading = "lazy";
-        img.dataset.type = "photo";
-        img.dataset.url = url;
-        photoGrid.appendChild(img);
-        items.push(img);
-      });
+      const formData = new FormData();
+      formData.append("file", file);
+      formData.append("upload_preset", UPLOAD_PRESET);
+      formData.append("folder", folder);
 
-      // Click handlers
-      items.forEach((el, i) => {
-        el.addEventListener('click', () => {
-          index = i;
-          openModal(el);
+      msg.className = "msg";
+      msg.style.display = "block";
+      msg.style.background = "#1e40af";
+      msg.textContent = "Uploading... please wait";
+
+      try {
+        const res = await fetch(`https://api.cloudinary.com/v1_1/${CLOUD_NAME}/${type}/upload`, {
+          method: "POST",
+          body: formData
         });
+
+        const data = await res.json();
+
+        if (data.secure_url) {
+          msg.className = "msg success";
+          msg.innerHTML = `✅ Uploaded successfully!<br>
+            <small>${data.secure_url}</small>`;
+          fileInput.value = "";
+          loadAdminMedia(); // refresh list
+        } else {
+          throw new Error(data.error?.message || "Upload failed");
+        }
+      } catch (err) {
+        msg.className = "msg error";
+        msg.textContent = "Error: " + err.message;
+      }
+    }
+
+    // ========== LOAD MEDIA FOR ADMIN ==========
+    async function loadAdminMedia() {
+      // Because we use unsigned preset, we cannot list resources from frontend securely.
+      // Solution: we keep a simple list in localStorage + also try to fetch known ones.
+      // For production you should add a tiny backend. For now this works well.
+
+      const photos = JSON.parse(localStorage.getItem("tujje_photos") || "[]");
+      const videos = JSON.parse(localStorage.getItem("tujje_videos") || "[]");
+
+      renderAdminGrid("adminPhotoGrid", photos, "image");
+      renderAdminGrid("adminVideoGrid", videos, "video");
+    }
+
+    function renderAdminGrid(gridId, items, resourceType) {
+      const grid = document.getElementById(gridId);
+      grid.innerHTML = "";
+
+      if (items.length === 0) {
+        grid.innerHTML = `<p style="color:#94a3b8">No ${resourceType}s yet. Upload some!</p>`;
+        return;
+      }
+
+      items.forEach((item, idx) => {
+        const div = document.createElement("div");
+        div.className = "item";
+
+        if (resourceType === "image") {
+          div.innerHTML = `
+            <img src="${item.url}" alt="photo">
+            <button class="delete-btn" onclick="deleteMedia('${item.public_id}', '${resourceType}', ${idx})">×</button>
+          `;
+        } else {
+          div.innerHTML = `
+            <video src="${item.url}" muted></video>
+            <button class="delete-btn" onclick="deleteMedia('${item.public_id}', '${resourceType}', ${idx})">×</button>
+          `;
+        }
+        grid.appendChild(div);
       });
-
-    } catch (err) {
-      console.error(err);
     }
-  }
 
-  // Modal functions
-  function openModal(el) {
-    modal.style.display = 'flex';
-    if (el.dataset.type === 'photo' || el.tagName === 'IMG') {
-      modalImg.style.display = 'block';
-      modalVideo.style.display = 'none';
-      modalImg.src = el.dataset.url || el.src;
-    } else {
-      modalImg.style.display = 'none';
-      modalVideo.style.display = 'block';
-      modalVideo.src = el.dataset.url || el.src;
-      modalVideo.play();
+    // ========== DELETE ==========
+    async function deleteMedia(publicId, resourceType, index) {
+      if (!confirm("Are you sure you want to delete this " + resourceType + "?")) return;
+
+      // Note: Deleting requires API secret → cannot be done from frontend securely.
+      // We remove it from our local list for now.
+      // Real deletion must be done from Cloudinary Media Library or with a backend.
+
+      if (resourceType === "image") {
+        let photos = JSON.parse(localStorage.getItem("tujje_photos") || "[]");
+        photos.splice(index, 1);
+        localStorage.setItem("tujje_photos", JSON.stringify(photos));
+      } else {
+        let videos = JSON.parse(localStorage.getItem("tujje_videos") || "[]");
+        videos.splice(index, 1);
+        localStorage.setItem("tujje_videos", JSON.stringify(videos));
+      }
+
+      alert("Removed from gallery list.\n\nTo permanently delete from Cloudinary, go to Media Library and delete it there (or we can add a backend later).");
+      loadAdminMedia();
     }
-  }
 
-  function closeModal() {
-    modal.style.display = 'none';
-    modalVideo.pause();
-  }
+    // Save uploaded item to localStorage so the public page can read it
+    // We intercept the successful upload
+    const originalUpload = window.uploadMedia;
+    window.uploadMedia = async function() {
+      const fileInput = document.getElementById("fileInput");
+      const type = document.getElementById("mediaType").value;
+      const msg = document.getElementById("uploadMsg");
 
-  function next() {
-    index = (index + 1) % items.length;
-    openModal(items[index]);
-  }
+      if (!fileInput.files[0]) {
+        msg.className = "msg error";
+        msg.textContent = "Please select a file first";
+        return;
+      }
 
-  function prev() {
-    index = (index - 1 + items.length) % items.length;
-    openModal(items[index]);
-  }
+      const file = fileInput.files[0];
+      const folder = type === "image" ? "tujje/gallery/photos" : "tujje/gallery/videos";
 
-  modal.addEventListener('click', e => {
-    if (e.target === modal) closeModal();
-  });
+      const formData = new FormData();
+      formData.append("file", file);
+      formData.append("upload_preset", UPLOAD_PRESET);
+      formData.append("folder", folder);
 
-  document.addEventListener('keydown', e => {
-    if (modal.style.display === 'flex') {
-      if (e.key === 'ArrowRight') next();
-      if (e.key === 'ArrowLeft') prev();
-      if (e.key === 'Escape') closeModal();
+      msg.className = "msg";
+      msg.style.display = "block";
+      msg.style.background = "#1e40af";
+      msg.textContent = "Uploading... please wait";
+
+      try {
+        const res = await fetch(`https://api.cloudinary.com/v1_1/${CLOUD_NAME}/${type}/upload`, {
+          method: "POST",
+          body: formData
+        });
+
+        const data = await res.json();
+
+        if (data.secure_url) {
+          // Save to localStorage so public page can display it
+          const item = {
+            url: data.secure_url,
+            public_id: data.public_id,
+            created_at: data.created_at
+          };
+
+          if (type === "image") {
+            const photos = JSON.parse(localStorage.getItem("tujje_photos") || "[]");
+            photos.unshift(item);
+            localStorage.setItem("tujje_photos", JSON.stringify(photos));
+          } else {
+            const videos = JSON.parse(localStorage.getItem("tujje_videos") || "[]");
+            videos.unshift(item);
+            localStorage.setItem("tujje_videos", JSON.stringify(videos));
+          }
+
+          msg.className = "msg success";
+          msg.innerHTML = `✅ Uploaded successfully!<br><small>${data.secure_url}</small>`;
+          fileInput.value = "";
+          loadAdminMedia();
+        } else {
+          throw new Error(data.error?.message || "Upload failed");
+        }
+      } catch (err) {
+        msg.className = "msg error";
+        msg.textContent = "Error: " + err.message;
+      }
+    };
+
+    function showTab(tab) {
+      document.querySelectorAll(".tab").forEach(t => t.classList.remove("active"));
+      event.target.classList.add("active");
+
+      document.getElementById("photosTab").style.display = tab === "photos" ? "block" : "none";
+      document.getElementById("videosTab").style.display = tab === "videos" ? "block" : "none";
     }
-  });
 
-  // Load gallery
-  loadGallery();
-</script>
-
+    // Initial load
+    loadAdminMedia();
+  </script>
 </body>
 </html>
