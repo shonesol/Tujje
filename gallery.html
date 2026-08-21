@@ -1,211 +1,1069 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tujje Safari Gallery</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
-<style>
-:root{--blue:#1565c0;--orange:#ff9800;--gold:#d4af37;--dark:#0f172a;}
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
-body{background:var(--dark);color:white;overflow-x:hidden;}
-nav{display:flex;justify-content:space-between;align-items:center;padding:15px 25px;background:rgba(0,0,0,0.75);position:fixed;width:100%;top:0;z-index:1000;backdrop-filter:blur(12px);}
-.logo{color:var(--gold);font-weight:800;font-size:22px;}
-.home-btn{background:linear-gradient(45deg,var(--orange),var(--gold));padding:9px 18px;border-radius:25px;color:#000;text-decoration:none;font-weight:700;font-size:14px;}
-.hero-swiper{width:100%;height:100vh;}
-.hero-swiper .swiper-slide{background-size:cover;background-position:center;display:flex;align-items:center;justify-content:center;text-align:center;position:relative;}
-.hero-swiper .swiper-slide::after{content:"";position:absolute;inset:0;background:rgba(0,0,0,0.55);}
-.hero-content{position:relative;z-index:2;max-width:900px;padding:0 20px;}
-.hero-content h1{font-size:clamp(32px,6vw,52px);color:var(--gold);font-weight:900;margin-bottom:15px;text-shadow:0 4px 20px rgba(0,0,0,0.5);}
-.hero-content p{font-size:clamp(16px,2.5vw,20px);color:#e0e0e0;}
-.hero-swiper .swiper-pagination-bullet{background:white;opacity:0.5;}
-.hero-swiper .swiper-pagination-bullet-active{background:var(--gold);opacity:1;}
-.hero-swiper .swiper-button-next,.hero-swiper .swiper-button-prev{color:var(--gold);}
-.section-title{text-align:center;margin:70px 0 30px;color:var(--orange);font-size:28px;font-weight:700;}
-.section-title::after{content:"";display:block;width:60px;height:3px;background:var(--gold);margin:12px auto 0;border-radius:2px;}
-.featured-swiper{width:92%;margin:0 auto 40px;padding-bottom:40px;}
-.featured-swiper .swiper-slide img{width:100%;height:380px;object-fit:cover;border-radius:16px;border:3px solid var(--gold);box-shadow:0 10px 30px rgba(0,0,0,0.4);}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:18px;padding:0 25px 20px;max-width:1400px;margin:0 auto;}
-.grid img,.grid video{width:100%;height:210px;object-fit:cover;border-radius:14px;cursor:pointer;border:2px solid var(--blue);transition:0.3s;background:#1e293b;}
-.grid img:hover,.grid video:hover{transform:scale(1.06);border-color:var(--gold);box-shadow:0 8px 25px rgba(212,175,55,0.3);}
-.modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.92);justify-content:center;align-items:center;z-index:2000;backdrop-filter:blur(6px);}
-.modal img,.modal video{max-width:92%;max-height:82vh;border-radius:16px;}
-.close{position:absolute;top:22px;right:30px;font-size:36px;color:white;cursor:pointer;}
-.nav-btn{position:absolute;top:50%;transform:translateY(-50%);font-size:48px;color:white;cursor:pointer;user-select:none;padding:10px 15px;}
-.prev{left:20px;}.next{right:20px;}
-footer{background:#0a1428;padding:45px 20px;text-align:center;font-size:14px;color:#94a3b8;margin-top:80px;border-top:1px solid #1e293b;}
-footer .small{font-size:12px;color:#64748b;margin-top:12px;}
-@media(max-width:768px){.featured-swiper .swiper-slide img{height:260px;}.grid{grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px;}.grid img,.grid video{height:160px;}}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tujje Safari Gallery</title>
+  <style>
+    :root {
+      --blue: #1565c0;
+      --blue-dark: #0d47a1;
+      --orange: #ff9800;
+      --orange-dark: #f57c00;
+      --white: #ffffff;
+      --bg: #0f172a;
+      --surface: #1e293b;
+      --surface-hover: #334155;
+      --border: #334155;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --success: #22c55e;
+      --error: #ef4444;
+      --radius: 12px;
+      --shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* HEADER */
+    header {
+      border-bottom: 1px solid var(--border);
+      background: rgba(15, 23, 42, 0.95);
+      backdrop-filter: blur(12px);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .header-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 16px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand-icon {
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, var(--blue), var(--orange));
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 1.2rem;
+      color: var(--white);
+    }
+
+    .brand h1 {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: -0.02em;
+    }
+
+    .brand span {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    .admin-btn {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      padding: 9px 18px;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .admin-btn:hover {
+      border-color: var(--orange);
+      color: var(--orange);
+    }
+
+    .admin-btn.logged-in {
+      border-color: var(--success);
+      color: var(--success);
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 36px 24px 80px;
+    }
+
+    .section-title {
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--orange);
+      margin-bottom: 14px;
+    }
+
+    /* ADMIN PANEL */
+    #adminPanel {
+      display: none;
+      margin-bottom: 48px;
+    }
+
+    #adminPanel.visible { display: block; }
+
+    .upload-box {
+      border: 2px dashed var(--border);
+      border-radius: var(--radius);
+      padding: 40px 24px;
+      text-align: center;
+      background: var(--surface);
+      transition: all 0.25s;
+    }
+
+    .upload-box:hover,
+    .upload-box.dragover {
+      border-color: var(--orange);
+      background: var(--surface-hover);
+      box-shadow: 0 0 0 4px rgba(255, 152, 0, 0.15);
+    }
+
+    .upload-icon {
+      width: 56px;
+      height: 56px;
+      margin: 0 auto 16px;
+      background: linear-gradient(135deg, rgba(21, 101, 192, 0.2), rgba(255, 152, 0, 0.2));
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--orange);
+    }
+
+    .upload-box p {
+      color: var(--text);
+      font-size: 1rem;
+      margin-bottom: 4px;
+      font-weight: 500;
+    }
+
+    .upload-box .hint {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+    }
+
+    #fileInput { display: none; }
+
+    .upload-btn {
+      background: linear-gradient(45deg, var(--blue), var(--orange));
+      color: var(--white);
+      border: none;
+      padding: 12px 28px;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.15s, box-shadow 0.15s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .upload-btn:hover:not(:disabled) {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(255, 152, 0, 0.35);
+    }
+
+    .upload-btn:disabled {
+      background: #475569;
+      cursor: not-allowed;
+      opacity: 0.7;
+    }
+
+    #status {
+      margin-top: 16px;
+      font-size: 0.9rem;
+      min-height: 22px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .status-success { color: var(--success); }
+    .status-error { color: var(--error); }
+    .status-info { color: var(--text-muted); }
+
+    .progress-wrap {
+      width: 100%;
+      max-width: 280px;
+      height: 5px;
+      background: #334155;
+      border-radius: 3px;
+      margin: 14px auto 0;
+      overflow: hidden;
+      display: none;
+    }
+
+    .progress-bar {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--blue), var(--orange));
+      border-radius: 3px;
+      transition: width 0.3s ease;
+    }
+
+    /* GALLERY */
+    .gallery-section {
+      margin-bottom: 52px;
+    }
+
+    .gallery-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 16px;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .image-count {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+    }
+
+    .clear-btn {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      padding: 6px 14px;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: none;
+    }
+
+    .clear-btn.visible { display: inline-block; }
+
+    .clear-btn:hover {
+      border-color: var(--error);
+      color: var(--error);
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 16px;
+    }
+
+    .gallery-item {
+      position: relative;
+      border-radius: var(--radius);
+      overflow: hidden;
+      background: var(--surface);
+      cursor: pointer;
+      aspect-ratio: 1;
+      border: 2px solid transparent;
+      transition: all 0.25s ease;
+    }
+
+    .gallery-item:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow);
+      border-color: var(--orange);
+    }
+
+    .gallery-item img,
+    .gallery-item video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+
+    .gallery-item:hover img,
+    .gallery-item:hover video { transform: scale(1.06); }
+
+    .gallery-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(15, 23, 42, 0.85) 0%, transparent 55%);
+      opacity: 0;
+      transition: opacity 0.25s;
+      display: flex;
+      align-items: flex-end;
+      padding: 14px;
+    }
+
+    .gallery-item:hover .gallery-overlay { opacity: 1; }
+
+    .gallery-overlay span {
+      font-size: 0.8rem;
+      color: var(--white);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      width: 100%;
+    }
+
+    .video-badge {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background: linear-gradient(45deg, var(--blue), var(--orange));
+      color: var(--white);
+      font-size: 0.7rem;
+      font-weight: 600;
+      padding: 4px 9px;
+      border-radius: 5px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .empty-state {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 52px 20px;
+      color: var(--text-muted);
+      border: 1.5px dashed var(--border);
+      border-radius: var(--radius);
+      background: var(--surface);
+    }
+
+    .empty-state p { font-size: 0.95rem; }
+
+    /* VIEWER */
+    #viewer {
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.96);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 2000;
+      flex-direction: column;
+      padding: 20px;
+    }
+
+    #viewer.open {
+      display: flex;
+      animation: fadeIn 0.2s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .viewer-content {
+      position: relative;
+      max-width: 92vw;
+      max-height: 82vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #viewerMedia img,
+    #viewerMedia video {
+      max-width: 92vw;
+      max-height: 78vh;
+      border-radius: 12px;
+      object-fit: contain;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    }
+
+    .viewer-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 50px;
+      height: 50px;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 50%;
+      color: var(--white);
+      font-size: 1.6rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+      user-select: none;
+    }
+
+    .viewer-nav:hover {
+      background: var(--orange);
+      border-color: var(--orange);
+      color: #000;
+    }
+
+    .viewer-prev { left: -64px; }
+    .viewer-next { right: -64px; }
+
+    @media (max-width: 900px) {
+      .viewer-prev { left: 10px; }
+      .viewer-next { right: 10px; }
+    }
+
+    #viewerCaption {
+      margin-top: 18px;
+      color: var(--white);
+      font-size: 1rem;
+      text-align: center;
+    }
+
+    #viewerCounter {
+      margin-top: 6px;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+
+    .viewer-close {
+      position: absolute;
+      top: 20px;
+      right: 24px;
+      width: 46px;
+      height: 46px;
+      font-size: 1.6rem;
+      color: var(--white);
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 10px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+    }
+
+    .viewer-close:hover {
+      background: var(--orange);
+      color: #000;
+      border-color: var(--orange);
+    }
+
+    /* LOGIN MODAL */
+    #loginModal {
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.9);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 3000;
+    }
+
+    #loginModal.open { display: flex; }
+
+    .login-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 36px;
+      width: 90%;
+      max-width: 380px;
+      text-align: center;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+    }
+
+    .login-box h2 {
+      font-size: 1.3rem;
+      margin-bottom: 8px;
+      color: var(--white);
+    }
+
+    .login-box p {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      margin-bottom: 22px;
+    }
+
+    .login-box input {
+      width: 100%;
+      padding: 13px 16px;
+      border-radius: 9px;
+      border: 1px solid var(--border);
+      background: var(--bg);
+      color: var(--text);
+      font-size: 1rem;
+      margin-bottom: 18px;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .login-box input:focus {
+      border-color: var(--orange);
+    }
+
+    .login-actions {
+      display: flex;
+      gap: 12px;
+    }
+
+    .login-actions button {
+      flex: 1;
+      padding: 12px;
+      border-radius: 9px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: linear-gradient(45deg, var(--blue), var(--orange));
+      color: var(--white);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 18px rgba(255, 152, 0, 0.3);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      border: 1px solid var(--border) !important;
+      color: var(--text-muted);
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--text-muted) !important;
+      color: var(--white);
+    }
+
+    .spinner {
+      width: 16px;
+      height: 16px;
+      border: 2px solid #475569;
+      border-top-color: var(--orange);
+      border-radius: 50%;
+      animation: spin 0.7s linear infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    .footer-note {
+      margin-top: 48px;
+      text-align: center;
+      font-size: 0.8rem;
+      color: #64748b;
+      line-height: 1.6;
+    }
+
+    .footer-note strong {
+      color: var(--orange);
+    }
+
+    @media (max-width: 600px) {
+      .container { padding: 24px 16px 60px; }
+      .gallery { grid-template-columns: repeat(auto-fill, minmax(145px, 1fr)); gap: 12px; }
+      .brand h1 { font-size: 1.1rem; }
+    }
+  </style>
 </head>
 <body>
+  <header>
+    <div class="header-inner">
+      <div class="brand">
+        <div class="brand-icon">T</div>
+        <div>
+          <h1>Tujje Safari</h1>
+          <span>Photos & Videos · Cloudinary</span>
+        </div>
+      </div>
+      <button class="admin-btn" id="adminToggle">Admin Login</button>
+    </div>
+  </header>
 
-<nav>
-  <div class="logo">TUJJE SAFARI</div>
-  <a href="index.html" class="home-btn">🏠 Home</a>
-</nav>
+  <div class="container">
+    <!-- Admin Upload Panel -->
+    <div id="adminPanel">
+      <p class="section-title">Admin Upload</p>
+      <div class="upload-box" id="uploadBox">
+        <div class="upload-icon">
+          <svg width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+            <path d="M12 16V4m0 0l-4 4m4-4l4 4"/>
+            <path d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2"/>
+          </svg>
+        </div>
+        <p>Drag & drop photos or videos</p>
+        <p class="hint">PNG, JPG, WEBP, GIF, MP4, MOV, WEBM • Stored in separate folders</p>
+        <input type="file" id="fileInput" accept="image/*,video/*" multiple>
+        <button class="upload-btn" id="uploadBtn">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+            <path d="M12 4v16m8-8H4"/>
+          </svg>
+          Choose Files
+        </button>
+        <div id="status" class="status-info"></div>
+        <div class="progress-wrap" id="progressWrap">
+          <div class="progress-bar" id="progressBar"></div>
+        </div>
+      </div>
+    </div>
 
-<!-- HERO -->
-<div class="swiper hero-swiper">
-  <div class="swiper-wrapper" id="heroSlides"></div>
-  <div class="swiper-pagination"></div>
-  <div class="swiper-button-next"></div>
-  <div class="swiper-button-prev"></div>
-</div>
+    <!-- Photos Section -->
+    <div class="gallery-section">
+      <div class="gallery-header">
+        <p class="section-title" style="margin:0">Photos</p>
+        <div style="display:flex; align-items:center; gap:12px;">
+          <span class="image-count" id="photoCount">0 photos</span>
+          <button class="clear-btn" id="clearPhotosBtn">Clear photos</button>
+        </div>
+      </div>
+      <div class="gallery" id="photoGallery">
+        <div class="empty-state" id="photoEmpty">
+          <p>No photos yet. Admin can upload.</p>
+        </div>
+      </div>
+    </div>
 
-<h2 class="section-title">Featured Safari Photos</h2>
-<div class="swiper featured-swiper">
-  <div class="swiper-wrapper" id="featuredSlider"></div>
-  <div class="swiper-pagination"></div>
-</div>
+    <!-- Videos Section -->
+    <div class="gallery-section">
+      <div class="gallery-header">
+        <p class="section-title" style="margin:0">Videos</p>
+        <div style="display:flex; align-items:center; gap:12px;">
+          <span class="image-count" id="videoCount">0 videos</span>
+          <button class="clear-btn" id="clearVideosBtn">Clear videos</button>
+        </div>
+      </div>
+      <div class="gallery" id="videoGallery">
+        <div class="empty-state" id="videoEmpty">
+          <p>No videos yet. Admin can upload.</p>
+        </div>
+      </div>
+    </div>
 
-<h2 class="section-title">Photo Gallery</h2>
-<div class="grid" id="photo-grid"></div>
+    <p class="footer-note">
+      Photos stored in <strong>tujje/gallery/photos</strong> · Videos stored in <strong>tujje/gallery/videos</strong><br>
+      Only admin can upload · Users can only view
+    </p>
+  </div>
 
-<h2 class="section-title">Safari Videos</h2>
-<div class="grid" id="video-grid"></div>
+  <!-- Full Viewer -->
+  <div id="viewer">
+    <button class="viewer-close" id="viewerClose" aria-label="Close">&times;</button>
+    <div class="viewer-content">
+      <button class="viewer-nav viewer-prev" id="viewerPrev">‹</button>
+      <div id="viewerMedia"></div>
+      <button class="viewer-nav viewer-next" id="viewerNext">›</button>
+    </div>
+    <div id="viewerCaption"></div>
+    <div id="viewerCounter"></div>
+  </div>
 
-<div class="modal" id="modal">
-  <span class="close" onclick="closeModal()">×</span>
-  <span class="nav-btn prev" onclick="prev()">❮</span>
-  <span class="nav-btn next" onclick="next()">❯</span>
-  <img id="modalImg">
-  <video id="modalVideo" controls style="display:none;"></video>
-</div>
+  <!-- Admin Login Modal -->
+  <div id="loginModal">
+    <div class="login-box">
+      <h2>Admin Access</h2>
+      <p>Enter the admin password to unlock uploading.</p>
+      <input type="password" id="adminPassword" placeholder="Password" autocomplete="off">
+      <div class="login-actions">
+        <button class="btn-secondary" id="loginCancel">Cancel</button>
+        <button class="btn-primary" id="loginSubmit">Unlock</button>
+      </div>
+    </div>
+  </div>
 
-<footer>
-  <p>&copy; 2026 Tujje Safari. All rights reserved.</p>
-  <p>Made with ❤️ for Uganda safaris</p>
-  <p class="small">Photos → tujje/gallery/photos &nbsp;|&nbsp; Videos → tujje/gallery/videos &nbsp;|&nbsp; Users can only view</p>
-</footer>
+  <script>
+    // ========================================
+    // TUJJE SAFARI – CLOUDINARY CREDENTIALS
+    // ========================================
+    const CLOUD_NAME     = "ziudh5iv";
+    const UPLOAD_PRESET  = "tujje_gallery";
+    const ADMIN_PASSWORD = "tujje2026";          // ← change this password!
+    const PHOTO_KEY      = "tujje_photos";
+    const VIDEO_KEY      = "tujje_videos";
 
-<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-<script>
-  const CLOUD_NAME = "ziudh5iv";   // ← change this
-const UPLOAD_PRESET = "tujje_gallery";
-  const ADMIN_PASSWORD = "tujje2026";
-  let items = [];
-  let index = 0;
-  const modal = document.getElementById("modal");
-  const modalImg = document.getElementById("modalImg");
-  const modalVideo = document.getElementById("modalVideo");
+    // ========================================
+    // Elements
+    // ========================================
+    const adminToggle   = document.getElementById("adminToggle");
+    const adminPanel    = document.getElementById("adminPanel");
+    const loginModal    = document.getElementById("loginModal");
+    const adminPassword = document.getElementById("adminPassword");
+    const loginSubmit   = document.getElementById("loginSubmit");
+    const loginCancel   = document.getElementById("loginCancel");
 
-  function loadGallery() {
-    // Photos and videos are stored separately
-    const photos = JSON.parse(localStorage.getItem("tujje_photos") || "[]");
-    const videos = JSON.parse(localStorage.getItem("tujje_videos") || "[]");
+    const fileInput     = document.getElementById("fileInput");
+    const uploadBtn     = document.getElementById("uploadBtn");
+    const uploadBox     = document.getElementById("uploadBox");
+    const statusEl      = document.getElementById("status");
+    const progressWrap  = document.getElementById("progressWrap");
+    const progressBar   = document.getElementById("progressBar");
 
-    // ===== HERO SLIDES (from photos only) =====
-    const heroWrapper = document.getElementById("heroSlides");
-    const heroPhotos = photos.slice(0, 6);
-    const titles = [
-      {h:"Explore Uganda With Tujje Safari", p:"Luxury safaris, wildlife & unforgettable adventures"},
-      {h:"Gorilla Trekking Adventures", p:"Meet the gentle giants of Bwindi"},
-      {h:"Big Five Safari Experience", p:"Lions, elephants, buffalo, leopards & rhinos"},
-      {h:"Wildlife Up Close", p:"Unforgettable encounters in Uganda’s parks"},
-      {h:"Scenic Landscapes", p:"From the Nile to the Mountains of the Moon"},
-      {h:"Luxury Safari Camps", p:"Comfort and adventure in the wild"}
-    ];
+    const photoGallery  = document.getElementById("photoGallery");
+    const videoGallery  = document.getElementById("videoGallery");
+    const photoEmpty    = document.getElementById("photoEmpty");
+    const videoEmpty    = document.getElementById("videoEmpty");
+    const photoCountEl  = document.getElementById("photoCount");
+    const videoCountEl  = document.getElementById("videoCount");
+    const clearPhotosBtn = document.getElementById("clearPhotosBtn");
+    const clearVideosBtn = document.getElementById("clearVideosBtn");
 
-    if (heroPhotos.length === 0) {
-      heroWrapper.innerHTML = `
-        <div class="swiper-slide" style="background-image:url('https://res.cloudinary.com/${CLOUD_NAME}/image/upload/f_auto,q_auto/tujje/gallery/photos/placeholder')">
-          <div class="hero-content"><h1>Explore Uganda With Tujje Safari</h1><p>Luxury safaris & wildlife adventures</p></div>
-        </div>`;
-    } else {
-      heroPhotos.forEach((p, i) => {
-        const t = titles[i] || titles[0];
-        heroWrapper.innerHTML += `
-          <div class="swiper-slide" style="background-image:url('${p.url}')">
-            <div class="hero-content"><h1>${t.h}</h1><p>${t.p}</p></div>
-          </div>`;
+    const viewer        = document.getElementById("viewer");
+    const viewerMedia   = document.getElementById("viewerMedia");
+    const viewerCaption = document.getElementById("viewerCaption");
+    const viewerCounter = document.getElementById("viewerCounter");
+    const viewerClose   = document.getElementById("viewerClose");
+    const viewerPrev    = document.getElementById("viewerPrev");
+    const viewerNext    = document.getElementById("viewerNext");
+
+    let isAdmin = false;
+    let currentList = [];
+    let currentIndex = 0;
+
+    // ========================================
+    // Storage helpers
+    // ========================================
+    function loadList(key) {
+      try {
+        const raw = localStorage.getItem(key);
+        return raw ? JSON.parse(raw) : [];
+      } catch { return []; }
+    }
+
+    function saveList(key, list) {
+      localStorage.setItem(key, JSON.stringify(list));
+    }
+
+    function addItem(key, item) {
+      const list = loadList(key);
+      if (list.some(i => i.url === item.url)) return;
+      list.unshift(item);
+      saveList(key, list);
+    }
+
+    // ========================================
+    // Admin login
+    // ========================================
+    function setAdminState(loggedIn) {
+      isAdmin = loggedIn;
+      adminPanel.classList.toggle("visible", loggedIn);
+      adminToggle.textContent = loggedIn ? "Logout Admin" : "Admin Login";
+      adminToggle.classList.toggle("logged-in", loggedIn);
+      clearPhotosBtn.classList.toggle("visible", loggedIn);
+      clearVideosBtn.classList.toggle("visible", loggedIn);
+    }
+
+    adminToggle.addEventListener("click", () => {
+      if (isAdmin) {
+        setAdminState(false);
+        setStatus("Admin logged out", "info");
+      } else {
+        loginModal.classList.add("open");
+        adminPassword.value = "";
+        adminPassword.focus();
+      }
+    });
+
+    loginCancel.addEventListener("click", () => loginModal.classList.remove("open"));
+
+    loginSubmit.addEventListener("click", () => {
+      if (adminPassword.value === ADMIN_PASSWORD) {
+        setAdminState(true);
+        loginModal.classList.remove("open");
+        setStatus("Admin unlocked – you can now upload", "success");
+      } else {
+        alert("Incorrect password");
+        adminPassword.focus();
+      }
+    });
+
+    adminPassword.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") loginSubmit.click();
+    });
+
+    // ========================================
+    // UI helpers
+    // ========================================
+    function setStatus(msg, type = "info") {
+      statusEl.className = `status-${type}`;
+      statusEl.innerHTML = msg;
+    }
+
+    function thumbUrl(url, isVideo = false) {
+      if (isVideo) {
+        return url.replace("/upload/", "/upload/so_0,w_420,h_420,c_fill,q_auto,f_jpg/");
+      }
+      return url.replace("/upload/", "/upload/c_fill,w_420,h_420,q_auto,f_auto/");
+    }
+
+    // ========================================
+    // Render galleries (SEPARATE)
+    // ========================================
+    function createItem(item, type) {
+      const el = document.createElement("div");
+      el.className = "gallery-item";
+      const isVideo = type === "video";
+
+      if (isVideo) {
+        el.innerHTML = `
+          <img src="${thumbUrl(item.url, true)}" alt="${item.title || "Video"}" loading="lazy">
+          <div class="video-badge">▶ Video</div>
+          <div class="gallery-overlay"><span>${item.title || "Untitled"}</span></div>
+        `;
+      } else {
+        el.innerHTML = `
+          <img src="${thumbUrl(item.url)}" alt="${item.title || "Photo"}" loading="lazy">
+          <div class="gallery-overlay"><span>${item.title || "Untitled"}</span></div>
+        `;
+      }
+
+      el.addEventListener("click", () => openViewer(type, item.url));
+      return el;
+    }
+
+    function renderPhotos() {
+      const list = loadList(PHOTO_KEY);
+      photoGallery.querySelectorAll(".gallery-item").forEach(el => el.remove());
+      list.forEach(item => photoGallery.appendChild(createItem(item, "photo")));
+      photoCountEl.textContent = `${list.length} photo${list.length !== 1 ? "s" : ""}`;
+      photoEmpty.style.display = list.length === 0 ? "block" : "none";
+    }
+
+    function renderVideos() {
+      const list = loadList(VIDEO_KEY);
+      videoGallery.querySelectorAll(".gallery-item").forEach(el => el.remove());
+      list.forEach(item => videoGallery.appendChild(createItem(item, "video")));
+      videoCountEl.textContent = `${list.length} video${list.length !== 1 ? "s" : ""}`;
+      videoEmpty.style.display = list.length === 0 ? "block" : "none";
+    }
+
+    function renderAll() {
+      renderPhotos();
+      renderVideos();
+    }
+
+    // ========================================
+    // Upload (with separate folders)
+    // ========================================
+    async function uploadFile(file) {
+      const isVideo = file.type.startsWith("video/");
+      const isImage = file.type.startsWith("image/");
+
+      if (!isImage && !isVideo) {
+        setStatus("Only images and videos are allowed.", "error");
+        return;
+      }
+
+      setStatus(`<span class="spinner"></span> Uploading ${file.name}…`, "info");
+      uploadBtn.disabled = true;
+      progressWrap.style.display = "block";
+      progressBar.style.width = "25%";
+
+      const formData = new FormData();
+      formData.append("file", file);
+      formData.append("upload_preset", UPLOAD_PRESET);
+
+      // Store separately
+      if (isVideo) {
+        formData.append("folder", "tujje/gallery/videos");
+      } else {
+        formData.append("folder", "tujje/gallery/photos");
+      }
+
+      const resourceType = isVideo ? "video" : "image";
+
+      try {
+        const timer = setInterval(() => {
+          const cur = parseFloat(progressBar.style.width);
+          if (cur < 80) progressBar.style.width = cur + 10 + "%";
+        }, 250);
+
+        const res = await fetch(
+          `https://api.cloudinary.com/v1_1/${CLOUD_NAME}/${resourceType}/upload`,
+          { method: "POST", body: formData }
+        );
+
+        clearInterval(timer);
+        progressBar.style.width = "100%";
+
+        const data = await res.json();
+        if (!res.ok) throw new Error(data.error?.message || "Upload failed");
+
+        const item = { 
+          url: data.secure_url, 
+          title: file.name, 
+          public_id: data.public_id,
+          addedAt: Date.now() 
+        };
+
+        if (isVideo) {
+          addItem(VIDEO_KEY, item);
+          renderVideos();
+        } else {
+          addItem(PHOTO_KEY, item);
+          renderPhotos();
+        }
+
+        setStatus(`✅ Uploaded successfully (${isVideo ? "video" : "photo"})`, "success");
+      } catch (err) {
+        console.error(err);
+        setStatus("Error: " + err.message, "error");
+      } finally {
+        uploadBtn.disabled = false;
+        fileInput.value = "";
+        setTimeout(() => {
+          progressWrap.style.display = "none";
+          progressBar.style.width = "0%";
+        }, 500);
+      }
+    }
+
+    async function handleFiles(files) {
+      const valid = Array.from(files).filter(f =>
+        f.type.startsWith("image/") || f.type.startsWith("video/")
+      );
+      if (!valid.length) {
+        setStatus("No valid media files selected.", "error");
+        return;
+      }
+      for (const file of valid) {
+        await uploadFile(file);
+      }
+    }
+
+    // ========================================
+    // Full viewer with next / prev
+    // ========================================
+    function openViewer(type, url) {
+      currentList = type === "video" ? loadList(VIDEO_KEY) : loadList(PHOTO_KEY);
+      currentIndex = currentList.findIndex(i => i.url === url);
+      if (currentIndex < 0) currentIndex = 0;
+      showCurrent();
+      viewer.classList.add("open");
+      document.body.style.overflow = "hidden";
+    }
+
+    function showCurrent() {
+      if (!currentList.length) return;
+      const item = currentList[currentIndex];
+      const isVideo = item.url.includes("/video/") || /\.(mp4|mov|webm|mkv)(\?|$)/i.test(item.url);
+
+      viewerMedia.innerHTML = "";
+      if (isVideo) {
+        const video = document.createElement("video");
+        video.src = item.url;
+        video.controls = true;
+        video.autoplay = true;
+        video.style.maxWidth = "92vw";
+        video.style.maxHeight = "78vh";
+        video.style.borderRadius = "12px";
+        viewerMedia.appendChild(video);
+      } else {
+        const img = document.createElement("img");
+        img.src = item.url;
+        img.alt = item.title || "";
+        viewerMedia.appendChild(img);
+      }
+
+      viewerCaption.textContent = item.title || "";
+      viewerCounter.textContent = `${currentIndex + 1} / ${currentList.length}`;
+    }
+
+    function nextItem() {
+      if (!currentList.length) return;
+      currentIndex = (currentIndex + 1) % currentList.length;
+      showCurrent();
+    }
+
+    function prevItem() {
+      if (!currentList.length) return;
+      currentIndex = (currentIndex - 1 + currentList.length) % currentList.length;
+      showCurrent();
+    }
+
+    function closeViewer() {
+      viewer.classList.remove("open");
+      document.body.style.overflow = "";
+      const v = viewerMedia.querySelector("video");
+      if (v) v.pause();
+    }
+
+    viewerClose.addEventListener("click", closeViewer);
+    viewerNext.addEventListener("click", nextItem);
+    viewerPrev.addEventListener("click", prevItem);
+
+    viewer.addEventListener("click", (e) => {
+      if (e.target === viewer) closeViewer();
+    });
+
+    document.addEventListener("keydown", (e) => {
+      if (!viewer.classList.contains("open")) return;
+      if (e.key === "Escape") closeViewer();
+      if (e.key === "ArrowRight") nextItem();
+      if (e.key === "ArrowLeft") prevItem();
+    });
+
+    // ========================================
+    // Clear (admin only)
+    // ========================================
+    clearPhotosBtn.addEventListener("click", () => {
+      if (!confirm("Clear all photos from this gallery?\n(Files remain on Cloudinary)")) return;
+      localStorage.removeItem(PHOTO_KEY);
+      renderPhotos();
+    });
+
+    clearVideosBtn.addEventListener("click", () => {
+      if (!confirm("Clear all videos from this gallery?\n(Files remain on Cloudinary)")) return;
+      localStorage.removeItem(VIDEO_KEY);
+      renderVideos();
+    });
+
+    // ========================================
+    // Upload events
+    // ========================================
+    uploadBtn.addEventListener("click", () => fileInput.click());
+
+    fileInput.addEventListener("change", () => {
+      if (fileInput.files.length) handleFiles(fileInput.files);
+    });
+
+    ["dragenter", "dragover", "dragleave", "drop"].forEach(evt => {
+      uploadBox.addEventListener(evt, e => {
+        e.preventDefault();
+        e.stopPropagation();
       });
-    }
-
-    // ===== FEATURED (photos only) =====
-    const featured = document.getElementById("featuredSlider");
-    photos.slice(0, 8).forEach(p => {
-      featured.innerHTML += `<div class="swiper-slide"><img src="${p.url}" alt="Safari"></div>`;
     });
 
-    // ===== PHOTO GRID (only photos) =====
-    const photoGrid = document.getElementById("photo-grid");
-    photos.forEach(p => {
-      const img = document.createElement("img");
-      img.src = p.url;
-      img.dataset.type = "photo";
-      img.dataset.url = p.url;
-      photoGrid.appendChild(img);
-      items.push(img);
+    uploadBox.addEventListener("dragover", () => uploadBox.classList.add("dragover"));
+    uploadBox.addEventListener("dragleave", () => uploadBox.classList.remove("dragover"));
+    uploadBox.addEventListener("drop", e => {
+      uploadBox.classList.remove("dragover");
+      if (e.dataTransfer.files.length) handleFiles(e.dataTransfer.files);
     });
 
-    // ===== VIDEO GRID (only videos) =====
-    const videoGrid = document.getElementById("video-grid");
-    videos.forEach(v => {
-      const vid = document.createElement("video");
-      vid.src = v.url;
-      vid.muted = true;
-      vid.loop = true;
-      vid.playsInline = true;
-      vid.autoplay = true;
-      vid.dataset.type = "video";
-      vid.dataset.url = v.url;
-      videoGrid.appendChild(vid);
-      items.push(vid);
-      vid.play().catch(()=>{});
-    });
-
-    // Click to open modal
-    items.forEach((el, i) => {
-      el.addEventListener("click", () => {
-        index = i;
-        openModal(el);
-      });
-    });
-
-    // Init swipers
-    new Swiper(".hero-swiper", {
-      loop: true, effect: "fade", speed: 1000,
-      autoplay: { delay: 4500, disableOnInteraction: false },
-      pagination: { el: ".hero-swiper .swiper-pagination", clickable: true },
-      navigation: { nextEl: ".hero-swiper .swiper-button-next", prevEl: ".hero-swiper .swiper-button-prev" }
-    });
-
-    new Swiper(".featured-swiper", {
-      loop: true, slidesPerView: 1.2, spaceBetween: 18, autoplay: { delay: 2800 },
-      breakpoints: { 640: { slidesPerView: 2.2 }, 1024: { slidesPerView: 3.2 } },
-      pagination: { el: ".featured-swiper .swiper-pagination", clickable: true }
-    });
-  }
-
-  function openModal(el) {
-    modal.style.display = "flex";
-    if (el.dataset.type === "photo" || el.tagName === "IMG") {
-      modalImg.style.display = "block";
-      modalVideo.style.display = "none";
-      modalImg.src = el.dataset.url || el.src;
-    } else {
-      modalImg.style.display = "none";
-      modalVideo.style.display = "block";
-      modalVideo.src = el.dataset.url || el.src;
-      modalVideo.play();
-    }
-  }
-  function closeModal() { modal.style.display = "none"; modalVideo.pause(); }
-  function next() { index = (index + 1) % items.length; openModal(items[index]); }
-  function prev() { index = (index - 1 + items.length) % items.length; openModal(items[index]); }
-
-  modal.addEventListener("click", e => { if (e.target === modal) closeModal(); });
-  document.addEventListener("keydown", e => {
-    if (modal.style.display === "flex") {
-      if (e.key === "ArrowRight") next();
-      if (e.key === "ArrowLeft") prev();
-      if (e.key === "Escape") closeModal();
-    }
-  });
-
-  loadGallery();
-</script>
+    // ========================================
+    // Init
+    // ========================================
+    renderAll();
+  </script>
 </body>
 </html>
