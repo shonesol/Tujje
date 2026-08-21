@@ -9,151 +9,227 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
 
 <style>
-:root{
-  --blue:#1565c0;
-  --orange:#ff9800;
-  --gold:#d4af37;
-  --dark:#0f172a;
+:root {
+  --blue: #1565c0;
+  --orange: #ff9800;
+  --gold: #d4af37;
+  --dark: #0f172a;
 }
 
-*{margin:0;padding:0;box-sizing:border-box;font-family:Poppins;}
-body{background:var(--dark);color:white;}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background: var(--dark);
+  color: white;
+  overflow-x: hidden;
+}
 
 /* NAV */
-nav{
-  display:flex;
-  justify-content:space-between;
-  padding:15px 25px;
-  background:rgba(0,0,0,0.7);
-  position:fixed;
-  width:100%;
-  top:0;
-  z-index:1000;
-  backdrop-filter:blur(10px);
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 25px;
+  background: rgba(0, 0, 0, 0.75);
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+  backdrop-filter: blur(12px);
 }
 
-.logo{color:var(--gold);font-weight:800;font-size:20px;}
-
-.home-btn{
-  background:linear-gradient(45deg,var(--orange),var(--gold));
-  padding:8px 15px;
-  border-radius:20px;
-  color:black;
-  text-decoration:none;
-  font-weight:bold;
+.logo {
+  color: var(--gold);
+  font-weight: 800;
+  font-size: 22px;
+  letter-spacing: 1px;
 }
 
-/* HERO */
-.hero{
-  height:100vh;
-  background:url('4a7fea4f-ee9e-4104-9754-06c36312b0b0.jpeg') center/cover;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
-  position:relative;
+.home-btn {
+  background: linear-gradient(45deg, var(--orange), var(--gold));
+  padding: 9px 18px;
+  border-radius: 25px;
+  color: #000;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 14px;
+  transition: transform 0.2s;
 }
+.home-btn:hover { transform: scale(1.05); }
 
-.hero::after{
-  content:"";
-  position:absolute;
-  width:100%;height:100%;
-  background:rgba(0,0,0,0.6);
+/* HERO SLIDER */
+.hero-swiper {
+  width: 100%;
+  height: 100vh;
 }
-
-.hero-content{
-  position:relative;
-  z-index:2;
+.hero-swiper .swiper-slide {
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
 }
-
-.hero h1{font-size:45px;color:var(--gold);}
-.hero p{color:#ddd;margin-top:10px;}
+.hero-swiper .swiper-slide::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+}
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 900px;
+  padding: 0 20px;
+}
+.hero-content h1 {
+  font-size: clamp(32px, 6vw, 52px);
+  color: var(--gold);
+  font-weight: 900;
+  margin-bottom: 15px;
+  text-shadow: 0 4px 20px rgba(0,0,0,0.5);
+}
+.hero-content p {
+  font-size: clamp(16px, 2.5vw, 20px);
+  color: #e0e0e0;
+}
+.hero-swiper .swiper-pagination-bullet {
+  background: white;
+  opacity: 0.5;
+}
+.hero-swiper .swiper-pagination-bullet-active {
+  background: var(--gold);
+  opacity: 1;
+}
+.hero-swiper .swiper-button-next,
+.hero-swiper .swiper-button-prev {
+  color: var(--gold);
+}
 
 /* SECTION TITLE */
-.section-title{
-  text-align:center;
-  margin:60px 0 20px;
-  color:var(--orange);
-  font-size:28px;
+.section-title {
+  text-align: center;
+  margin: 70px 0 30px;
+  color: var(--orange);
+  font-size: 28px;
+  font-weight: 700;
+}
+.section-title::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 3px;
+  background: var(--gold);
+  margin: 12px auto 0;
+  border-radius: 2px;
 }
 
-/* SWIPER */
-.swiper{
-  width:90%;
+/* FEATURED */
+.featured-swiper {
+  width: 92%;
+  margin: 0 auto 40px;
+  padding-bottom: 40px;
 }
-.swiper-slide img{
-  width:100%;
-  height:400px;
-  object-fit:cover;
-  border-radius:15px;
-  border:3px solid var(--gold);
-}
-
-/* GRID GALLERY */
-.grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-  gap:15px;
-  padding:20px;
+.featured-swiper .swiper-slide img {
+  width: 100%;
+  height: 380px;
+  object-fit: cover;
+  border-radius: 16px;
+  border: 3px solid var(--gold);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
 }
 
-.grid img,.grid video{
-  width:100%;
-  height:200px;
-  object-fit:cover;
-  border-radius:12px;
-  cursor:pointer;
-  border:2px solid var(--blue);
-  transition:0.3s;
+/* GRID */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 18px;
+  padding: 0 25px 20px;
+  max-width: 1400px;
+  margin: 0 auto;
 }
-
-.grid img:hover,.grid video:hover{
-  transform:scale(1.05);
+.grid img, .grid video {
+  width: 100%;
+  height: 210px;
+  object-fit: cover;
+  border-radius: 14px;
+  cursor: pointer;
+  border: 2px solid var(--blue);
+  transition: all 0.3s ease;
+  background: #1e293b;
+}
+.grid img:hover, .grid video:hover {
+  transform: scale(1.06);
+  border-color: var(--gold);
+  box-shadow: 0 8px 25px rgba(212, 175, 55, 0.3);
 }
 
 /* MODAL */
-.modal{
-  display:none;
-  position:fixed;
-  top:0;left:0;
-  width:100%;height:100%;
-  background:rgba(0,0,0,0.9);
-  justify-content:center;
-  align-items:center;
-  z-index:2000;
+.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.92);
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+  backdrop-filter: blur(6px);
+}
+.modal img, .modal video {
+  max-width: 92%;
+  max-height: 82vh;
+  border-radius: 16px;
+}
+.close {
+  position: absolute;
+  top: 22px;
+  right: 30px;
+  font-size: 36px;
+  color: white;
+  cursor: pointer;
+}
+.nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 48px;
+  color: white;
+  cursor: pointer;
+  user-select: none;
+  padding: 10px 15px;
+}
+.prev { left: 20px; }
+.next { right: 20px; }
+
+/* FOOTER */
+footer {
+  background: #0a1428;
+  padding: 45px 20px;
+  text-align: center;
+  font-size: 14px;
+  color: #94a3b8;
+  margin-top: 80px;
+  border-top: 1px solid #1e293b;
+}
+footer .small {
+  font-size: 12px;
+  color: #64748b;
+  margin-top: 12px;
 }
 
-.modal img,.modal video{
-  max-width:90%;
-  max-height:80%;
-  border-radius:15px;
+@media (max-width: 768px) {
+  .featured-swiper .swiper-slide img { height: 260px; }
+  .grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 12px; }
+  .grid img, .grid video { height: 160px; }
 }
-
-.close{
-  position:absolute;
-  top:20px;
-  right:30px;
-  font-size:30px;
-  color:white;
-  cursor:pointer;
-}
-
-.nav-btn{
-  position:absolute;
-  top:50%;
-  transform:translateY(-50%);
-  font-size:40px;
-  color:white;
-  cursor:pointer;
-  user-select:none;
-}
-
-.prev{left:20px;}
-.next{right:20px;}
-
 </style>
 </head>
-
 <body>
 
 <nav>
@@ -161,191 +237,225 @@ nav{
   <a href="index.html" class="home-btn">🏠 Home</a>
 </nav>
 
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-content">
-    <h1>Explore Uganda With Tujje Safari</h1>
-    <p>Luxury safaris, wildlife, and unforgettable adventures</p>
-  </div>
-</section>
-
-<!-- SLIDER PHOTOS -->
-<h2 class="section-title">Featured Safari Photos</h2>
-
-<div class="swiper mySwiper">
+<!-- HERO SLIDES (using your photos) -->
+<div class="swiper hero-swiper">
   <div class="swiper-wrapper">
-    <div class="swiper-slide"><img src="0aa0d764-4d5d-48e6-bc02-1a92519676c5.jpeg"></div>
-    <div class="swiper-slide"><img src="0aff6cce-daf8-4817-87db-92309cc022ba.jpeg"></div>
-    <div class="swiper-slide"><img src="0cbcd965-e25e-4eee-9b30-775a58f0a1be.jpeg"></div>
-     <div class="swiper-slide"><img src="0e867e99-4ba2-484d-a975-8544d7a60f13.jpeg"></div>
-    <div class="swiper-slide"><img src="1e7c2642-d1dc-4262-9026-31f570056fae.jpeg"></div>
-    <div class="swiper-slide"><img src="225b3299-5787-4bd1-b2d0-0e570380045d.jpeg"></div>
-      <div class="swiper-slide"><img src=""></div>
-    <div class="swiper-slide"><img src="0aff6cce-daf8-4817-87db-92309cc022ba.jpeg"></div>
-    <div class="swiper-slide"><img src="0cbcd965-e25e-4eee-9b30-775a58f0a1be.jpeg"></div>
-     <div class="swiper-slide"><img src="0e867e99-4ba2-484d-a975-8544d7a60f13.jpeg"></div>
-    <div class="swiper-slide"><img src="1e7c2642-d1dc-4262-9026-31f570056fae.jpeg"></div>
-    <div class="swiper-slide"><img src="225b3299-5787-4bd1-b2d0-0e570380045d.jpeg"></div>
+    <div class="swiper-slide" style="background-image: url('https://res.cloudinary.com/YOUR_CLOUD_NAME/image/upload/f_auto,q_auto/tujje/gallery/4a7fea4f-ee9e-4104-9754-06c36312b0b0');">
+      <div class="hero-content">
+        <h1>Explore Uganda With Tujje Safari</h1>
+        <p>Luxury safaris, wildlife & unforgettable adventures</p>
+      </div>
+    </div>
+    <div class="swiper-slide" style="background-image: url('https://res.cloudinary.com/YOUR_CLOUD_NAME/image/upload/f_auto,q_auto/tujje/gallery/0aa0d764-4d5d-48e6-bc02-1a92519676c5');">
+      <div class="hero-content">
+        <h1>Gorilla Trekking Adventures</h1>
+        <p>Meet the gentle giants of Bwindi</p>
+      </div>
+    </div>
+    <div class="swiper-slide" style="background-image: url('https://res.cloudinary.com/YOUR_CLOUD_NAME/image/upload/f_auto,q_auto/tujje/gallery/225b3299-5787-4bd1-b2d0-0e570380045d');">
+      <div class="hero-content">
+        <h1>Big Five Safari Experience</h1>
+        <p>Lions, elephants, buffalo, leopards & rhinos</p>
+      </div>
+    </div>
+    <div class="swiper-slide" style="background-image: url('https://res.cloudinary.com/YOUR_CLOUD_NAME/image/upload/f_auto,q_auto/tujje/gallery/0aff6cce-daf8-4817-87db-92309cc022ba');">
+      <div class="hero-content">
+        <h1>Wildlife Up Close</h1>
+        <p>Unforgettable encounters in Uganda’s parks</p>
+      </div>
+    </div>
+    <div class="swiper-slide" style="background-image: url('https://res.cloudinary.com/YOUR_CLOUD_NAME/image/upload/f_auto,q_auto/tujje/gallery/0cbcd965-e25e-4eee-9b30-775a58f0a1be');">
+      <div class="hero-content">
+        <h1>Scenic Landscapes</h1>
+        <p>From the Nile to the Mountains of the Moon</p>
+      </div>
+    </div>
+    <div class="swiper-slide" style="background-image: url('https://res.cloudinary.com/YOUR_CLOUD_NAME/image/upload/f_auto,q_auto/tujje/gallery/1e7c2642-d1dc-4262-9026-31f570056fae');">
+      <div class="hero-content">
+        <h1>Luxury Safari Camps</h1>
+        <p>Comfort and adventure in the wild</p>
+      </div>
+    </div>
   </div>
+  <div class="swiper-pagination"></div>
+  <div class="swiper-button-next"></div>
+  <div class="swiper-button-prev"></div>
 </div>
 
-<!-- CLICKABLE PHOTOS -->
+<!-- FEATURED PHOTOS -->
+<h2 class="section-title">Featured Safari Photos</h2>
+<div class="swiper featured-swiper">
+  <div class="swiper-wrapper">
+    <div class="swiper-slide"><img src="https://res.cloudinary.com/YOUR_CLOUD_NAME/image/upload/f_auto,q_auto/tujje/gallery/0aa0d764-4d5d-48e6-bc02-1a92519676c5"></div>
+    <div class="swiper-slide"><img src="https://res.cloudinary.com/YOUR_CLOUD_NAME/image/upload/f_auto,q_auto/tujje/gallery/0aff6cce-daf8-4817-87db-92309cc022ba"></div>
+    <div class="swiper-slide"><img src="https://res.cloudinary.com/YOUR_CLOUD_NAME/image/upload/f_auto,q_auto/tujje/gallery/0cbcd965-e25e-4eee-9b30-775a58f0a1be"></div>
+    <div class="swiper-slide"><img src="https://res.cloudinary.com/YOUR_CLOUD_NAME/image/upload/f_auto,q_auto/tujje/gallery/0e867e99-4ba2-484d-a975-8544d7a60f13"></div>
+    <div class="swiper-slide"><img src="https://res.cloudinary.com/YOUR_CLOUD_NAME/image/upload/f_auto,q_auto/tujje/gallery/1e7c2642-d1dc-4262-9026-31f570056fae"></div>
+    <div class="swiper-slide"><img src="https://res.cloudinary.com/YOUR_CLOUD_NAME/image/upload/f_auto,q_auto/tujje/gallery/225b3299-5787-4bd1-b2d0-0e570380045d"></div>
+    <div class="swiper-slide"><img src="https://res.cloudinary.com/YOUR_CLOUD_NAME/image/upload/f_auto,q_auto/tujje/gallery/2ccc753e-f5dd-48b4-b304-a691b64d6b48"></div>
+    <div class="swiper-slide"><img src="https://res.cloudinary.com/YOUR_CLOUD_NAME/image/upload/f_auto,q_auto/tujje/gallery/34262092-ed6e-475b-9739-b0a19b17f576"></div>
+  </div>
+  <div class="swiper-pagination"></div>
+</div>
+
+<!-- PHOTO GALLERY -->
 <h2 class="section-title">Photo Gallery</h2>
-
-<div class="grid">
-  <img src="225b3299-5787-4bd1-b2d0-0e570380045d.jpeg">
-  <img src="2ccc753e-f5dd-48b4-b304-a691b64d6b48.jpeg">
-  <img src="34262092-ed6e-475b-9739-b0a19b17f576.jpeg">
-    <img src="0aa0d764-4d5d-48e6-bc02-1a92519676c5.jpeg">
-    <img src="0aff6cce-daf8-4817-87db-92309cc022ba.jpeg">
-    <img src="0cbcd965-e25e-4eee-9b30-775a58f0a1be.jpeg">
-     <img src="0e867e99-4ba2-484d-a975-8544d7a60f13.jpeg">
-    <img src="1e7c2642-d1dc-4262-9026-31f570056fae.jpeg">
-    <img src="225b3299-5787-4bd1-b2d0-0e570380045d.jpeg">
-  <img src="3ed1a34c-7dbf-40ea-8b92-374bf3db2cc1.jpeg">
-  <img src="42290d40-a0ef-4159-980f-46237d93674a.jpeg">
-  <img src="4a7fea4f-ee9e-4104-9754-06c36312b0b0.jpeg">
-    <img src="4ff1b209-8290-4983-85cc-60829b07be97.jpeg">
-    <img src="51d001f1-5e80-4090-ad35-2689518dd99c.jpeg">
-    <img src="597d3c7c-9ab5-4cd7-994f-6b1789a5857e.jpeg">
-     <img src="8aac066a-24bb-4111-af41-7b5928522ed1.jpeg">
-    <img src="1e7c2642-d1dc-4262-9026-31f570056fae.jpeg">
-    <img src="8ce977a4-f6bb-4c78-8114-cee0a961f662.jpeg">
-  <img src="938916e5-dd91-4c8a-b314-9a260d9ddef8.jpeg">
-  <img src="9651391b-375c-45dc-8964-7bc6d6e28336.jpeg">
-  <img src="9b69ebc7-af25-40ee-94a3-fd9748767167.jpeg">
-    <img src="abcfe92e-cb7e-424f-93ee-a0f732624804.jpeg">
-    <img src="b664b488-d50a-4da7-8eb6-96434490fe67.jpeg">
-    <img src="afd02c02-fa1a-4121-9e83-3887e6172031.jpeg">
-     <img src="ad551d6f-f4bc-4c14-bb11-064425aa5ab1.jpeg">
-    <img src="c2d2d428-27bc-4558-81bc-820b344a6147.jpeg">
-  <img src="ceba3ada-09d9-465c-9b64-28b9efeadf27.jpeg">
-  <img src="c5e6fc14-ea98-4071-9a09-74855ff074d0.jpeg">
-  <img src="f6fd3538-7725-4085-a2bd-2fcc2423b63e.jpeg">
-    <img src="f3db6386-a5b5-4574-bc0f-4f6573fbd995.jpeg">
-    <img src="e3008b06-b75c-4535-9637-91eec2a0e4f4.jpeg">
-    <img src="e00dbb13-62aa-4b85-b864-601ea4e98ee2.jpeg">
- 
-    <img src="IMG_0001.jpeg">
-    <img src="IMG_0005.jpeg">
-    <img src="IMG_0018.jpeg">
-     <img src="IMG_0813.jpeg">
-    <img src="IMG_0816.jpeg">
-  <img src="IMG_0818.jpeg">
-  <img src="IMG_0843.jpeg">
-  <img src="IMG_0844.jpeg">
-    <img src="IMG_0845.jpeg">
-    <img src="IMG_0860.jpeg">
-    <img src="IMG_1922.jpeg">    
-</div>
+<div class="grid" id="photo-grid"></div>
 
 <!-- VIDEO GALLERY -->
 <h2 class="section-title">Safari Videos</h2>
-
-<div class="grid">
-  <video src="8870f87f-d397-4138-a416-75d5bcdf7df2.mov"></video>
-  <video src="05a85c29-39a5-42dc-b576-1cb4ed3e4b20.mov"></video>
-    <video src="1c71b2c0-cbe5-47e6-8009-2dc17e37731a.mov"></video>
-  <video src="30fb9dbb-1443-40ec-8a57-882c51dc5169.mov"></video>
-    <video src="48179603-e7c7-4fd6-b14a-93188d3e7941.mp4"></video>
-  <video src="634118bf-cd0f-4d6c-8802-d6aef5fab9fa.mov"></video>
-    <video src="b30f9aa7-05fd-4bc0-b54f-fb06b59ddc11.mp4"></video>
-    <video src="fd294acd-9716-4f1c-ab9d-fa110bbe6d7f.mp4"></video>
-    <video src="d8487bc5-34f2-4ea6-ab7c-ff6ba7f01a08.mp4"></video>
-   <video src=""></video>
-  <video src="05a85c29-39a5-42dc-b576-1cb4ed3e4b20.mov"></video>
-    <video src="1c71b2c0-cbe5-47e6-8009-2dc17e37731a.mov"></video>
-  <video src="30fb9dbb-1443-40ec-8a57-882c51dc5169.mov"></video>
-    <video src="48179603-e7c7-4fd6-b14a-93188d3e7941.mp4"></video>
-  <video src="634118bf-cd0f-4d6c-8802-d6aef5fab9fa.mov"></video>
-    <video src="b30f9aa7-05fd-4bc0-b54f-fb06b59ddc11.mp4"></video>
-    <video src="fd294acd-9716-4f1c-ab9d-fa110bbe6d7f.mp4"></video>
-    <video src="d8487bc5-34f2-4ea6-ab7c-ff6ba7f01a08.mp4"></video>
-</div>
+<div class="grid" id="video-grid"></div>
 
 <!-- MODAL -->
 <div class="modal" id="modal">
   <span class="close" onclick="closeModal()">×</span>
   <span class="nav-btn prev" onclick="prev()">❮</span>
   <span class="nav-btn next" onclick="next()">❯</span>
-
   <img id="modalImg">
   <video id="modalVideo" controls style="display:none;"></video>
 </div>
 
+<footer>
+  <p>&copy; 2026 Tujje Safari. All rights reserved.</p>
+  <p>Made with ❤️ for Uganda safaris</p>
+  <p class="small">Photos & videos stored on Cloudinary (folder: tujje/gallery) • Admin only upload</p>
+</footer>
+
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script src="https://upload-widget.cloudinary.com/global/all.js" type="text/javascript"></script>
 
 <script>
-let swiper = new Swiper(".mySwiper", {
-  loop:true,
-  autoplay:{delay:2500}
-});
+  // ========== YOUR CLOUDINARY SETTINGS ==========
+  const CLOUD_NAME = "YOUR_CLOUD_NAME";          // ← put your real cloud name here
+  const UPLOAD_PRESET = "tujje_gallery";         // from your screenshot
+  const FOLDER = "tujje/gallery";                // from your screenshot
 
-/* MODAL SYSTEM */
-let items = [];
-let index = 0;
+  let items = [];
+  let index = 0;
 
-const modal = document.getElementById("modal");
-const modalImg = document.getElementById("modalImg");
-const modalVideo = document.getElementById("modalVideo");
+  const modal = document.getElementById('modal');
+  const modalImg = document.getElementById('modalImg');
+  const modalVideo = document.getElementById('modalVideo');
 
-/* collect images + videos */
-document.querySelectorAll(".grid img, .grid video").forEach((el, i)=>{
-  items.push(el);
-
-  el.addEventListener("click", ()=>{
-    index = i;
-    openModal(el);
+  // Hero slider
+  new Swiper('.hero-swiper', {
+    loop: true,
+    effect: 'fade',
+    speed: 1000,
+    autoplay: { delay: 4500, disableOnInteraction: false },
+    pagination: { el: '.hero-swiper .swiper-pagination', clickable: true },
+    navigation: {
+      nextEl: '.hero-swiper .swiper-button-next',
+      prevEl: '.hero-swiper .swiper-button-prev'
+    }
   });
-});
 
-function openModal(el){
-  modal.style.display="flex";
+  // Featured slider
+  new Swiper('.featured-swiper', {
+    loop: true,
+    slidesPerView: 1.2,
+    spaceBetween: 18,
+    autoplay: { delay: 2800 },
+    breakpoints: {
+      640: { slidesPerView: 2.2 },
+      1024: { slidesPerView: 3.2 }
+    },
+    pagination: { el: '.featured-swiper .swiper-pagination', clickable: true }
+  });
 
-  if(el.tagName==="IMG"){
-    modalImg.style.display="block";
-    modalVideo.style.display="none";
-    modalImg.src = el.src;
-  }else{
-    modalImg.style.display="none";
-    modalVideo.style.display="block";
-    modalVideo.src = el.src;
-    modalVideo.play();
+  // ========== LOAD MEDIA FROM CLOUDINARY ==========
+  async function loadGallery() {
+    try {
+      // Fetch resources from the folder using Cloudinary Admin API is not possible from frontend
+      // So for now we use the list of known public_ids, or you can hardcode the ones you already uploaded.
+      // Later we can add a small backend or use the Media Library list.
+
+      // Temporary: use the photos you already have (replace with real ones after upload)
+      const knownPhotos = [
+        "4a7fea4f-ee9e-4104-9754-06c36312b0b0",
+        "0aa0d764-4d5d-48e6-bc02-1a92519676c5",
+        "0aff6cce-daf8-4817-87db-92309cc022ba",
+        "0cbcd965-e25e-4eee-9b30-775a58f0a1be",
+        "0e867e99-4ba2-484d-a975-8544d7a60f13",
+        "1e7c2642-d1dc-4262-9026-31f570056fae",
+        "225b3299-5787-4bd1-b2d0-0e570380045d",
+        "2ccc753e-f5dd-48b4-b304-a691b64d6b48",
+        "34262092-ed6e-475b-9739-b0a19b17f576",
+        "3ed1a34c-7dbf-40ea-8b92-374bf3db2cc1",
+        "42290d40-a0ef-4159-980f-46237d93674a",
+        "4ff1b209-8290-4983-85cc-60829b07be97"
+      ];
+
+      const photoGrid = document.getElementById('photo-grid');
+      knownPhotos.forEach(id => {
+        const url = `https://res.cloudinary.com/${CLOUD_NAME}/image/upload/f_auto,q_auto/${FOLDER}/${id}`;
+        const img = document.createElement('img');
+        img.src = url;
+        img.alt = "Safari photo";
+        img.loading = "lazy";
+        img.dataset.type = "photo";
+        img.dataset.url = url;
+        photoGrid.appendChild(img);
+        items.push(img);
+      });
+
+      // Click handlers
+      items.forEach((el, i) => {
+        el.addEventListener('click', () => {
+          index = i;
+          openModal(el);
+        });
+      });
+
+    } catch (err) {
+      console.error(err);
+    }
   }
-}
 
-function closeModal(){
-  modal.style.display="none";
-  modalVideo.pause();
-}
+  // Modal functions
+  function openModal(el) {
+    modal.style.display = 'flex';
+    if (el.dataset.type === 'photo' || el.tagName === 'IMG') {
+      modalImg.style.display = 'block';
+      modalVideo.style.display = 'none';
+      modalImg.src = el.dataset.url || el.src;
+    } else {
+      modalImg.style.display = 'none';
+      modalVideo.style.display = 'block';
+      modalVideo.src = el.dataset.url || el.src;
+      modalVideo.play();
+    }
+  }
 
-function next(){
-  index = (index+1)%items.length;
-  openModal(items[index]);
-}
+  function closeModal() {
+    modal.style.display = 'none';
+    modalVideo.pause();
+  }
 
-function prev(){
-  index = (index-1+items.length)%items.length;
-  openModal(items[index]);
-}
+  function next() {
+    index = (index + 1) % items.length;
+    openModal(items[index]);
+  }
 
-/* close on background click */
-modal.addEventListener("click",(e)=>{
-  if(e.target===modal) closeModal();
-});
-  /* AUTOPLAY VIDEOS IN GALLERY */
-document.querySelectorAll(".grid video").forEach(video => {
-    video.autoplay = true;
-    video.muted = true;        // Required for autoplay
-    video.loop = true;
-    video.playsInline = true;
-    video.controls = false;
-    video.load();
+  function prev() {
+    index = (index - 1 + items.length) % items.length;
+    openModal(items[index]);
+  }
 
-    video.play().catch(error => {
-        console.log("Autoplay blocked:", error);
-    });
-});
+  modal.addEventListener('click', e => {
+    if (e.target === modal) closeModal();
+  });
+
+  document.addEventListener('keydown', e => {
+    if (modal.style.display === 'flex') {
+      if (e.key === 'ArrowRight') next();
+      if (e.key === 'ArrowLeft') prev();
+      if (e.key === 'Escape') closeModal();
+    }
+  });
+
+  // Load gallery
+  loadGallery();
 </script>
 
 </body>
