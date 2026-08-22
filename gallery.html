@@ -34,7 +34,6 @@
       -webkit-font-smoothing: antialiased;
     }
 
-    /* HEADER */
     header {
       border-bottom: 1px solid var(--border);
       background: rgba(15, 23, 42, 0.95);
@@ -122,7 +121,6 @@
       margin-bottom: 14px;
     }
 
-    /* ADMIN PANEL */
     #adminPanel {
       display: none;
       margin-bottom: 48px;
@@ -232,7 +230,6 @@
       transition: width 0.3s ease;
     }
 
-    /* GALLERY */
     .gallery-section {
       margin-bottom: 52px;
     }
@@ -293,8 +290,7 @@
       border-color: var(--orange);
     }
 
-    .gallery-item img,
-    .gallery-item video {
+    .gallery-item img {
       width: 100%;
       height: 100%;
       object-fit: cover;
@@ -302,8 +298,7 @@
       transition: transform 0.4s ease;
     }
 
-    .gallery-item:hover img,
-    .gallery-item:hover video { transform: scale(1.06); }
+    .gallery-item:hover img { transform: scale(1.06); }
 
     .gallery-overlay {
       position: absolute;
@@ -354,7 +349,6 @@
 
     .empty-state p { font-size: 0.95rem; }
 
-    /* VIEWER */
     #viewer {
       position: fixed;
       inset: 0;
@@ -465,7 +459,6 @@
       border-color: var(--orange);
     }
 
-    /* LOGIN MODAL */
     #loginModal {
       position: fixed;
       inset: 0;
@@ -613,7 +606,7 @@
           </svg>
         </div>
         <p>Drag & drop photos or videos</p>
-        <p class="hint">PNG, JPG, WEBP, GIF, MP4, MOV, WEBM • Stored in separate folders</p>
+        <p class="hint">PNG, JPG, WEBP, GIF, MP4, MOV, WEBM</p>
         <input type="file" id="fileInput" accept="image/*,video/*" multiple>
         <button class="upload-btn" id="uploadBtn">
           <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
@@ -661,8 +654,8 @@
     </div>
 
     <p class="footer-note">
-      Photos stored in <strong>tujje/gallery/photos</strong> · Videos stored in <strong>tujje/gallery/videos</strong><br>
-      Only admin can upload · Users can only view
+      Powered by Cloudinary · Works on every browser and device<br>
+      Only admin can upload · Everyone can view
     </p>
   </div>
 
@@ -693,75 +686,78 @@
 
   <script>
     // ========================================
-    // TUJJE SAFARI – CLOUDINARY CREDENTIALS
+    // CONFIG – change password if you want
     // ========================================
     const CLOUD_NAME     = "ziudh5iv";
     const UPLOAD_PRESET  = "tujje_gallery";
-    const ADMIN_PASSWORD = "tujje2026";          // ← change this password!
-    const PHOTO_KEY      = "tujje_photos";
-    const VIDEO_KEY      = "tujje_videos";
+    const ADMIN_PASSWORD = "tujje2026";
+    const PHOTO_TAG      = "tujje_photos";
+    const VIDEO_TAG      = "tujje_videos";
 
     // ========================================
     // Elements
     // ========================================
-    const adminToggle   = document.getElementById("adminToggle");
-    const adminPanel    = document.getElementById("adminPanel");
-    const loginModal    = document.getElementById("loginModal");
-    const adminPassword = document.getElementById("adminPassword");
-    const loginSubmit   = document.getElementById("loginSubmit");
-    const loginCancel   = document.getElementById("loginCancel");
+    const adminToggle    = document.getElementById("adminToggle");
+    const adminPanel     = document.getElementById("adminPanel");
+    const loginModal     = document.getElementById("loginModal");
+    const adminPassword  = document.getElementById("adminPassword");
+    const loginSubmit    = document.getElementById("loginSubmit");
+    const loginCancel    = document.getElementById("loginCancel");
 
-    const fileInput     = document.getElementById("fileInput");
-    const uploadBtn     = document.getElementById("uploadBtn");
-    const uploadBox     = document.getElementById("uploadBox");
-    const statusEl      = document.getElementById("status");
-    const progressWrap  = document.getElementById("progressWrap");
-    const progressBar   = document.getElementById("progressBar");
+    const fileInput      = document.getElementById("fileInput");
+    const uploadBtn      = document.getElementById("uploadBtn");
+    const uploadBox      = document.getElementById("uploadBox");
+    const statusEl       = document.getElementById("status");
+    const progressWrap   = document.getElementById("progressWrap");
+    const progressBar    = document.getElementById("progressBar");
 
-    const photoGallery  = document.getElementById("photoGallery");
-    const videoGallery  = document.getElementById("videoGallery");
-    const photoEmpty    = document.getElementById("photoEmpty");
-    const videoEmpty    = document.getElementById("videoEmpty");
-    const photoCountEl  = document.getElementById("photoCount");
-    const videoCountEl  = document.getElementById("videoCount");
+    const photoGallery   = document.getElementById("photoGallery");
+    const videoGallery   = document.getElementById("videoGallery");
+    const photoCountEl   = document.getElementById("photoCount");
+    const videoCountEl   = document.getElementById("videoCount");
     const clearPhotosBtn = document.getElementById("clearPhotosBtn");
     const clearVideosBtn = document.getElementById("clearVideosBtn");
 
-    const viewer        = document.getElementById("viewer");
-    const viewerMedia   = document.getElementById("viewerMedia");
-    const viewerCaption = document.getElementById("viewerCaption");
-    const viewerCounter = document.getElementById("viewerCounter");
-    const viewerClose   = document.getElementById("viewerClose");
-    const viewerPrev    = document.getElementById("viewerPrev");
-    const viewerNext    = document.getElementById("viewerNext");
+    const viewer         = document.getElementById("viewer");
+    const viewerMedia    = document.getElementById("viewerMedia");
+    const viewerCaption  = document.getElementById("viewerCaption");
+    const viewerCounter  = document.getElementById("viewerCounter");
+    const viewerClose    = document.getElementById("viewerClose");
+    const viewerPrev     = document.getElementById("viewerPrev");
+    const viewerNext     = document.getElementById("viewerNext");
 
     let isAdmin = false;
     let currentList = [];
     let currentIndex = 0;
+    let currentType = "photo";
 
     // ========================================
-    // Storage helpers
+    // Fetch from Cloudinary (works everywhere)
     // ========================================
-    function loadList(key) {
+    async function fetchList(tag, resourceType) {
+      const url = `https://res.cloudinary.com/${CLOUD_NAME}/${resourceType}/list/${tag}.json?_=${Date.now()}`;
       try {
-        const raw = localStorage.getItem(key);
-        return raw ? JSON.parse(raw) : [];
-      } catch { return []; }
-    }
-
-    function saveList(key, list) {
-      localStorage.setItem(key, JSON.stringify(list));
-    }
-
-    function addItem(key, item) {
-      const list = loadList(key);
-      if (list.some(i => i.url === item.url)) return;
-      list.unshift(item);
-      saveList(key, list);
+        const res = await fetch(url);
+        if (res.status === 404) return [];
+        if (!res.ok) throw new Error("HTTP " + res.status);
+        const data = await res.json();
+        return (data.resources || []).map(r => {
+          const format = r.format || (resourceType === "video" ? "mp4" : "jpg");
+          const version = r.version ? `v${r.version}/` : "";
+          return {
+            url: `https://res.cloudinary.com/${CLOUD_NAME}/${resourceType}/upload/${version}${r.public_id}.${format}`,
+            title: r.public_id || "",
+            addedAt: new Date(r.created_at).getTime()
+          };
+        }).sort((a, b) => b.addedAt - a.addedAt);
+      } catch (err) {
+        console.error("List fetch failed:", err);
+        return [];
+      }
     }
 
     // ========================================
-    // Admin login
+    // Admin
     // ========================================
     function setAdminState(loggedIn) {
       isAdmin = loggedIn;
@@ -784,7 +780,6 @@
     });
 
     loginCancel.addEventListener("click", () => loginModal.classList.remove("open"));
-
     loginSubmit.addEventListener("click", () => {
       if (adminPassword.value === ADMIN_PASSWORD) {
         setAdminState(true);
@@ -795,79 +790,77 @@
         adminPassword.focus();
       }
     });
-
-    adminPassword.addEventListener("keydown", (e) => {
+    adminPassword.addEventListener("keydown", e => {
       if (e.key === "Enter") loginSubmit.click();
     });
 
-    // ========================================
-    // UI helpers
-    // ========================================
     function setStatus(msg, type = "info") {
       statusEl.className = `status-${type}`;
       statusEl.innerHTML = msg;
     }
 
-    function thumbUrl(url, isVideo = false) {
+    // ========================================
+    // Thumbnails (correct for both photos & videos)
+    // ========================================
+    function thumbUrl(url, isVideo) {
       if (isVideo) {
-        return url.replace("/upload/", "/upload/so_0,w_420,h_420,c_fill,q_auto,f_jpg/");
+        return url
+          .replace("/video/upload/", "/video/upload/so_0,w_420,h_420,c_fill,q_auto,f_jpg/")
+          .replace(/\.(mp4|mov|webm|m4v|avi)$/i, "");
       }
-      return url.replace("/upload/", "/upload/c_fill,w_420,h_420,q_auto,f_auto/");
+      return url.replace("/image/upload/", "/image/upload/c_fill,w_420,h_420,q_auto,f_auto/");
     }
 
     // ========================================
-    // Render galleries (SEPARATE)
+    // Create gallery item
     // ========================================
     function createItem(item, type) {
       const el = document.createElement("div");
       el.className = "gallery-item";
       const isVideo = type === "video";
 
-      if (isVideo) {
-        el.innerHTML = `
-          <img src="${thumbUrl(item.url, true)}" alt="${item.title || "Video"}" loading="lazy">
-          <div class="video-badge">▶ Video</div>
-          <div class="gallery-overlay"><span>${item.title || "Untitled"}</span></div>
-        `;
-      } else {
-        el.innerHTML = `
-          <img src="${thumbUrl(item.url)}" alt="${item.title || "Photo"}" loading="lazy">
-          <div class="gallery-overlay"><span>${item.title || "Untitled"}</span></div>
-        `;
-      }
-
+      el.innerHTML = `
+        <img src="${thumbUrl(item.url, isVideo)}" alt="${item.title || ""}" loading="lazy">
+        ${isVideo ? '<div class="video-badge">▶ Video</div>' : ""}
+        <div class="gallery-overlay"><span>${item.title || "Untitled"}</span></div>
+      `;
       el.addEventListener("click", () => openViewer(type, item.url));
       return el;
     }
 
-    function renderPhotos() {
-      const list = loadList(PHOTO_KEY);
-      photoGallery.querySelectorAll(".gallery-item").forEach(el => el.remove());
+    // ========================================
+    // Render
+    // ========================================
+    async function renderPhotos() {
+      const list = await fetchList(PHOTO_TAG, "image");
+      photoGallery.innerHTML = "";
+      photoCountEl.textContent = list.length + (list.length === 1 ? " photo" : " photos");
+
+      if (list.length === 0) {
+        photoGallery.innerHTML = '<div class="empty-state"><p>No photos yet. Admin can upload.</p></div>';
+        return;
+      }
       list.forEach(item => photoGallery.appendChild(createItem(item, "photo")));
-      photoCountEl.textContent = `${list.length} photo${list.length !== 1 ? "s" : ""}`;
-      photoEmpty.style.display = list.length === 0 ? "block" : "none";
     }
 
-    function renderVideos() {
-      const list = loadList(VIDEO_KEY);
-      videoGallery.querySelectorAll(".gallery-item").forEach(el => el.remove());
+    async function renderVideos() {
+      const list = await fetchList(VIDEO_TAG, "video");
+      videoGallery.innerHTML = "";
+      videoCountEl.textContent = list.length + (list.length === 1 ? " video" : " videos");
+
+      if (list.length === 0) {
+        videoGallery.innerHTML = '<div class="empty-state"><p>No videos yet. Admin can upload.</p></div>';
+        return;
+      }
       list.forEach(item => videoGallery.appendChild(createItem(item, "video")));
-      videoCountEl.textContent = `${list.length} video${list.length !== 1 ? "s" : ""}`;
-      videoEmpty.style.display = list.length === 0 ? "block" : "none";
-    }
-
-    function renderAll() {
-      renderPhotos();
-      renderVideos();
     }
 
     // ========================================
-    // Upload (with separate folders)
+    // Upload
     // ========================================
     async function uploadFile(file) {
       const isVideo = file.type.startsWith("video/");
       const isImage = file.type.startsWith("image/");
-
       if (!isImage && !isVideo) {
         setStatus("Only images and videos are allowed.", "error");
         return;
@@ -881,20 +874,17 @@
       const formData = new FormData();
       formData.append("file", file);
       formData.append("upload_preset", UPLOAD_PRESET);
+      formData.append("tags", isVideo ? VIDEO_TAG : PHOTO_TAG);
 
-      // Store separately
-      if (isVideo) {
-        formData.append("folder", "tujje/gallery/videos");
-      } else {
-        formData.append("folder", "tujje/gallery/photos");
-      }
+      // Optional folders (nice to have)
+      formData.append("folder", isVideo ? "tujje/gallery/videos" : "tujje/gallery/photos");
 
       const resourceType = isVideo ? "video" : "image";
 
       try {
         const timer = setInterval(() => {
           const cur = parseFloat(progressBar.style.width);
-          if (cur < 80) progressBar.style.width = cur + 10 + "%";
+          if (cur < 80) progressBar.style.width = (cur + 10) + "%";
         }, 250);
 
         const res = await fetch(
@@ -908,20 +898,9 @@
         const data = await res.json();
         if (!res.ok) throw new Error(data.error?.message || "Upload failed");
 
-        const item = { 
-          url: data.secure_url, 
-          title: file.name, 
-          public_id: data.public_id,
-          addedAt: Date.now() 
-        };
-
-        if (isVideo) {
-          addItem(VIDEO_KEY, item);
-          renderVideos();
-        } else {
-          addItem(PHOTO_KEY, item);
-          renderPhotos();
-        }
+        // Refresh the gallery so everyone sees the new item
+        if (isVideo) await renderVideos();
+        else await renderPhotos();
 
         setStatus(`✅ Uploaded successfully (${isVideo ? "video" : "photo"})`, "success");
       } catch (err) {
@@ -933,7 +912,7 @@
         setTimeout(() => {
           progressWrap.style.display = "none";
           progressBar.style.width = "0%";
-        }, 500);
+        }, 600);
       }
     }
 
@@ -945,27 +924,29 @@
         setStatus("No valid media files selected.", "error");
         return;
       }
-      for (const file of valid) {
-        await uploadFile(file);
-      }
+      for (const file of valid) await uploadFile(file);
     }
 
     // ========================================
-    // Full viewer with next / prev
+    // Viewer
     // ========================================
     function openViewer(type, url) {
-      currentList = type === "video" ? loadList(VIDEO_KEY) : loadList(PHOTO_KEY);
-      currentIndex = currentList.findIndex(i => i.url === url);
-      if (currentIndex < 0) currentIndex = 0;
-      showCurrent();
-      viewer.classList.add("open");
-      document.body.style.overflow = "hidden";
+      currentType = type;
+      const load = type === "video" ? fetchList(VIDEO_TAG, "video") : fetchList(PHOTO_TAG, "image");
+      load.then(list => {
+        currentList = list;
+        currentIndex = currentList.findIndex(i => i.url === url);
+        if (currentIndex < 0) currentIndex = 0;
+        showCurrent();
+        viewer.classList.add("open");
+        document.body.style.overflow = "hidden";
+      });
     }
 
     function showCurrent() {
       if (!currentList.length) return;
       const item = currentList[currentIndex];
-      const isVideo = item.url.includes("/video/") || /\.(mp4|mov|webm|mkv)(\?|$)/i.test(item.url);
+      const isVideo = currentType === "video";
 
       viewerMedia.innerHTML = "";
       if (isVideo) {
@@ -973,6 +954,7 @@
         video.src = item.url;
         video.controls = true;
         video.autoplay = true;
+        video.playsInline = true;
         video.style.maxWidth = "92vw";
         video.style.maxHeight = "78vh";
         video.style.borderRadius = "12px";
@@ -993,13 +975,11 @@
       currentIndex = (currentIndex + 1) % currentList.length;
       showCurrent();
     }
-
     function prevItem() {
       if (!currentList.length) return;
       currentIndex = (currentIndex - 1 + currentList.length) % currentList.length;
       showCurrent();
     }
-
     function closeViewer() {
       viewer.classList.remove("open");
       document.body.style.overflow = "";
@@ -1010,12 +990,10 @@
     viewerClose.addEventListener("click", closeViewer);
     viewerNext.addEventListener("click", nextItem);
     viewerPrev.addEventListener("click", prevItem);
-
-    viewer.addEventListener("click", (e) => {
+    viewer.addEventListener("click", e => {
       if (e.target === viewer) closeViewer();
     });
-
-    document.addEventListener("keydown", (e) => {
+    document.addEventListener("keydown", e => {
       if (!viewer.classList.contains("open")) return;
       if (e.key === "Escape") closeViewer();
       if (e.key === "ArrowRight") nextItem();
@@ -1023,36 +1001,33 @@
     });
 
     // ========================================
-    // Clear (admin only)
+    // Clear buttons (just refresh the view)
     // ========================================
     clearPhotosBtn.addEventListener("click", () => {
-      if (!confirm("Clear all photos from this gallery?\n(Files remain on Cloudinary)")) return;
-      localStorage.removeItem(PHOTO_KEY);
-      renderPhotos();
+      if (confirm("This only refreshes the view.\nTo permanently delete files, use the Cloudinary Media Library.")) {
+        renderPhotos();
+      }
     });
-
     clearVideosBtn.addEventListener("click", () => {
-      if (!confirm("Clear all videos from this gallery?\n(Files remain on Cloudinary)")) return;
-      localStorage.removeItem(VIDEO_KEY);
-      renderVideos();
+      if (confirm("This only refreshes the view.\nTo permanently delete files, use the Cloudinary Media Library.")) {
+        renderVideos();
+      }
     });
 
     // ========================================
     // Upload events
     // ========================================
     uploadBtn.addEventListener("click", () => fileInput.click());
-
     fileInput.addEventListener("change", () => {
       if (fileInput.files.length) handleFiles(fileInput.files);
     });
 
-    ["dragenter", "dragover", "dragleave", "drop"].forEach(evt => {
+    ["dragenter","dragover","dragleave","drop"].forEach(evt => {
       uploadBox.addEventListener(evt, e => {
         e.preventDefault();
         e.stopPropagation();
       });
     });
-
     uploadBox.addEventListener("dragover", () => uploadBox.classList.add("dragover"));
     uploadBox.addEventListener("dragleave", () => uploadBox.classList.remove("dragover"));
     uploadBox.addEventListener("drop", e => {
@@ -1061,9 +1036,10 @@
     });
 
     // ========================================
-    // Init
+    // Start
     // ========================================
-    renderAll();
+    renderPhotos();
+    renderVideos();
   </script>
 </body>
 </html>
